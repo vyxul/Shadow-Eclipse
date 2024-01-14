@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://oticknl55wsx"]
+
+[ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://Scenes/Player/player_camera_2d.tscn" id="1_8rapg"]
+[ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://Scenes/Player/player.tscn" id="1_r4tet"]
+
+[node name="PrisonLevel" type="Node"]
+
+[node name="TempBackground" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="TempBackground"]
+offset_right = 320.0
+offset_bottom = 320.0
+
+[node name="ColorRect2" type="ColorRect" parent="TempBackground"]
+offset_left = 320.0
+offset_right = 640.0
+offset_bottom = 320.0
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="TempBackground"]
+offset_left = 640.0
+offset_right = 960.0
+offset_bottom = 320.0
+color = Color(0, 1, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="TempBackground"]
+offset_top = 320.0
+offset_right = 320.0
+offset_bottom = 640.0
+color = Color(0, 0, 1, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="TempBackground"]
+offset_left = 320.0
+offset_top = 320.0
+offset_right = 640.0
+offset_bottom = 640.0
+color = Color(1, 1, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="TempBackground"]
+offset_left = 640.0
+offset_top = 320.0
+offset_right = 960.0
+offset_bottom = 640.0
+color = Color(0, 1, 1, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="TempBackground"]
+offset_top = 640.0
+offset_right = 320.0
+offset_bottom = 960.0
+color = Color(1, 0, 1, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="TempBackground"]
+offset_left = 320.0
+offset_top = 640.0
+offset_right = 640.0
+offset_bottom = 960.0
+color = Color(1, 0.411765, 0.411765, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="TempBackground"]
+offset_left = 640.0
+offset_top = 640.0
+offset_right = 960.0
+offset_bottom = 960.0
+color = Color(0, 0, 0, 1)
+
+[node name="Player_Camera2D" parent="." instance=ExtResource("1_8rapg")]
+
+[node name="Player" parent="." instance=ExtResource("1_r4tet")]
+position = Vector2(471, 487)
