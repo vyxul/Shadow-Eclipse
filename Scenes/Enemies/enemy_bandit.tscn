@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dimxkh5vbaxfx"]
+[gd_scene load_steps=5 format=3 uid="uid://dimxkh5vbaxfx"]
 
 [ext_resource type="Texture2D" uid="uid://df6g8okbk54y" path="res://Assets/Art/Enemies/enemy_sprite_sheet.png" id="1_61gxk"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_bandit.gd" id="1_iaane"]
+[ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://Scenes/Components/health_component.tscn" id="2_qnwby"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fmbg"]
 radius = 21.0
@@ -9,6 +11,7 @@ height = 60.0
 [node name="enemy_bandit" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
+script = ExtResource("1_iaane")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_61gxk")
@@ -19,3 +22,5 @@ frame = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 22)
 shape = SubResource("CapsuleShape2D_4fmbg")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_qnwby")]
