@@ -1,11 +1,26 @@
 extends Node
+class_name HealthComponent
+
+signal health_depleted
+signal health_lost
+
+@export var max_health_points: int = 1
+@export var current_health_points: int = 1
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func check_hp_in_range():
+	# forcibly set current_health_points to be within acceptable range
+	current_health_points = clamp(current_health_points, 0, max_health_points)
+	
+	if current_health_points == 0:
+		health_depleted.emit()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func damage(dmg: int):
+	if dmg <= 0:
+		return
+	
+	current_health_points -= dmg
+	health_lost.emit()
+	
+	check_hp_in_range()

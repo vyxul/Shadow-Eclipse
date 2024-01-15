@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var health_component = $HealthComponent
 
-
 func _ready():
 	health_component.health_depleted.connect(on_health_depleted)
 
