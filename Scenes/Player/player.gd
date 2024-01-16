@@ -4,9 +4,15 @@ extends CharacterBody2D
 @export var player_speed: float = 500
 @export var run_speed_multiplier: float = 1.5
 
+@onready var marker_2d = $Marker2D
+@onready var sprite_2d = $Sprite2D
+@onready var player_melee_controller = $PlayerMeleeController
 
 func _physics_process(delta):
 	move(delta)
+	
+	if Input.is_action_just_pressed("left_click"):
+		melee_attack()
 
 
 func move(delta: float):
@@ -24,3 +30,11 @@ func move(delta: float):
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * 5))
 	
 	move_and_slide()
+
+
+func get_weapon_origin():
+	return marker_2d.global_position
+
+
+func melee_attack():
+	player_melee_controller.attack(sprite_2d)

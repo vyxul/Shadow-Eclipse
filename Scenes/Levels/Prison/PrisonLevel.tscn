@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://oticknl55wsx"]
+[gd_scene load_steps=14 format=3 uid="uid://oticknl55wsx"]
 
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://Scenes/Player/player_camera_2d.tscn" id="1_8rapg"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://Scenes/Player/player.tscn" id="1_r4tet"]
+[ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://Scenes/Enemies/enemy_bandit.tscn" id="3_f07v3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33pkm"]
 size = Vector2(1024, 32)
@@ -349,12 +350,6 @@ offset_right = 64.0
 offset_bottom = 64.0
 color = Color(0.439216, 0.439216, 0.439216, 1)
 
-[node name="Player_Camera2D" parent="." instance=ExtResource("1_8rapg")]
-
-[node name="Player" parent="." instance=ExtResource("1_r4tet")]
-position = Vector2(127, 138)
-scale = Vector2(0.5, 0.5)
-
 [node name="MapCollisions" type="StaticBody2D" parent="."]
 collision_mask = 0
 
@@ -397,3 +392,25 @@ shape = SubResource("RectangleShape2D_08rsn")
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="MapCollisions"]
 position = Vector2(512, 511.5)
 shape = SubResource("RectangleShape2D_i2vxt")
+
+[node name="Player_Camera2D" parent="." instance=ExtResource("1_8rapg")]
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="Enemies" type="Node2D" parent="Entities"]
+
+[node name="enemy_bandit" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
+position = Vector2(164, 842)
+
+[node name="enemy_bandit2" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
+position = Vector2(871, 164)
+
+[node name="enemy_bandit3" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
+position = Vector2(889, 706)
+
+[node name="enemy_bandit4" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
+position = Vector2(694, 852)
+
+[node name="Player" parent="." instance=ExtResource("1_r4tet")]
+position = Vector2(127, 138)
+scale = Vector2(0.5, 0.5)
