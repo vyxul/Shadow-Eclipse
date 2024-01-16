@@ -1,6 +1,6 @@
 extends Node
 
-@onready var player_melee_attack = preload("res://Scenes/Player/player_melee_attack.tscn")
+@onready var player_melee_attack = preload("res://GameFiles/Game Objects/Characters/Player/player_melee_attack.tscn")
 
 @export var weapon_damage: int = 1
 
