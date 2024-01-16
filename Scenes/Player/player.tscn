@@ -1,19 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf2x6amj6vpyd"]
+[gd_scene load_steps=5 format=3 uid="uid://cf2x6amj6vpyd"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_n8ck6"]
 [ext_resource type="Texture2D" uid="uid://dl7m55vsr4oun" path="res://icon.svg" id="1_w7cit"]
+[ext_resource type="PackedScene" uid="uid://c41nwnahfi0b8" path="res://Scenes/Player/player_melee_controller.tscn" id="3_k76rs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5t6u5"]
-radius = 64.0
-height = 128.0
+radius = 60.0
+height = 124.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_n8ck6")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("1_w7cit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5t6u5")
+
+[node name="PlayerMeleeController" parent="." instance=ExtResource("3_k76rs")]
