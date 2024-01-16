@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3kdick4nptqw"]
 
-[ext_resource type="Script" path="res://Scenes/Player/player_melee_attack.gd" id="1_0mfji"]
-[ext_resource type="Texture2D" uid="uid://df6g8okbk54y" path="res://Assets/Art/Enemies/enemy_sprite_sheet.png" id="1_hxcgv"]
-[ext_resource type="PackedScene" uid="uid://dapjt02jspsb" path="res://Scenes/Components/hitbox_component.tscn" id="2_ta3j6"]
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_melee_attack.gd" id="1_0mfji"]
+[ext_resource type="Texture2D" uid="uid://df6g8okbk54y" path="res://GameFiles/Assets/Art/Enemies/enemy_sprite_sheet.png" id="1_hxcgv"]
+[ext_resource type="PackedScene" uid="uid://dapjt02jspsb" path="res://GameFiles/Game Objects/Components/hitbox_component.tscn" id="2_ta3j6"]
 
 [sub_resource type="Animation" id="Animation_tciyv"]
 length = 0.001

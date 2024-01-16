@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dimxkh5vbaxfx"]
 
-[ext_resource type="Texture2D" uid="uid://df6g8okbk54y" path="res://Assets/Art/Enemies/enemy_sprite_sheet.png" id="1_61gxk"]
-[ext_resource type="Script" path="res://Scenes/Enemies/enemy_bandit.gd" id="1_iaane"]
-[ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://Scenes/Components/health_component.tscn" id="2_qnwby"]
-[ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://Scenes/Components/hurtbox_component.tscn" id="4_nn6pb"]
+[ext_resource type="Texture2D" uid="uid://df6g8okbk54y" path="res://GameFiles/Assets/Art/Enemies/enemy_sprite_sheet.png" id="1_61gxk"]
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Enemies/enemy_bandit.gd" id="1_iaane"]
+[ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_qnwby"]
+[ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="4_nn6pb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fmbg"]
 radius = 21.0
