@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://oticknl55wsx"]
 
-[ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://Scenes/Player/player_camera_2d.tscn" id="1_8rapg"]
-[ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://Scenes/Player/player.tscn" id="1_r4tet"]
-[ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://Scenes/Enemies/enemy_bandit.tscn" id="3_f07v3"]
+[ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
+[ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="1_r4tet"]
+[ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/Enemies/enemy_bandit.tscn" id="3_f07v3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33pkm"]
 size = Vector2(1024, 32)
