@@ -2,7 +2,7 @@ extends Node2D
 
 const extension_range = 32
 
-var weapon_damage: int = 0
+var melee_attack_damage: int = 0
 
 
 #func _process(delta):
@@ -10,11 +10,11 @@ var weapon_damage: int = 0
 
 
 func set_damage(dmg: int):
-	weapon_damage = dmg
+	melee_attack_damage = dmg
 
 
 func get_damage():
-	return weapon_damage
+	return melee_attack_damage
 
 
 func set_attack_position():
