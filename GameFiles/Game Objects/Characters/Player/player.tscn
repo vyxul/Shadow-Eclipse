@@ -11,7 +11,10 @@ height = 124.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_n8ck6")
+player_speed = 350.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 

@@ -412,5 +412,5 @@ position = Vector2(889, 706)
 position = Vector2(694, 852)
 
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
-position = Vector2(127, 138)
+position = Vector2(191, 162)
 scale = Vector2(0.5, 0.5)

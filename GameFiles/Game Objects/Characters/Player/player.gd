@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 @export var player_speed: float = 500
 @export var run_speed_multiplier: float = 1.5
@@ -27,7 +27,8 @@ func move(delta: float):
 		move_speed = player_speed
 	
 	var target_velocity = move_direction * move_speed
-	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * 5))
+	#velocity = velocity.lerp(target_velocity, 1 - exp(-delta * 5))
+	velocity = target_velocity
 	
 	move_and_slide()
 
