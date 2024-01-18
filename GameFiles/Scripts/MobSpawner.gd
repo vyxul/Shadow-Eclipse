@@ -7,6 +7,7 @@ var numOfChildren = 0
 var maxToSpawn = 0 #this is used to switch between continous or one time
 @export var spawnRadius = 50
 @export var continousSpawn = true
+@export var spawnWaitTime_seconds = 2
 func _ready():
 	maxToSpawn = maxEnemies
 	print("Im alive")
@@ -18,7 +19,7 @@ func _ready():
 	
 	# Set the timer to repeat every 5 seconds
 	# Until
-	spawn_timer.wait_time = 2
+	spawn_timer.wait_time = spawnWaitTime_seconds
 	spawn_timer.one_shot = false
 	spawn_timer.start()
 	numOfChildren = get_child_count()

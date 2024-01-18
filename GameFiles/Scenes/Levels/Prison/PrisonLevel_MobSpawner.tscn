@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_3xqpf"]
 [ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/Enemies/enemy_bandit.tscn" id="2_61gej"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="3_e2d2x"]
-[ext_resource type="Script" path="res://GameFiles/Scripts/MobSpawner.gd" id="4_gmxtk"]
+[ext_resource type="PackedScene" uid="uid://diwnqm5lcsuui" path="res://GameFiles/Game Objects/Components/mob_spawner.tscn" id="4_et8ic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33pkm"]
 size = Vector2(1024, 32)
@@ -416,10 +416,4 @@ position = Vector2(694, 852)
 position = Vector2(127, 138)
 scale = Vector2(0.5, 0.5)
 
-[node name="MobSpawner" type="Node2D" parent="."]
-position = Vector2(708, 306)
-script = ExtResource("4_gmxtk")
-maxEnemies = 2
-continousSpawn = false
-
-[node name="Timer" type="Timer" parent="MobSpawner"]
+[node name="MobSpawner" parent="." instance=ExtResource("4_et8ic")]
