@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf2x6amj6vpyd"]
+[gd_scene load_steps=6 format=3 uid="uid://cf2x6amj6vpyd"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player.gd" id="1_n8ck6"]
 [ext_resource type="Texture2D" uid="uid://dl7m55vsr4oun" path="res://icon.svg" id="1_w7cit"]
 [ext_resource type="PackedScene" uid="uid://c41nwnahfi0b8" path="res://GameFiles/Game Objects/Characters/Player/player_melee_controller.tscn" id="3_k76rs"]
+[ext_resource type="PackedScene" uid="uid://kvvxb48po0s8" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_controller.tscn" id="4_ve0m4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5t6u5"]
 radius = 60.0
@@ -23,3 +24,6 @@ texture = ExtResource("1_w7cit")
 shape = SubResource("CapsuleShape2D_5t6u5")
 
 [node name="PlayerMeleeController" parent="." instance=ExtResource("3_k76rs")]
+
+[node name="PlayerRecruitController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ve0m4")]
+player = NodePath("..")

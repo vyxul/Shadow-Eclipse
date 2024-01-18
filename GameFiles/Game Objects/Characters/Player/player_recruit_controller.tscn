@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://kvvxb48po0s8"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_controller.gd" id="1_5g25i"]
+[ext_resource type="PackedScene" uid="uid://bo8ow2p1eue1i" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_laser.tscn" id="2_l2fld"]
+
+[node name="PlayerRecruitController" type="Node2D"]
+script = ExtResource("1_5g25i")
+
+[node name="PlayerRecruitLaser" parent="." instance=ExtResource("2_l2fld")]

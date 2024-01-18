@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo8ow2p1eue1i"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_laser.gd" id="1_bqyua"]
+
+[node name="PlayerRecruitLaser" type="RayCast2D"]
+target_position = Vector2(200, 0)
+collision_mask = 5
+collide_with_areas = true
+script = ExtResource("1_bqyua")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 200, 0)
+width = 0.0
