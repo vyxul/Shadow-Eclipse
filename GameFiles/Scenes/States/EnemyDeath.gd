@@ -3,7 +3,7 @@ class_name EnemyDeath
 
 
 func enter():
-	var enemy = get_parent().get_enemy()
+	var enemy = get_parent().get_this_entity()
 	print_debug(enemy.name + " entered EnemyDeath state")
 	
 	if enemy:

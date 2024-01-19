@@ -3,8 +3,7 @@ class_name EnemyIdle
 
 @export var move_speed: float = 10.0
 
-var enemy: CharacterBody2D
-var player: Player
+var this_entity: CharacterBody2D
 var move_direction: Vector2
 var wander_time: float
 
@@ -15,10 +14,18 @@ func randomize_wander():
 
 
 func enter():
-	enemy = get_parent().get_enemy()
-	player = get_tree().get_first_node_in_group("player")
+	this_entity = get_parent().get_this_entity()
 	randomize_wander()
-	get_parent().get_label().text = "Idle"
+	get_parent().get_state_label().text = "Idle"
+	get_parent().get_enemy_follow_label().text = "Follow Count: " + str(get_parent().get_search_radius().get_enemies_in_follow_range_count())
+	get_parent().get_enemy_combat_label().text = "Combat Count: " + str(get_parent().get_search_radius().get_enemies_in_combat_range_count())
+	
+	# set up connections with search_radius
+	get_parent().get_search_radius().enemy_detected.connect(on_enemy_detected)
+
+
+func exit():
+	this_entity.velocity = Vector2.ZERO
 
 
 func update(delta: float):
@@ -27,12 +34,12 @@ func update(delta: float):
 	
 	else:
 		randomize_wander()
-		
-	var player_direction = player.global_position - enemy.global_position
-	if player_direction.length() < 250:
-		transitioned.emit(self, "enemyfollow")
 
 
 func physics_update(delta: float):
-	if enemy:
-		enemy.velocity = move_direction * move_speed
+	if this_entity:
+		this_entity.velocity = move_direction * move_speed
+
+
+func on_enemy_detected():
+	transitioned.emit(self, "enemycombat")

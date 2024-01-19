@@ -8,9 +8,9 @@ var hurtbox_component: HurtboxComponent
 var timer: float
 
 func enter():
-	enemy = get_parent().get_enemy()
+	enemy = get_parent().get_this_entity()
 	hurtbox_component = get_parent().get_hurtbox_component()
-	get_parent().get_label().text = "Hurt"
+	get_parent().get_state_label().text = "Hurt"
 	timer = invincibility_time
 	
 	if enemy:

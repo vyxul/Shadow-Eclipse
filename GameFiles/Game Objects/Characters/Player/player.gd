@@ -8,6 +8,8 @@ class_name Player
 @onready var sprite_2d = $Sprite2D
 @onready var player_melee_controller = $PlayerMeleeController
 
+@export var faction: GameData.Factions
+
 func _physics_process(delta):
 	move(delta)
 	
@@ -35,6 +37,10 @@ func move(delta: float):
 
 func get_weapon_origin():
 	return marker_2d.global_position
+
+
+func get_faction() -> GameData.Factions:
+	return faction
 
 
 func melee_attack():

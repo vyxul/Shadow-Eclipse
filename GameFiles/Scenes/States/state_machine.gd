@@ -1,21 +1,20 @@
 extends Node
 
-@export var enemy: CharacterBody2D
+@export var this_entity: CharacterBody2D
 @export var initial_state: State
-@export var state_label: Label
 @export var hurtbox_component: HurtboxComponent
 @export var health_component: HealthComponent
+@export var search_radius: SearchRadius
+@export var state_label: Label
+@export var enemy_follow_count_label: Label
+@export var enemy_combat_count_label: Label
 
 var current_state: State
 var states: Dictionary = {}
 
 
-func get_enemy() -> CharacterBody2D:
-	return enemy
-
-
-func get_label() -> Label:
-	return state_label
+func get_this_entity() -> CharacterBody2D:
+	return this_entity
 
 
 func get_hurtbox_component() -> HurtboxComponent:
@@ -24,6 +23,22 @@ func get_hurtbox_component() -> HurtboxComponent:
 
 func get_health_component() -> HealthComponent:
 	return health_component
+
+
+func get_search_radius() -> SearchRadius:
+	return search_radius
+
+
+func get_state_label() -> Label:
+	return state_label
+
+
+func get_enemy_follow_label() -> Label:
+	return enemy_follow_count_label
+
+
+func get_enemy_combat_label() -> Label:
+	return enemy_combat_count_label
 
 
 func _ready():
