@@ -8,5 +8,4 @@ func _ready():
 	add_child(button)
 
 func _on_pressed():	
-	print ("Pressed")
 	get_tree().change_scene_to_file(loading_scene_path)
