@@ -15,6 +15,7 @@ var focus_target: CharacterBody2D
 
 
 func _ready():
+	visible = true
 	casting_particles.emitting = false
 	collision_particles.emitting = false
 	#beam_particles.emitting = false
@@ -60,6 +61,8 @@ func _physics_process(delta):
 				print_debug("Focused on the same target for the focus time needed")
 				# Add code here to refer to the targets conversion component
 				# and reduce their gauge after making that conversion component
+				var target_conversion_component = focus_target.get_conversion_component() as ConversionComponent
+				target_conversion_component.conversion_damage(conversion_damage)
 	
 	else:
 		focus_target = null

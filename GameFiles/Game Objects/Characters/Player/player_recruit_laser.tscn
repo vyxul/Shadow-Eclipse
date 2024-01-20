@@ -51,6 +51,7 @@ tangential_accel_min = -50.0
 tangential_accel_max = 50.0
 
 [node name="PlayerRecruitLaser" type="RayCast2D"]
+visible = false
 target_position = Vector2(200, 0)
 collision_mask = 5
 collide_with_areas = true
@@ -62,11 +63,13 @@ width = 25.0
 default_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 
 [node name="CastingParticles" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_rnqw2")
 texture = ExtResource("2_lvrly")
 
 [node name="CollisionParticles" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_dtqwc")
 texture = ExtResource("2_lvrly")
