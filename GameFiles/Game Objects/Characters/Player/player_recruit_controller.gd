@@ -4,6 +4,8 @@ extends Node2D
 
 @export var player: CharacterBody2D
 @export var laser_range: float = 500
+@export var focus_time_needed: float = 1
+@export var conversion_damage: int = 1
 
 var is_casting: bool = false
 
