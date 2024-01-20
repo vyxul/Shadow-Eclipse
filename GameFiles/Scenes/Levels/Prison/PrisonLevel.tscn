@@ -43,5 +43,4 @@ position = Vector2(154, 227)
 
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
 texture_filter = 2
-position = Vector2(63, 92)
-scale = Vector2(0.2, 0.2)
+position = Vector2(78, 89)
