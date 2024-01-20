@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwyppary174r7"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/UI Object/Button/UI Button.gd" id="1_4s7hn"]
+[ext_resource type="Texture2D" uid="uid://cjm3ge1mjsgg4" path="res://GameFiles/Assets/Art/UI/Buttons/Start/StartButton.png" id="2_s46sb"]
+[ext_resource type="Texture2D" uid="uid://detuhugfua6gc" path="res://GameFiles/Assets/Art/UI/Buttons/Start/StartButtonPressed.png" id="3_231mq"]
+[ext_resource type="Texture2D" uid="uid://dxfl6ugx22xmh" path="res://GameFiles/Assets/Art/UI/Buttons/Start/StartButtonHovered.png" id="4_pg6g3"]
+[ext_resource type="Texture2D" uid="uid://ckob5r4gd0i37" path="res://GameFiles/Assets/Art/UI/Buttons/Start/StartButtonDissabled.png" id="5_x4p7n"]
+[ext_resource type="Texture2D" uid="uid://b8dryc0rkw73j" path="res://GameFiles/Assets/Art/UI/Buttons/Start/StartButtonFocused.png" id="6_q5wru"]
+
+[node name="UiButton" type="Node2D"]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 153.0
+offset_bottom = 46.0
+texture_normal = ExtResource("2_s46sb")
+texture_pressed = ExtResource("3_231mq")
+texture_hover = ExtResource("4_pg6g3")
+texture_disabled = ExtResource("5_x4p7n")
+texture_focused = ExtResource("6_q5wru")
+script = ExtResource("1_4s7hn")
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

@@ -429,6 +429,8 @@ position = Vector2(1334, 741)
 [node name="enemy_bandit5" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
 position = Vector2(959, 134)
 
+[node name="Projectiles" type="Node2D" parent="Entities" groups=["projectiles"]]
+
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
 texture_filter = 2
 position = Vector2(126, 140)

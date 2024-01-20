@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf2x6amj6vpyd"]
+[gd_scene load_steps=6 format=3 uid="uid://cf2x6amj6vpyd"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player.gd" id="1_n8ck6"]
 [ext_resource type="Texture2D" uid="uid://dl7m55vsr4oun" path="res://icon.svg" id="1_w7cit"]
 [ext_resource type="PackedScene" uid="uid://c41nwnahfi0b8" path="res://GameFiles/Game Objects/Characters/Player/player_melee_controller.tscn" id="3_k76rs"]
+[ext_resource type="PackedScene" uid="uid://duw4j03v3y3ry" path="res://GameFiles/Game Objects/Characters/Player/player_range_controller.tscn" id="4_nx2hv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0bgo"]
 radius = 27.0
@@ -29,3 +30,7 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_b0bgo")
 
 [node name="PlayerMeleeController" parent="." instance=ExtResource("3_k76rs")]
+
+[node name="PlayerRangeController" parent="." instance=ExtResource("4_nx2hv")]
+projectile_speed = 250.0
+projectile_time = 2.0
