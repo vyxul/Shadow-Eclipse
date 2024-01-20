@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://oticknl55wsx"]
 
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
-[ext_resource type="TileSet" uid="uid://crdqh4rnuxhy5" path="res://GameFiles/Resources/Tilesets/basic_map_tileset.tres" id="1_pr160"]
+[ext_resource type="TileSet" uid="uid://crdqh4rnuxhy5" path="res://GameFiles/Assets/Art/Map/basic_map_tileset.tres" id="1_pr160"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="1_r4tet"]
 [ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/Enemies/enemy_bandit.tscn" id="3_f07v3"]
 
