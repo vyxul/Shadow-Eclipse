@@ -400,17 +400,12 @@ shape = SubResource("RectangleShape2D_i2vxt")
 [node name="Enemies" type="Node2D" parent="Entities"]
 
 [node name="enemy_bandit" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(164, 842)
-
-[node name="enemy_bandit2" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(871, 164)
-
-[node name="enemy_bandit3" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(889, 706)
-
-[node name="enemy_bandit4" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(694, 852)
+position = Vector2(96, 917)
 
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
 position = Vector2(191, 162)
 scale = Vector2(0.5, 0.5)
+
+[node name="ally_bandit" parent="." instance=ExtResource("3_f07v3")]
+position = Vector2(433, 564)
+faction = 0

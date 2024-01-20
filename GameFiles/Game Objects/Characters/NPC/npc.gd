@@ -8,5 +8,5 @@ func _process(delta):
 	move_and_slide()
 
 
-func get_faction() -> GameData.Factions:
+func get_faction() -> int:
 	return faction

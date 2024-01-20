@@ -11,25 +11,26 @@ radius = 100.0
 [node name="SearchRadius" type="Node2D"]
 script = ExtResource("1_ikolb")
 
-[node name="Follow_Area2D" type="Area2D" parent="."]
+[node name="Tracked_Enemies_Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 6
 
-[node name="Follow_CollisionShape2D" type="CollisionShape2D" parent="Follow_Area2D"]
+[node name="Tracked_Enemies_CollisionShape2D" type="CollisionShape2D" parent="Tracked_Enemies_Area2D"]
 shape = SubResource("CircleShape2D_2llua")
 debug_color = Color(0, 0.631373, 0.454902, 0.419608)
 
-[node name="Combat_Area2D" type="Area2D" parent="."]
+[node name="Discovery_Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 6
 
-[node name="Combat_CollisionShape2D" type="CollisionShape2D" parent="Combat_Area2D"]
+[node name="Discovery_CollisionShape2D" type="CollisionShape2D" parent="Discovery_Area2D"]
 shape = SubResource("CircleShape2D_26jxf")
 debug_color = Color(0.960784, 0, 0.517647, 0.419608)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+collision_mask = 3
 
-[connection signal="body_entered" from="Follow_Area2D" to="." method="_on_follow_area_2d_body_entered"]
-[connection signal="body_exited" from="Follow_Area2D" to="." method="_on_follow_area_2d_body_exited"]
-[connection signal="body_entered" from="Combat_Area2D" to="." method="_on_combat_area_2d_body_entered"]
-[connection signal="body_exited" from="Combat_Area2D" to="." method="_on_combat_area_2d_body_exited"]
+[connection signal="body_exited" from="Tracked_Enemies_Area2D" to="." method="_on_tracking_area_2d_body_exited"]
+[connection signal="body_entered" from="Discovery_Area2D" to="." method="_on_discovery_area_2d_body_entered"]
+[connection signal="body_exited" from="Discovery_Area2D" to="." method="_on_discovery_area_2d_body_exited"]

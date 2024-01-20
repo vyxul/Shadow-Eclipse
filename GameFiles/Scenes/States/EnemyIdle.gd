@@ -17,11 +17,9 @@ func enter():
 	this_entity = get_parent().get_this_entity()
 	randomize_wander()
 	get_parent().get_state_label().text = "Idle"
-	get_parent().get_enemy_follow_label().text = "Follow Count: " + str(get_parent().get_search_radius().get_enemies_in_follow_range_count())
-	get_parent().get_enemy_combat_label().text = "Combat Count: " + str(get_parent().get_search_radius().get_enemies_in_combat_range_count())
 	
 	# set up connections with search_radius
-	get_parent().get_search_radius().enemy_detected.connect(on_enemy_detected)
+	get_parent().get_search_radius().tracking_enemy.connect(on_tracking_enemy)
 
 
 func exit():
@@ -41,5 +39,6 @@ func physics_update(delta: float):
 		this_entity.velocity = move_direction * move_speed
 
 
-func on_enemy_detected():
+func on_tracking_enemy():
 	transitioned.emit(self, "enemycombat")
+	print_debug("Transitioning from idle to combat")

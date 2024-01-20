@@ -51,7 +51,8 @@ debug_color = Color(0.992157, 0, 0.235294, 0.419608)
 
 [node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
 position = Vector2(0, 22)
-follow_range = 400.0
+tracked_enemies_range = 400.0
+discovery_range = 350.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("this_entity", "initial_state", "hurtbox_component", "health_component", "search_radius", "state_label", "enemy_follow_count_label", "enemy_combat_count_label") instance=ExtResource("5_ibxij")]
 this_entity = NodePath("..")
