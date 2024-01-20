@@ -38,12 +38,11 @@ func _physics_process(delta):
 		ray_cast_2d.target_position = enemy_direction
 		ray_cast_2d.force_raycast_update()
 		
-		var enemy_rid = enemy
-		var raycast_hit_id = null
+		var raycast_hit_object = null
 		if ray_cast_2d.is_colliding():
-			raycast_hit_id = ray_cast_2d.get_collider()
+			raycast_hit_object = ray_cast_2d.get_collider()
 	
-		if enemy_rid == raycast_hit_id:
+		if enemy == raycast_hit_object:
 			found_enemies.append(enemy)
 			#print_debug("enemy_rid == raycast_rid")
 
