@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_eque4"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_qnwby"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="4_nn6pb"]
-[ext_resource type="PackedScene" uid="uid://bhdq24qob76lr" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
+[ext_resource type="PackedScene" uid="uid://vtask53u7n55" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
 [ext_resource type="PackedScene" uid="uid://bxk0ha72ft7ep" path="res://GameFiles/Scenes/States/state_machine.tscn" id="5_ibxij"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyIdle.gd" id="6_hywir"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyHurt.gd" id="8_tu6pd"]
@@ -21,7 +21,7 @@ height = 72.0
 
 [node name="bandit" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_eque4")
 faction = 1

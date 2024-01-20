@@ -26,6 +26,7 @@ func _ready():
 	tracked_enemies_collision_shape_2d.shape.radius = tracked_enemies_range
 	discovery_collision_shape_2d.shape.radius = discovery_range
 	raycast_length = tracked_enemies_range
+	ray_cast_2d.position = Vector2.ZERO
 	#set_process(false)
 
 
@@ -34,11 +35,13 @@ func _physics_process(delta):
 	
 	for enemy in enemies_in_discovery_range:
 		var enemy_direction = enemy.global_position - get_parent().global_position
-		ray_cast_2d.target_position = enemy_direction.normalized() * raycast_length
-		var enemy_rid = enemy.get_rid()
-		var raycast_hit_id = ray_cast_2d.get_collider_rid()
-		#print_debug("enemy_rid = " + str(enemy_rid))
-		#print_debug("raycast_rid = " + str(raycast_hit_id))
+		ray_cast_2d.target_position = enemy_direction
+		ray_cast_2d.force_raycast_update()
+		
+		var enemy_rid = enemy
+		var raycast_hit_id = null
+		if ray_cast_2d.is_colliding():
+			raycast_hit_id = ray_cast_2d.get_collider()
 	
 		if enemy_rid == raycast_hit_id:
 			found_enemies.append(enemy)
@@ -91,7 +94,7 @@ func get_closest_tracked_enemy():
 	var closest_enemy = tracked_enemies_in_range[0]
 	var closest_distance = (tracked_enemies_in_range[0].global_position - get_parent().global_position).length()
 	for index in range(1, tracked_enemy_count):
-		var distance = (tracked_enemies_in_range[index].global_position - get_parent().global_position).length
+		var distance = (tracked_enemies_in_range[index].global_position - get_parent().global_position).length()
 		if distance < closest_distance:
 			closest_enemy = tracked_enemies_in_range[index]
 			closest_distance = distance
