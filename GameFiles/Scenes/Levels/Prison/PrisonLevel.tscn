@@ -407,5 +407,5 @@ position = Vector2(191, 162)
 scale = Vector2(0.5, 0.5)
 
 [node name="ally_bandit" parent="." instance=ExtResource("3_f07v3")]
-position = Vector2(433, 564)
+position = Vector2(201, 883)
 faction = 0

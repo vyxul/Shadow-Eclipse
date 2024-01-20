@@ -3,6 +3,8 @@ class_name NonPlayerCharacter
 
 @export var faction: GameData.Factions
 
+@export var animation_player: AnimationPlayer
+
 
 func _process(delta):
 	move_and_slide()
@@ -10,3 +12,7 @@ func _process(delta):
 
 func get_faction() -> int:
 	return faction
+
+
+func get_animation_player() -> AnimationPlayer:
+	return animation_player

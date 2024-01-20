@@ -6,8 +6,6 @@ extends Node
 @export var health_component: HealthComponent
 @export var search_radius: SearchRadius
 @export var state_label: Label
-@export var enemy_follow_count_label: Label
-@export var enemy_combat_count_label: Label
 
 var current_state: State
 var states: Dictionary = {}
@@ -31,14 +29,6 @@ func get_search_radius() -> SearchRadius:
 
 func get_state_label() -> Label:
 	return state_label
-
-
-func get_enemy_follow_label() -> Label:
-	return enemy_follow_count_label
-
-
-func get_enemy_combat_label() -> Label:
-	return enemy_combat_count_label
 
 
 func _ready():

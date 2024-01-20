@@ -27,7 +27,6 @@ func _ready():
 	discovery_collision_shape_2d.shape.radius = discovery_range
 	raycast_length = tracked_enemies_range
 	ray_cast_2d.position = Vector2.ZERO
-	#set_process(false)
 
 
 func _physics_process(delta):
@@ -44,7 +43,6 @@ func _physics_process(delta):
 	
 		if enemy == raycast_hit_object:
 			found_enemies.append(enemy)
-			#print_debug("enemy_rid == raycast_rid")
 
 	for enemy in found_enemies:
 		add_enemy_to_tracking(enemy)
@@ -58,7 +56,7 @@ func emit_tracking_enemy():
 	
 	currently_tracking_enemy = true
 	tracking_enemy.emit()
-	print_debug("Emitting tracking_enemy")
+	#print_debug("Emitting tracking_enemy")
 
 
 
@@ -68,7 +66,7 @@ func emit_not_tracking_enemy():
 	
 	currently_tracking_enemy = false
 	not_tracking_enemy.emit()
-	print_debug("Emitting not_tracking_enemy")
+	#print_debug("Emitting not_tracking_enemy")
 #endregion
 
 
