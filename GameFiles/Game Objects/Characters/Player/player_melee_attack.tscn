@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bdfni2ylplekc" path="res://GameFiles/Assets/Art/Player/Attacks/Melee/melee_attack_sprite_sheet.png" id="2_ogl15"]
 [ext_resource type="PackedScene" uid="uid://dapjt02jspsb" path="res://GameFiles/Game Objects/Components/hitbox_component.tscn" id="2_ta3j6"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqb8e"]
+size = Vector2(39, 26)
+
 [sub_resource type="Animation" id="Animation_tciyv"]
 length = 0.001
 tracks/0/type = "value"
@@ -152,30 +155,28 @@ _data = {
 "attack": SubResource("Animation_f5biy")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqb8e"]
-size = Vector2(39, 26)
-
 [node name="PlayerMeleeAttack" type="Node2D"]
 y_sort_enabled = true
 scale = Vector2(8, 8)
 script = ExtResource("1_0mfji")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -1.57079
-texture = ExtResource("2_ogl15")
-hframes = 8
-vframes = 2
+[node name="HitboxComponent" parent="." instance=ExtResource("2_ta3j6")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_vqb8e")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sjqev")
 }
 
-[node name="HitboxComponent" parent="." instance=ExtResource("2_ta3j6")]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, -10)
-shape = SubResource("RectangleShape2D_vqb8e")
-disabled = true
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.254902, 0.254902, 0.254902, 1)
+rotation = -1.57079
+texture = ExtResource("2_ogl15")
+hframes = 8
+vframes = 2
