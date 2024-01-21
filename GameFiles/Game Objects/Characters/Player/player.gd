@@ -17,7 +17,7 @@ func _physics_process(delta):
 		melee_attack()
 		
 	if Input.is_action_just_pressed("right_click"):
-		range_attack()
+		ranged_attack()
 
 
 func move(delta: float):
@@ -50,5 +50,5 @@ func melee_attack():
 	player_melee_controller.attack(sprite_2d)
 
 
-func range_attack():
+func ranged_attack():
 	player_ranged_controller.attack()

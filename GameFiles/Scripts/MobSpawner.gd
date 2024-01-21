@@ -1,6 +1,6 @@
 extends Node
 
-var enemy_scene = preload("res://GameFiles/Game Objects/Characters/Enemies/enemy_bandit.tscn") #Enemy scene to instantiate
+var enemy_scene = preload("res://GameFiles/Game Objects/Characters/NPC/bandit.tscn") #Enemy scene to instantiate
 var spawn_timer = Timer.new()
 var initialNumOfChildren = 0
 @export var maxEnemies = 10
