@@ -7,6 +7,7 @@ class_name Player
 @onready var marker_2d = $Marker2D
 @onready var sprite_2d = $Sprite2D
 @onready var player_melee_controller = $PlayerMeleeController
+@onready var player_range_controller = $PlayerRangeController
 
 @export var faction: GameData.Factions
 
@@ -15,6 +16,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("left_click"):
 		melee_attack()
+		
+	if Input.is_action_just_pressed("right_click"):
+		range_attack()
 
 
 func move(delta: float):
@@ -45,3 +49,7 @@ func get_faction() -> GameData.Factions:
 
 func melee_attack():
 	player_melee_controller.attack(sprite_2d)
+
+
+func range_attack():
+	player_range_controller.attack()

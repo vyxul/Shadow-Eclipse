@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf2x6amj6vpyd"]
+[gd_scene load_steps=6 format=3 uid="uid://cf2x6amj6vpyd"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player.gd" id="1_n8ck6"]
 [ext_resource type="Texture2D" uid="uid://dl7m55vsr4oun" path="res://icon.svg" id="1_w7cit"]
 [ext_resource type="PackedScene" uid="uid://c41nwnahfi0b8" path="res://GameFiles/Game Objects/Characters/Player/player_melee_controller.tscn" id="3_k76rs"]
+[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Characters/Player/player_range_controller.tscn" id="4_nx2hv"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5t6u5"]
-radius = 60.0
-height = 124.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0bgo"]
+radius = 27.0
+height = 120.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -17,12 +18,21 @@ script = ExtResource("1_n8ck6")
 player_speed = 350.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -64)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, -64)
 texture = ExtResource("1_w7cit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_5t6u5")
+y_sort_enabled = true
+position = Vector2(0, -32)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_b0bgo")
 
 [node name="PlayerMeleeController" parent="." instance=ExtResource("3_k76rs")]
+
+[node name="PlayerRangeController" parent="." instance=ExtResource("4_nx2hv")]
+projectile_speed = 250.0
+projectile_time = 2.0
