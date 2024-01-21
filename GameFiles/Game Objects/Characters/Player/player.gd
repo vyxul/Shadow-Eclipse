@@ -7,7 +7,7 @@ class_name Player
 @onready var marker_2d = $Marker2D
 @onready var sprite_2d = $Sprite2D
 @onready var player_melee_controller = $PlayerMeleeController
-@onready var player_range_controller = $PlayerRangeController
+@onready var player_ranged_controller = $PlayerRangedController
 
 @export var faction: GameData.Factions
 
@@ -51,4 +51,4 @@ func melee_attack():
 
 
 func range_attack():
-	player_range_controller.attack()
+	player_ranged_controller.attack()

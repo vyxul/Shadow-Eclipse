@@ -1,6 +1,6 @@
 extends Node2D
 
-const extension_range = 32
+const extension_range = 8
 
 var melee_attack_damage: int = 0
 
