@@ -1,17 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://cf2x6amj6vpyd"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player.gd" id="1_n8ck6"]
-[ext_resource type="Texture2D" uid="uid://dl7m55vsr4oun" path="res://icon.svg" id="1_w7cit"]
+[ext_resource type="Texture2D" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="2_pacww"]
 [ext_resource type="PackedScene" uid="uid://c41nwnahfi0b8" path="res://GameFiles/Game Objects/Characters/Player/player_melee_controller.tscn" id="3_k76rs"]
 [ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Characters/Player/player_range_controller.tscn" id="4_nx2hv"]
 [ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_controller.tscn" id="4_ve0m4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0bgo"]
-radius = 27.0
-height = 120.0
+radius = 3.99999
+height = 14.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(0.125, 0.125)
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
@@ -20,25 +19,27 @@ script = ExtResource("1_n8ck6")
 player_speed = 100.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -8)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, -8)
-texture = ExtResource("1_w7cit")
+position = Vector2(0, -7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 24)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_b0bgo")
 
 [node name="PlayerMeleeController" parent="." instance=ExtResource("3_k76rs")]
 
 [node name="PlayerRecruitController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ve0m4")]
+position = Vector2(0, -7)
 player = NodePath("..")
 focus_time_needed = 3.0
 
 [node name="PlayerRangeController" parent="." instance=ExtResource("4_nx2hv")]
 projectile_speed = 250.0
 projectile_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -11)
+texture = ExtResource("2_pacww")
+region_enabled = true
+region_rect = Rect2(7, 169, 16, 23)
