@@ -6,10 +6,10 @@
 [node name="StartScreen" type="Node2D"]
 
 [node name="StartScreen" type="Sprite2D" parent="."]
-position = Vector2(143, 90.1465)
-scale = Vector2(0.185504, 0.185504)
+position = Vector2(138, 83)
+scale = Vector2(0.200192, 0.200192)
 texture = ExtResource("1_n77pt")
 
 [node name="Start Button" parent="." instance=ExtResource("3_307rs")]
-position = Vector2(126, 136)
-scale = Vector2(0.1, 0.1)
+position = Vector2(103, 127)
+scale = Vector2(0.2, 0.2)

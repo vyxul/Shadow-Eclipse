@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://duw4j03v3y3ry"]
+[gd_scene load_steps=2 format=3 uid="uid://b8dte5vpgb5yp"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_ranged_controller.gd" id="1_d5l2r"]
 
