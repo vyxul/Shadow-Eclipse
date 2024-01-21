@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://diwnqm5lcsuui"]
+[gd_scene load_steps=2 format=3 uid="uid://ul8nkucwgivb"]
 
 [ext_resource type="Script" path="res://GameFiles/Scripts/MobSpawner.gd" id="1_vovge"]
 
@@ -6,6 +6,5 @@
 position = Vector2(708, 306)
 script = ExtResource("1_vovge")
 maxEnemies = 2
-continousSpawn = false
 
 [node name="Timer" type="Timer" parent="."]
