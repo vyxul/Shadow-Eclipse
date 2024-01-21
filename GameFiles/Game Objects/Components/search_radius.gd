@@ -116,6 +116,8 @@ func _on_discovery_area_2d_body_entered(body):
 	# then add it to discovery list
 	# just doing simple solution for now
 	
+	if tracked_enemies_in_range.has(body):
+		return
 	
 	var this_faction = this_parent.get_faction()
 	var that_faction = body.get_faction()
