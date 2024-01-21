@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb5lks2mcqulg"]
+[gd_scene load_steps=4 format=3 uid="uid://bcqjrpm3xolli"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Components/search_radius.gd" id="1_ikolb"]
 
