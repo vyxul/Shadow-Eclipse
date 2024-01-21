@@ -23,6 +23,14 @@ func get_animation_player() -> AnimationPlayer:
 	return animation_player
 
 
+func get_navigation_agent() -> NavigationAgent2D:
+	return $NavigationAgent2D
+
+
+func get_navigation_timer() -> Timer:
+	return $NavigationTimer
+
+
 func get_conversion_component() -> ConversionComponent:
 	return conversion_component
 
