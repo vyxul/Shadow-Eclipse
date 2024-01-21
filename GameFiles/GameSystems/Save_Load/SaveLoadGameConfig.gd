@@ -2,7 +2,7 @@ extends Node
 
 
 
-@export var SavePath = "res://GameFiles/Assets/GameData/Settings/settings.save"
+@export var SavePath = "usr://saves/settings.save"
 
 
 

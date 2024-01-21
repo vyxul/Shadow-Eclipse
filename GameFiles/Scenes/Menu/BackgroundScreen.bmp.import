@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckob5r4gd0i37"
-path="res://.godot/imported/StartButtonDissabled.png-0bf44ab5e100bfd6beb42746fdc0844f.ctex"
+uid="uid://c57u5lysmt2wc"
+path="res://.godot/imported/BackgroundScreen.bmp-b5b55b5388353c9e1496a9180b714c88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameFiles/Assets/Art/UI/Buttons/Start/StartButtonDissabled.png"
-dest_files=["res://.godot/imported/StartButtonDissabled.png-0bf44ab5e100bfd6beb42746fdc0844f.ctex"]
+source_file="res://GameFiles/Scenes/Menu/BackgroundScreen.bmp"
+dest_files=["res://.godot/imported/BackgroundScreen.bmp-b5b55b5388353c9e1496a9180b714c88.ctex"]
 
 [params]
 

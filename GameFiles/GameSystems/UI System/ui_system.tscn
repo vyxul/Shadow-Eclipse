@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpa62ad4wiyvc"]
+
+[ext_resource type="Script" path="res://UI System.gd" id="1_ph6k6"]
+[ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="2_m0t7h"]
+
+[node name="UI System" type="CanvasLayer"]
+follow_viewport_scale = 143.857
+script = ExtResource("1_ph6k6")
+
+[node name="EndOfGameScreen" type="Node2D" parent="."]
+
+[node name="Next Button" type="Button" parent="EndOfGameScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 503.0
+offset_top = 498.0
+offset_right = 568.0
+offset_bottom = 529.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next"
+flat = true
+icon_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="EndOfGameScreen/Next Button"]
+z_index = -1
+texture_filter = 3
+position = Vector2(32, 16.0001)
+scale = Vector2(3.70455, 1.56818)
+texture = ExtResource("2_m0t7h")
+region_enabled = true
+region_rect = Rect2(77, 13, 22, 22)
+
+[node name="Sprite2D" type="Sprite2D" parent="EndOfGameScreen"]
+texture_filter = 3
+position = Vector2(538, 292)
+scale = Vector2(26.1818, 16.7273)
+texture = ExtResource("2_m0t7h")
+region_enabled = true
+region_rect = Rect2(77, 13, 22, 22)
+
+[node name="EndText" type="Label" parent="EndOfGameScreen"]
+offset_left = 302.0
+offset_top = 141.0
+offset_right = 769.0
+offset_bottom = 442.0
+text = "Victory!
+
+You won!
+Your score is: "
+horizontal_alignment = 1
+
+[node name="EndGameTip" type="Label" parent="EndOfGameScreen/EndText"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 222.0
+offset_right = 469.0
+offset_bottom = 297.0
+text = "Remember  you can use those points
+ to upgrage your character"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Score" type="Label" parent="EndOfGameScreen/EndText"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 100.0
+offset_right = 293.0
+offset_bottom = 148.0
+
+[connection signal="pressed" from="EndOfGameScreen/Next Button" to="." method="_on_next_button_pressed"]

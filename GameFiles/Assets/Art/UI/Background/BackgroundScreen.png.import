@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8dryc0rkw73j"
-path="res://.godot/imported/StartButtonFocused.png-da43d8a25acee752e0d2cef935378a95.ctex"
+uid="uid://8ct28ubhytit"
+path="res://.godot/imported/BackgroundScreen.png-a67d484d9fa514fb3932eb611b7acd32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameFiles/Assets/Art/UI/Buttons/Start/StartButtonFocused.png"
-dest_files=["res://.godot/imported/StartButtonFocused.png-da43d8a25acee752e0d2cef935378a95.ctex"]
+source_file="res://GameFiles/Assets/Art/UI/Background/BackgroundScreen.png"
+dest_files=["res://.godot/imported/BackgroundScreen.png-a67d484d9fa514fb3932eb611b7acd32.ctex"]
 
 [params]
 

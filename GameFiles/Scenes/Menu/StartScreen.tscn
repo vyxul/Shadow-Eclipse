@@ -1,14 +1,86 @@
-[gd_scene load_steps=3 format=3 uid="uid://brd1whbsn3r4d"]
+[gd_scene load_steps=7 format=3 uid="uid://brd1whbsn3r4d"]
 
+[ext_resource type="Texture2D" uid="uid://8ct28ubhytit" path="res://GameFiles/Assets/Art/UI/Background/BackgroundScreen.png" id="1_0r4ii"]
 [ext_resource type="Texture2D" uid="uid://bxp40c40xvlp5" path="res://GameFiles/Assets/Art/UI/Background/Start Screen.png" id="1_n77pt"]
-[ext_resource type="PackedScene" uid="uid://bwyppary174r7" path="res://GameFiles/Game Objects/UI Object/Button/UI Button.tscn" id="3_307rs"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/Menu/StartScreen.gd" id="3_cnw42"]
+[ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="4_g35n1"]
+[ext_resource type="PackedScene" uid="uid://dws8xv6l5r38s" path="res://GameFiles/GameSystems/UI System/LoadingScreen/LoadingScreen.tscn" id="5_0dchh"]
+[ext_resource type="PackedScene" uid="uid://dsr6l8saodn5e" path="res://GameFiles/Scenes/Menu/SettingsMenu.tscn" id="6_mhwee"]
 
 [node name="StartScreen" type="Node2D"]
+
+[node name="LoadingScreen" parent="." instance=ExtResource("5_0dchh")]
+offset_left = 1200.88
+offset_top = 405.359
+offset_right = 1200.88
+offset_bottom = 405.359
+
+[node name="BackgroundScreen" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(584.25, 360)
+scale = Vector2(1.5166, 1)
+texture = ExtResource("1_0r4ii")
 
 [node name="StartScreen" type="Sprite2D" parent="."]
 position = Vector2(573, 359)
 texture = ExtResource("1_n77pt")
+script = ExtResource("3_cnw42")
 
-[node name="Start Button" parent="." instance=ExtResource("3_307rs")]
-position = Vector2(255, 577)
-scale = Vector2(0.4, 0.4)
+[node name="Interactables" type="Sprite2D" parent="StartScreen"]
+
+[node name="StartButton" type="Button" parent="StartScreen/Interactables"]
+offset_left = -323.0
+offset_top = 228.0
+offset_right = -240.0
+offset_bottom = 251.0
+flat = true
+alignment = 0
+
+[node name="StartTexture" type="Sprite2D" parent="StartScreen/Interactables/StartButton"]
+show_behind_parent = true
+scale = Vector2(2, 2)
+texture = ExtResource("4_g35n1")
+centered = false
+offset = Vector2(-2, -2)
+region_enabled = true
+region_rect = Rect2(10, 8, 45, 15)
+
+[node name="OptionsButton" type="Button" parent="StartScreen/Interactables"]
+offset_left = -46.0
+offset_top = 230.0
+offset_right = 60.0
+offset_bottom = 252.0
+flat = true
+
+[node name="OptionsTexture" type="Sprite2D" parent="StartScreen/Interactables/OptionsButton"]
+show_behind_parent = true
+scale = Vector2(2, 2)
+texture = ExtResource("4_g35n1")
+centered = false
+offset = Vector2(-2, -2)
+region_enabled = true
+region_rect = Rect2(4, 40, 57, 15)
+
+[node name="QuitButton" type="Button" parent="StartScreen/Interactables"]
+offset_left = 268.0
+offset_top = 230.0
+offset_right = 325.0
+offset_bottom = 252.0
+flat = true
+alignment = 0
+
+[node name="QuitTexture" type="Sprite2D" parent="StartScreen/Interactables/QuitButton"]
+show_behind_parent = true
+scale = Vector2(2, 2)
+texture = ExtResource("4_g35n1")
+centered = false
+offset = Vector2(-2, -2)
+region_enabled = true
+region_rect = Rect2(16, 136, 33, 15)
+
+[node name="SettingsMenu" parent="." instance=ExtResource("6_mhwee")]
+position = Vector2(1200.88, 405.359)
+
+[connection signal="pressed" from="StartScreen/Interactables/StartButton" to="StartScreen" method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartScreen/Interactables/OptionsButton" to="StartScreen" method="_on_options_button_pressed"]
+[connection signal="pressed" from="StartScreen/Interactables/QuitButton" to="StartScreen" method="_on_quit_button_pressed"]
