@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqloxp0djqcei"]
+[gd_scene load_steps=2 format=3 uid="uid://bwy0ayt20opw1"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Components/conversion_component.gd" id="1_xcnp2"]
 
