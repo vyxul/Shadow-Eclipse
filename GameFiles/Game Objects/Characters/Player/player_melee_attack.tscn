@@ -157,7 +157,6 @@ _data = {
 
 [node name="PlayerMeleeAttack" type="Node2D"]
 y_sort_enabled = true
-scale = Vector2(8, 8)
 script = ExtResource("1_0mfji")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("2_ta3j6")]
