@@ -53,7 +53,7 @@ script = ExtResource("1_prh32")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("3_2ccgd")]
 collision_layer = 0
-collision_mask = 5
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -65)
