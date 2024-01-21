@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6iln3ojpjfcx"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_range_attack.gd" id="1_h6hib"]
+[ext_resource type="Texture2D" uid="uid://dopmhlwnubn3n" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="2_et0rs"]
+[ext_resource type="PackedScene" uid="uid://dapjt02jspsb" path="res://GameFiles/Game Objects/Components/hitbox_component.tscn" id="3_grt4h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wdrt0"]
+radius = 14.0
+height = 70.0
+
+[node name="PlayerRangeAttack" type="CharacterBody2D"]
+script = ExtResource("1_h6hib")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -56)
+rotation = -1.5708
+scale = Vector2(4, 4)
+texture = ExtResource("2_et0rs")
+hframes = 18
+vframes = 8
+frame = 102
+
+[node name="HitboxComponent" parent="." instance=ExtResource("3_grt4h")]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -32)
+shape = SubResource("CapsuleShape2D_wdrt0")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

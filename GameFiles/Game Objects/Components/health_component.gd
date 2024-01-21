@@ -6,6 +6,11 @@ signal health_lost
 
 @export var max_health_points: int = 1
 @export var current_health_points: int = 1
+@export var start_full_hp: bool = true
+
+func _ready():
+	if start_full_hp:
+		current_health_points = max_health_points
 
 
 func check_hp_in_range():

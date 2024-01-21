@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dws8xv6l5r38s"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/UI Object/LoadingScreen/LoadingScreen.gd" id="1_oyl6t"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_oyl6t")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 314.0
+offset_right = 941.0
+offset_bottom = 348.0

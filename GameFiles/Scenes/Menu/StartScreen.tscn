@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://brd1whbsn3r4d"]
+[gd_scene load_steps=3 format=3 uid="uid://brd1whbsn3r4d"]
+
+[ext_resource type="Texture2D" uid="uid://bxp40c40xvlp5" path="res://GameFiles/Assets/Art/UI/Background/Start Screen.png" id="1_n77pt"]
+[ext_resource type="PackedScene" uid="uid://bwyppary174r7" path="res://GameFiles/Game Objects/UI Object/Button/UI Button.tscn" id="3_307rs"]
 
 [node name="StartScreen" type="Node2D"]
+
+[node name="StartScreen" type="Sprite2D" parent="."]
+position = Vector2(136, 75)
+scale = Vector2(0.231801, 0.231801)
+texture = ExtResource("1_n77pt")
+
+[node name="Start Button" parent="." instance=ExtResource("3_307rs")]
+position = Vector2(63, 107)
+scale = Vector2(0.4, 0.4)

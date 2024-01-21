@@ -11,12 +11,18 @@ config_version=5
 [application]
 
 config/name="PirateSoft-GameJam-Project"
-run/main_scene="res://GameFiles/Scenes/Levels/Prison/PrisonLevel.tscn"
+run/main_scene="res://GameFiles/Scenes/Menu/StartScreen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameData="*res://GameFiles/GameData/GameData.gd"
+
 [display]
 
+window/size/viewport_width=288
+window/size/viewport_height=162
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
@@ -67,8 +73,8 @@ r={
 [layer_names]
 
 2d_physics/layer_1="world"
-2d_physics/layer_2="player"
-2d_physics/layer_3="enemy"
+2d_physics/layer_2="entity"
+2d_physics/layer_3="interactable"
 2d_physics/layer_4="player weapon"
 2d_physics/layer_5="enemy weapon"
 
