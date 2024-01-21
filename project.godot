@@ -21,6 +21,8 @@ GameData="*res://GameFiles/GameData/GameData.gd"
 
 [display]
 
+window/size/viewport_width=2304
+window/size/viewport_height=1296
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
@@ -71,10 +73,8 @@ r={
 [layer_names]
 
 2d_physics/layer_1="world"
-2d_physics/layer_2="player"
-2d_physics/layer_3="enemy"
-2d_physics/layer_4="player weapon"
-2d_physics/layer_5="enemy weapon"
+2d_physics/layer_2="entity"
+2d_physics/layer_3="interactable"
 
 [rendering]
 
