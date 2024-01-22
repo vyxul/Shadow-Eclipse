@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+@export var faction: GameData.Factions = GameData.Factions.SHADOW
 @export var player_speed: float = 500
 @export var run_speed_multiplier: float = 1.5
 
@@ -9,7 +10,16 @@ class_name Player
 @onready var player_melee_controller = $PlayerMeleeController
 @onready var player_ranged_controller = $PlayerRangedController
 
-@export var faction: GameData.Factions
+# another way i could spread out summons is:
+# 360 degrees / number of followers, create a point at each multiple
+# helps with even spreading
+var followers: Dictionary = {}
+
+
+func _ready():
+	for child in $FollowerMarkers.get_children():
+		followers[child] = null
+
 
 func _physics_process(delta):
 	move(delta)
@@ -44,6 +54,18 @@ func get_weapon_origin():
 
 func get_faction() -> GameData.Factions:
 	return faction
+
+
+func get_empty_follower_slot() -> Marker2D:
+	for key in followers.keys():
+		if followers[key] == null:
+			return key
+	
+	return null
+
+
+func set_follower_slot(marker2d_key: Marker2D, follower: NonPlayerCharacter):
+	followers[marker2d_key] = follower
 
 
 func melee_attack():

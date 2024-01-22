@@ -4,6 +4,7 @@ extends Node
 @export var initial_state: State
 @export var hurtbox_component: HurtboxComponent
 @export var health_component: HealthComponent
+@export var conversion_component: ConversionComponent
 @export var search_radius: SearchRadius
 @export var state_label: Label
 
@@ -21,6 +22,10 @@ func get_hurtbox_component() -> HurtboxComponent:
 
 func get_health_component() -> HealthComponent:
 	return health_component
+
+
+func get_conversion_component() -> ConversionComponent:
+	return conversion_component
 
 
 func get_search_radius() -> SearchRadius:
@@ -43,6 +48,7 @@ func _ready():
 	
 	hurtbox_component.hurt.connect(on_hurt)
 	health_component.health_depleted.connect(on_health_depleted)
+	conversion_component.new_follower_added.connect(on_new_follower_added)
 
 
 func _process(delta):
@@ -84,5 +90,15 @@ func on_health_depleted():
 		current_state.exit()
 	
 	var new_state = states.get("enemydeath")
+	new_state.enter()
+	current_state = new_state
+
+
+func on_new_follower_added(entity: NonPlayerCharacter):
+	print_debug("Follow stated not yet implemented")
+	if current_state:
+		current_state.exit()
+	
+	var new_state = states.get("followstate")
 	new_state.enter()
 	current_state = new_state

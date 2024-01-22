@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dimxkh5vbaxfx"]
+[gd_scene load_steps=19 format=3 uid="uid://dimxkh5vbaxfx"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_eque4"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_qnwby"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dopmhlwnubn3n" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="10_byu28"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/SpawnState.gd" id="10_ob4bv"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyCombat.gd" id="11_13o03"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/FollowState.gd" id="12_x8bcf"]
 
 [sub_resource type="Animation" id="Animation_cjgvt"]
 length = 0.001
@@ -94,11 +95,12 @@ debug_color = Color(0.992157, 0, 0.235294, 0.419608)
 position = Vector2(-1, 2)
 tracked_enemies_range = 110.0
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("this_entity", "initial_state", "hurtbox_component", "health_component", "search_radius", "state_label") instance=ExtResource("5_ibxij")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("this_entity", "initial_state", "hurtbox_component", "health_component", "conversion_component", "search_radius", "state_label") instance=ExtResource("5_ibxij")]
 this_entity = NodePath("..")
 initial_state = NodePath("SpawnState")
 hurtbox_component = NodePath("../HurtboxComponent")
 health_component = NodePath("../HealthComponent")
+conversion_component = NodePath("../ConversionComponent")
 search_radius = NodePath("../SearchRadius")
 state_label = NodePath("../StateLabel")
 
@@ -117,6 +119,9 @@ move_speed = 20.0
 
 [node name="SpawnState" type="Node" parent="StateMachine"]
 script = ExtResource("10_ob4bv")
+
+[node name="FollowState" type="Node" parent="StateMachine"]
+script = ExtResource("12_x8bcf")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 15.0

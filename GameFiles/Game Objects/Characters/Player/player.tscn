@@ -31,9 +31,34 @@ shape = SubResource("CapsuleShape2D_b0bgo")
 [node name="PlayerRangedController" parent="." instance=ExtResource("4_nx2hv")]
 
 [node name="PlayerRecruitController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ve0m4")]
-position = Vector2(0, -7)
 player = NodePath("..")
 focus_time_needed = 3.0
+
+[node name="FollowerMarkers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="FollowerMarkers"]
+position = Vector2(0, -24)
+
+[node name="Marker2D2" type="Marker2D" parent="FollowerMarkers"]
+position = Vector2(24, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="FollowerMarkers"]
+position = Vector2(0, 24)
+
+[node name="Marker2D4" type="Marker2D" parent="FollowerMarkers"]
+position = Vector2(-24, 0)
+
+[node name="Marker2D5" type="Marker2D" parent="FollowerMarkers"]
+position = Vector2(16, -16)
+
+[node name="Marker2D6" type="Marker2D" parent="FollowerMarkers"]
+position = Vector2(16, 16)
+
+[node name="Marker2D7" type="Marker2D" parent="FollowerMarkers"]
+position = Vector2(-16, 16)
+
+[node name="Marker2D8" type="Marker2D" parent="FollowerMarkers"]
+position = Vector2(-16, -16)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
