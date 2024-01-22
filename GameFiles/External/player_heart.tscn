@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj5tm1dgqmtdu"]
+
+[ext_resource type="Script" path="res://GameFiles/External/player_heart.gd" id="1_bossg"]
+[ext_resource type="Texture2D" uid="uid://c4r8p2ft2rv2d" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - heart.png" id="2_2213e"]
+[ext_resource type="Texture2D" uid="uid://ctr6wmafiiai5" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - heart - empty single.png" id="3_2xfr0"]
+[ext_resource type="Texture2D" uid="uid://ds6bw48gvdcyc" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - heart single.png" id="4_wkbnp"]
+
+[sub_resource type="Animation" id="Animation_0kyuq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullHeartSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_us0ic"]
+resource_name = "heart_full"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullHeartSprite:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oq3hf"]
+_data = {
+"RESET": SubResource("Animation_0kyuq"),
+"heart_full": SubResource("Animation_us0ic")
+}
+
+[node name="PlayerHeart" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -944.0
+offset_bottom = -524.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bossg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oq3hf")
+}
+
+[node name="FullHeartSprite" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("2_2213e")
+hframes = 6
+
+[node name="PartialHeart" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="PartialHeartOutline" type="TextureRect" parent="PartialHeart"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 14.0
+offset_bottom = 13.0
+texture = ExtResource("3_2xfr0")
+
+[node name="PartialHeartProgressBar" type="TextureProgressBar" parent="PartialHeart/PartialHeartOutline"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 12.0
+offset_bottom = 11.0
+max_value = 1.0
+step = 0.01
+value = 0.71
+fill_mode = 3
+texture_progress = ExtResource("4_wkbnp")

@@ -4,16 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bxp40c40xvlp5" path="res://GameFiles/Assets/Art/UI/Background/Start Screen.png" id="1_n77pt"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/Menu/StartScreen.gd" id="3_cnw42"]
 [ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="4_g35n1"]
-[ext_resource type="PackedScene" uid="uid://dws8xv6l5r38s" path="res://GameFiles/GameSystems/UI System/LoadingScreen/LoadingScreen.tscn" id="5_0dchh"]
+[ext_resource type="Texture2D" uid="uid://cbwbqaw4ykrgi" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff_v2.png" id="5_rqxjn"]
 [ext_resource type="PackedScene" uid="uid://dsr6l8saodn5e" path="res://GameFiles/Scenes/Menu/SettingsMenu.tscn" id="6_mhwee"]
 
 [node name="StartScreen" type="Node2D"]
-
-[node name="LoadingScreen" parent="." instance=ExtResource("5_0dchh")]
-offset_left = 1200.88
-offset_top = 405.359
-offset_right = 1200.88
-offset_bottom = 405.359
 
 [node name="BackgroundScreen" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -26,13 +20,20 @@ position = Vector2(573, 359)
 texture = ExtResource("1_n77pt")
 script = ExtResource("3_cnw42")
 
-[node name="Interactables" type="Sprite2D" parent="StartScreen"]
+[node name="Interactables" type="HBoxContainer" parent="StartScreen"]
+layout_direction = 2
+anchors_preset = -1
+anchor_top = 0.863
+anchor_bottom = 0.863
+offset_left = -381.0
+offset_top = -432.318
+offset_right = 379.0
+offset_bottom = -401.318
+grow_vertical = 0
 
 [node name="StartButton" type="Button" parent="StartScreen/Interactables"]
-offset_left = -323.0
-offset_top = 228.0
-offset_right = -240.0
-offset_bottom = 251.0
+layout_mode = 2
+text = "                    "
 flat = true
 alignment = 0
 
@@ -41,15 +42,34 @@ show_behind_parent = true
 scale = Vector2(2, 2)
 texture = ExtResource("4_g35n1")
 centered = false
-offset = Vector2(-2, -2)
 region_enabled = true
 region_rect = Rect2(10, 8, 45, 15)
 
+[node name="Spacer" type="Control" parent="StartScreen/Interactables"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ContinueButton" type="Button" parent="StartScreen/Interactables"]
+layout_mode = 2
+text = "                            "
+flat = true
+alignment = 0
+
+[node name="ContinueTexture" type="Sprite2D" parent="StartScreen/Interactables/ContinueButton"]
+show_behind_parent = true
+scale = Vector2(2, 2)
+texture = ExtResource("5_rqxjn")
+centered = false
+region_enabled = true
+region_rect = Rect2(1, 200, 63, 15)
+
+[node name="Spacer3" type="Control" parent="StartScreen/Interactables"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="OptionsButton" type="Button" parent="StartScreen/Interactables"]
-offset_left = -46.0
-offset_top = 230.0
-offset_right = 60.0
-offset_bottom = 252.0
+layout_mode = 2
+text = "                          "
 flat = true
 
 [node name="OptionsTexture" type="Sprite2D" parent="StartScreen/Interactables/OptionsButton"]
@@ -57,15 +77,16 @@ show_behind_parent = true
 scale = Vector2(2, 2)
 texture = ExtResource("4_g35n1")
 centered = false
-offset = Vector2(-2, -2)
 region_enabled = true
 region_rect = Rect2(4, 40, 57, 15)
 
+[node name="Spacer2" type="Control" parent="StartScreen/Interactables"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="QuitButton" type="Button" parent="StartScreen/Interactables"]
-offset_left = 268.0
-offset_top = 230.0
-offset_right = 325.0
-offset_bottom = 252.0
+layout_mode = 2
+text = "              "
 flat = true
 alignment = 0
 
@@ -74,13 +95,14 @@ show_behind_parent = true
 scale = Vector2(2, 2)
 texture = ExtResource("4_g35n1")
 centered = false
-offset = Vector2(-2, -2)
 region_enabled = true
 region_rect = Rect2(16, 136, 33, 15)
 
 [node name="SettingsMenu" parent="." instance=ExtResource("6_mhwee")]
+visible = false
 position = Vector2(1200.88, 405.359)
 
 [connection signal="pressed" from="StartScreen/Interactables/StartButton" to="StartScreen" method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartScreen/Interactables/ContinueButton" to="StartScreen" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="StartScreen/Interactables/OptionsButton" to="StartScreen" method="_on_options_button_pressed"]
 [connection signal="pressed" from="StartScreen/Interactables/QuitButton" to="StartScreen" method="_on_quit_button_pressed"]

@@ -1,25 +1,18 @@
 extends CanvasLayer
 
-var LoadingScreen : PackedScene = null 
+@onready var InGamePanel = $InGamePanel
 @onready var EndOfGameScreen = $EndOfGameScreen
+@onready var LoadingScreen = $"../LoadingScreen"
+var StartScreen = "res://GameFiles/Scenes/Menu/StartScreen.tscn"
 
 var FinalScore = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	LoadingScreen = preload("res://GameFiles/GameSystems/UI System/LoadingScreen/LoadingScreen.tscn")
-	LoadNextScene("res://GameFiles/Scenes/Menu/StartScreen.tscn")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func LoadNextScene(ScenePath):
-	LoadingScreen.SetNextScene(ScenePath)
-	get_tree().change_scene_to_file(ScenePath)
+	InGamePanel.visible = true
+	EndOfGameScreen.visible = false
 
 func _on_next_button_pressed():
-	get_tree().unload_current_scene()
-	LoadNextScene("res://GameFiles/Scenes/Menu/StartScreen.tscn")
+	SceneChanger.ChangeScene(StartScreen)
 
 func SetFinalScore(score : int):
 	FinalScore = score
@@ -27,6 +20,7 @@ func SetFinalScore(score : int):
 func OnGameOver():
 	EndOfGameScreen.visible = true
 	$EndOfGameScreen/EndText/Score.text = "%d" % FinalScore
-	
-	
-	
+
+func _on_finish_game_pressed():
+	SetFinalScore(randi() % 100000000)
+	OnGameOver()

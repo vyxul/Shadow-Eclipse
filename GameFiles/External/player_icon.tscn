@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqmo75r4upda4"]
+
+[ext_resource type="Texture2D" uid="uid://dxnnvui8ejv3q" path="res://GameFiles/Assets/Art/UI/PlayerUI/GUI_2.png" id="1_fj1xo"]
+[ext_resource type="Texture2D" uid="uid://b4s5vijrrhro3" path="res://GameFiles/Assets/Art/UI/PlayerUI/mage_portrait.png" id="2_3qqut"]
+
+[node name="PlayerIcon" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -896.0
+offset_bottom = -476.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerBar" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("1_fj1xo")
+region_enabled = true
+region_rect = Rect2(8, 13, 56, 48)
+
+[node name="PlayerIcon" type="Sprite2D" parent="PlayerBar"]
+position = Vector2(-30, -29)
+scale = Vector2(0.828125, 0.78125)
+texture = ExtResource("2_3qqut")
+centered = false

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu76qas7bp4jx"]
+
+[ext_resource type="Script" path="res://GameFiles/External/player_mana_bar.gd" id="1_ayemo"]
+[ext_resource type="Texture2D" uid="uid://1mor2l7kri6c" path="res://GameFiles/Assets/Art/UI/PlayerUI/004 base bar - lower start.png" id="2_kwvy3"]
+[ext_resource type="Texture2D" uid="uid://lh5tmfk4pkt0" path="res://GameFiles/Assets/Art/UI/PlayerUI/005 base bar - lower middle.png" id="3_185xa"]
+[ext_resource type="Texture2D" uid="uid://cfqi5uqx3cxfa" path="res://GameFiles/Assets/Art/UI/PlayerUI/006 base bar - lower end.png" id="4_0tkrx"]
+[ext_resource type="PackedScene" uid="uid://bgdwd5ax2u1uo" path="res://GameFiles/External/player_mana.tscn" id="4_0y7xt"]
+
+[node name="PlayerManaBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ayemo")
+
+[node name="BaseBar_HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="BaseBar_HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_kwvy3")
+
+[node name="TextureRect2" type="TextureRect" parent="BaseBar_HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_185xa")
+
+[node name="TextureRect3" type="TextureRect" parent="BaseBar_HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_kwvy3")
+
+[node name="TextureRect4" type="TextureRect" parent="BaseBar_HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_185xa")
+
+[node name="TextureRect5" type="TextureRect" parent="BaseBar_HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_kwvy3")
+
+[node name="TextureRect6" type="TextureRect" parent="BaseBar_HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_0tkrx")
+
+[node name="ManaBar_HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 16.0
+theme_override_constants/separation = 0
+
+[node name="PlayerMana" parent="ManaBar_HBoxContainer" instance=ExtResource("4_0y7xt")]
+layout_mode = 2
+
+[node name="PlayerMana2" parent="ManaBar_HBoxContainer" instance=ExtResource("4_0y7xt")]
+layout_mode = 2
+
+[node name="PlayerMana3" parent="ManaBar_HBoxContainer" instance=ExtResource("4_0y7xt")]
+layout_mode = 2
+
+[node name="PlayerMana4" parent="ManaBar_HBoxContainer" instance=ExtResource("4_0y7xt")]
+layout_mode = 2
+
+[node name="PlayerMana5" parent="ManaBar_HBoxContainer" instance=ExtResource("4_0y7xt")]
+layout_mode = 2

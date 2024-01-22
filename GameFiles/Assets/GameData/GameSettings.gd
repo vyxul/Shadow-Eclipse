@@ -23,3 +23,5 @@ static func GetSFXVolume() -> float:
 
 static func GetVoiceVolume() -> float:
 	return VoiceVolume
+	
+	

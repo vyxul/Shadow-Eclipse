@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://oticknl55wsx"]
+[gd_scene load_steps=6 format=3 uid="uid://oticknl55wsx"]
 
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
 [ext_resource type="TileSet" uid="uid://crdqh4rnuxhy5" path="res://GameFiles/Assets/Art/Map/basic_map_tileset.tres" id="1_pr160"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="1_r4tet"]
 [ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/Enemies/enemy_bandit.tscn" id="3_f07v3"]
+[ext_resource type="PackedScene" uid="uid://bpa62ad4wiyvc" path="res://GameFiles/GameSystems/UI System/GameUI.tscn" id="5_2omtp"]
 
 [node name="PrisonLevel" type="Node2D"]
 
@@ -45,3 +46,5 @@ position = Vector2(154, 227)
 texture_filter = 2
 position = Vector2(63, 92)
 scale = Vector2(0.2, 0.2)
+
+[node name="GameUI" parent="." instance=ExtResource("5_2omtp")]
