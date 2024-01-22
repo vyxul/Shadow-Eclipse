@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI System.gd" id="1_usyyf"]
 [ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="2_7ccwl"]
-[ext_resource type="PackedScene" uid="uid://dsvwi6p7idd3a" path="res://GameFiles/External/player_resource_bars.tscn" id="3_fcdpe"]
+[ext_resource type="PackedScene" uid="uid://dsvwi6p7idd3a" path="res://GameFiles/Scenes/UI/player_resource_bars.tscn" id="3_fcdpe"]
 
 [node name="GameUI" type="CanvasLayer"]
 follow_viewport_scale = 143.857

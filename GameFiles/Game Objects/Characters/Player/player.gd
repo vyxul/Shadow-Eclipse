@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+@export var faction: GameData.Factions
 @export var player_speed: float = 500
 @export var run_speed_multiplier: float = 1.5
 
@@ -8,8 +9,14 @@ class_name Player
 @onready var sprite_2d = $Sprite2D
 @onready var player_melee_controller = $PlayerMeleeController
 @onready var player_ranged_controller = $PlayerRangedController
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var mana_component: ManaComponent = $ManaComponent
 
-@export var faction: GameData.Factions
+
+func _ready():
+	GameData.player_hp_ui_ready.connect(on_player_hp_ui_ready)
+	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)
+
 
 func _physics_process(delta):
 	move(delta)
@@ -52,3 +59,35 @@ func melee_attack():
 
 func ranged_attack():
 	player_ranged_controller.attack()
+
+
+func emit_player_hp():
+	GameData.player_health_changed.emit(health_component.current_health_points, health_component.max_health_points)
+
+
+func emit_player_mp():
+	GameData.player_mana_changed.emit(mana_component.current_mana_points, mana_component.max_mana_points)
+
+
+func _on_health_component_health_lost():
+	emit_player_hp()
+
+
+func _on_health_component_health_depleted():
+	GameData.player_died.emit()
+
+
+func _on_mana_component_mana_lost():
+	emit_player_mp()
+
+
+func _on_mana_component_mana_depleted():
+	GameData.player_mana_empty.emit()
+
+
+func on_player_hp_ui_ready():
+	emit_player_hp()
+
+
+func on_player_mp_ui_ready():
+	emit_player_mp()

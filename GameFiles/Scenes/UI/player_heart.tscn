@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bj5tm1dgqmtdu"]
 
-[ext_resource type="Script" path="res://GameFiles/External/player_heart.gd" id="1_bossg"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/UI/player_heart.gd" id="1_bossg"]
 [ext_resource type="Texture2D" uid="uid://c4r8p2ft2rv2d" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - heart.png" id="2_2213e"]
 [ext_resource type="Texture2D" uid="uid://ctr6wmafiiai5" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - heart - empty single.png" id="3_2xfr0"]
 [ext_resource type="Texture2D" uid="uid://ds6bw48gvdcyc" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - heart single.png" id="4_wkbnp"]

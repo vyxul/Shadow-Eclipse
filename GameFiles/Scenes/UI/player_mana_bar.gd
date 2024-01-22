@@ -6,17 +6,15 @@ extends Control
 var base_bar_1 = preload("res://GameFiles/Assets/Art/UI/PlayerUI/004 base bar - lower start.png")
 var base_bar_2 = preload("res://GameFiles/Assets/Art/UI/PlayerUI/005 base bar - lower middle.png")
 var base_bar_3 = preload("res://GameFiles/Assets/Art/UI/PlayerUI/006 base bar - lower end.png")
-var player_mana_scene = preload("res://GameFiles/External/player_mana.tscn")
+var player_mana_scene = preload("res://GameFiles/Scenes/UI/player_mana.tscn")
 
 var current_orbs_displayed: int = 0
-var player_max_mana: int = 100
-var player_current_mana: int = 95
 @export var mana_per_orb: int = 10
 
 func _ready():
-	update_mana_display()
-	PlayerStats.player_mana_changed.connect(update_mana_display)
-	pass
+	#update_mana_display()
+	GameData.player_mana_changed.connect(update_mana_display)
+	GameData.player_mp_ui_ready.emit()
 
 
 func clear_mana_display():
@@ -29,9 +27,9 @@ func clear_mana_display():
 		child.call_deferred("queue_free")
 
 
-func set_max_orbs():
+func set_max_orbs(player_max_mana):
 	# set up max hearts
-	player_max_mana = PlayerStats.stats.current_max_mana
+	#player_max_mana = PlayerStats.stats.current_max_mana
 	var orbs_to_display = ceil(float(player_max_mana) / mana_per_orb)
 	current_orbs_displayed = orbs_to_display
 	var base_bar_number = 1
@@ -57,8 +55,8 @@ func set_max_orbs():
 	base_bar_h_box_container.add_child(base_bar_end_instance)
 
 
-func update_orbs_display():
-	player_current_mana = PlayerStats.stats.current_mana
+func update_orbs_display(player_current_mana):
+	#player_current_mana = PlayerStats.stats.current_mana
 	
 	# get counts of full, partial, and empty orbs
 	var full_orbs_count = floor(player_current_mana / mana_per_orb)
@@ -94,5 +92,5 @@ func update_mana_display(current_mana = 0, max_mana = 0):
 	clear_mana_display()
 	# give time for clear_hp_display() to actually remove the old nodes
 	await get_tree().process_frame
-	set_max_orbs()
-	update_orbs_display()
+	set_max_orbs(max_mana)
+	update_orbs_display(current_mana)

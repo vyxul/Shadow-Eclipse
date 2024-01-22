@@ -1,7 +1,5 @@
 extends Node
 
-class_name  GameSettings
-
 static var MusicVolume:float = 10
 static var SFXVolume:float = 10
 static var VoiceVolume:float = 10

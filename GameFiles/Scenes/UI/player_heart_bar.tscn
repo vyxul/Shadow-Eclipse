@@ -1,15 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://jl4mai311xvn"]
 
 [ext_resource type="Texture2D" uid="uid://bk4qu7mk7my0j" path="res://GameFiles/Assets/Art/UI/PlayerUI/001 base bar - upper start.png" id="1_1vi3c"]
-[ext_resource type="PackedScene" uid="uid://bj5tm1dgqmtdu" path="res://GameFiles/External/player_heart.tscn" id="1_20own"]
-[ext_resource type="Script" path="res://GameFiles/External/player_heart_bar.gd" id="1_vy4ub"]
+[ext_resource type="PackedScene" uid="uid://bj5tm1dgqmtdu" path="res://GameFiles/Scenes/UI/player_heart.tscn" id="1_20own"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/UI/player_heart_bar.gd" id="1_vy4ub"]
 [ext_resource type="Texture2D" uid="uid://b7cy5lslj004o" path="res://GameFiles/Assets/Art/UI/PlayerUI/002 base bar - upper middle.png" id="2_olcmn"]
 [ext_resource type="Texture2D" uid="uid://tbu61mqg655m" path="res://GameFiles/Assets/Art/UI/PlayerUI/003 base bar - upper end.png" id="3_lnlvd"]
 
 [node name="PlayerHeartBar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-scale = Vector2(2, 2)
 script = ExtResource("1_vy4ub")
 
 [node name="BaseBar_HBoxContainer" type="HBoxContainer" parent="."]

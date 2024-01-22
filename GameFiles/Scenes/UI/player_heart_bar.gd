@@ -4,21 +4,19 @@ extends Control
 @onready var base_bar_h_box_container = $BaseBar_HBoxContainer
 @onready var heart_bar_h_box_container = $HeartBar_HBoxContainer
 
-var base_bar_1 = preload("res://assets/art/ui/001 base bar - upper start.png")
-var base_bar_2 = preload("res://assets/art/ui/002 base bar - upper middle.png")
-var base_bar_3 = preload("res://assets/art/ui/003 base bar - upper end.png")
-var player_heart_scene = preload("res://ui/hud_ui/player_heart.tscn")
+var base_bar_1 = preload("res://GameFiles/Assets/Art/UI/PlayerUI/001 base bar - upper start.png")
+var base_bar_2 = preload("res://GameFiles/Assets/Art/UI/PlayerUI/002 base bar - upper middle.png")
+var base_bar_3 = preload("res://GameFiles/Assets/Art/UI/PlayerUI/003 base bar - upper end.png")
+var player_heart_scene = preload("res://GameFiles/Scenes/UI/player_heart.tscn")
 
 var current_hearts_displayed: int = 0
-var player_max_hp: int = 100
-var player_current_hp: int = 95
 @export var hp_per_heart: int = 10
 
 
 func _ready():
-	update_hp_display()
-	PlayerStats.player_hp_changed.connect(update_hp_display)
-	pass
+	#update_hp_display()
+	GameData.player_health_changed.connect(update_hp_display)
+	GameData.player_hp_ui_ready.emit()
 
 
 func clear_hp_display():
@@ -31,9 +29,9 @@ func clear_hp_display():
 		child.call_deferred("queue_free")
 
 
-func set_max_hearts():
+func set_max_hearts(player_max_hp):
 	# set up max hearts
-	player_max_hp = PlayerStats.stats.current_max_hp
+	#player_max_hp = PlayerStats.stats.current_max_hp
 	var hearts_to_display = ceil(float(player_max_hp) / hp_per_heart)
 	current_hearts_displayed = hearts_to_display
 	var base_bar_number = 1
@@ -59,8 +57,8 @@ func set_max_hearts():
 	base_bar_h_box_container.add_child(base_bar_end_instance)
 
 
-func update_hearts_display():
-	player_current_hp = PlayerStats.stats.current_hp
+func update_hearts_display(player_current_hp):
+	#player_current_hp = PlayerStats.stats.current_hp
 	
 	# get counts of full, partial, and empty hearts
 	var full_hearts_count = floor(player_current_hp / hp_per_heart)
@@ -96,5 +94,5 @@ func update_hp_display(current_hp = 1, max_hp = 1):
 	clear_hp_display()
 	# give time for clear_hp_display() to actually remove the old nodes
 	await get_tree().process_frame
-	set_max_hearts()
-	update_hearts_display()
+	set_max_hearts(max_hp)
+	update_hearts_display(current_hp)

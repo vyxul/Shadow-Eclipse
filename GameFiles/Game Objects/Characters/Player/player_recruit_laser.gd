@@ -90,4 +90,5 @@ func disappear():
 	#beam_particles.emitting = false
 	var tween = create_tween()
 	tween.tween_property(line_2d, "width",  0, .2)
+	tween.tween_property(line_2d, "points[1]", Vector2.ZERO, .2)
 	focus_target = null

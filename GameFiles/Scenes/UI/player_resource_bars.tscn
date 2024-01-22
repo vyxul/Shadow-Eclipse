@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsvwi6p7idd3a"]
+
+[ext_resource type="PackedScene" uid="uid://bqmo75r4upda4" path="res://GameFiles/Scenes/UI/player_icon.tscn" id="2_jlqfy"]
+[ext_resource type="PackedScene" uid="uid://jl4mai311xvn" path="res://GameFiles/Scenes/UI/player_heart_bar.tscn" id="2_rrjye"]
+[ext_resource type="PackedScene" uid="uid://bu76qas7bp4jx" path="res://GameFiles/Scenes/UI/player_mana_bar.tscn" id="3_sa83v"]
+
+[node name="PlayerResourceBars" type="CanvasLayer"]
+
+[node name="PlayerIcon" parent="." instance=ExtResource("2_jlqfy")]
+offset_left = 50.0
+offset_top = 38.0
+offset_right = -206.0
+offset_bottom = -78.0
+
+[node name="PlayerHeartBar" parent="." instance=ExtResource("2_rrjye")]
+offset_left = 53.0
+offset_top = 16.0
+offset_right = 53.0
+offset_bottom = 16.0
+
+[node name="PlayerManaBar" parent="." instance=ExtResource("3_sa83v")]
+offset_left = 53.0
+offset_top = 32.0
+offset_right = 53.0
+offset_bottom = 32.0

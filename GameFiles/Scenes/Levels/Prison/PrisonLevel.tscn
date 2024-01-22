@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://oticknl55wsx"]
 
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
-[ext_resource type="TileSet" uid="uid://crdqh4rnuxhy5" path="res://GameFiles/Assets/Art/Map/basic_map_tileset.tres" id="1_pr160"]
+[ext_resource type="TileSet" uid="uid://ce8bff3qstfqd" path="res://GameFiles/Assets/Art/Map/basic_map_tileset.tres" id="1_pr160"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="1_r4tet"]
 [ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/NPC/bandit.tscn" id="3_f07v3"]
+[ext_resource type="PackedScene" uid="uid://dsvwi6p7idd3a" path="res://GameFiles/Scenes/UI/player_resource_bars.tscn" id="5_prfgb"]
 
 [node name="PrisonLevel" type="Node2D"]
 
@@ -33,3 +34,11 @@ animation_player = NodePath("../enemy_bandit/AnimationPlayer")
 
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
 position = Vector2(74, 94)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
