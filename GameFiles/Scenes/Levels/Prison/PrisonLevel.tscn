@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
 [ext_resource type="TileSet" uid="uid://crdqh4rnuxhy5" path="res://GameFiles/Assets/Art/Map/basic_map_tileset.tres" id="1_pr160"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="1_r4tet"]
-[ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/Enemies/enemy_bandit.tscn" id="3_f07v3"]
-[ext_resource type="PackedScene" uid="uid://bpa62ad4wiyvc" path="res://GameFiles/GameSystems/UI System/GameUI.tscn" id="5_2omtp"]
+[ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/NPC/bandit.tscn" id="3_f07v3"]
 
 [node name="PrisonLevel" type="Node2D"]
 
@@ -20,31 +19,17 @@ layer_1/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="Enemies" type="Node2D" parent="Entities"]
-
-[node name="enemy_bandit" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(207, 832)
-
-[node name="enemy_bandit2" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(604, 1265)
-
-[node name="enemy_bandit3" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(881, 892)
-
-[node name="enemy_bandit4" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(1334, 741)
-
-[node name="enemy_bandit5" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(959, 134)
-
-[node name="enemy_bandit6" parent="Entities/Enemies" instance=ExtResource("3_f07v3")]
-position = Vector2(154, 227)
-
 [node name="Projectiles" type="Node2D" parent="Entities" groups=["projectiles"]]
 
-[node name="Player" parent="." instance=ExtResource("1_r4tet")]
-texture_filter = 2
-position = Vector2(63, 92)
-scale = Vector2(0.2, 0.2)
+[node name="NPC" type="Node2D" parent="Entities"]
 
-[node name="GameUI" parent="." instance=ExtResource("5_2omtp")]
+[node name="enemy_bandit" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(61, 218)
+
+[node name="ally_bandit" parent="Entities/NPC" node_paths=PackedStringArray("animation_player") instance=ExtResource("3_f07v3")]
+position = Vector2(242, 56)
+faction = 0
+animation_player = NodePath("../enemy_bandit/AnimationPlayer")
+
+[node name="Player" parent="." instance=ExtResource("1_r4tet")]
+position = Vector2(74, 94)

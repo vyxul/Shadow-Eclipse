@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://5ia4yxscqfaq"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_laser.gd" id="1_bqyua"]
+[ext_resource type="Texture2D" uid="uid://c0fd02t2g1yco" path="res://GameFiles/Assets/Art/Player/glowing_circle.png" id="2_lvrly"]
+
+[sub_resource type="Gradient" id="Gradient_7nnxk"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xy3t1"]
+gradient = SubResource("Gradient_7nnxk")
+
+[sub_resource type="Curve" id="Curve_s03w8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.565543, 1), 0.0, 0.0, 0, 0, Vector2(0.883895, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_62ybr"]
+curve = SubResource("Curve_s03w8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rnqw2"]
+particle_flag_disable_z = true
+spread = 70.0
+flatness = 0.4
+initial_velocity_min = 90.0
+initial_velocity_max = 90.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_62ybr")
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_xy3t1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dtqwc"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(200, 0, 0)
+direction = Vector3(-1, 0, 0)
+spread = 70.0
+flatness = 0.5
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_62ybr")
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_xy3t1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g78b4"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(100, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(100, 0, 0)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -50.0
+tangential_accel_max = 50.0
+
+[node name="PlayerRecruitLaser" type="RayCast2D"]
+visible = false
+target_position = Vector2(200, 0)
+collision_mask = 3
+collide_with_areas = true
+script = ExtResource("1_bqyua")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 200, 0)
+width = 25.0
+default_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CastingParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_rnqw2")
+texture = ExtResource("2_lvrly")
+
+[node name="CollisionParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_dtqwc")
+texture = ExtResource("2_lvrly")
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_g78b4")
+texture = ExtResource("2_lvrly")
+visibility_rect = Rect2(0, -12.5, 200, 25)

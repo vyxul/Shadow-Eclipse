@@ -1,6 +1,6 @@
 extends Node
 
-@onready var player_range_attack = preload("res://GameFiles/Game Objects/Characters/Player/player_range_attack.tscn")
+@onready var player_range_attack = preload("res://GameFiles/Game Objects/Characters/Player/player_ranged_attack.tscn")
 
 @export_range(100, 2000) var projectile_speed: float = 100
 @export_range(.1, 10) var projectile_time: float = 5

@@ -16,7 +16,8 @@ scale = Vector2(1.5166, 1)
 texture = ExtResource("1_0r4ii")
 
 [node name="StartScreen" type="Sprite2D" parent="."]
-position = Vector2(573, 359)
+position = Vector2(138, 83)
+scale = Vector2(0.200192, 0.200192)
 texture = ExtResource("1_n77pt")
 script = ExtResource("3_cnw42")
 

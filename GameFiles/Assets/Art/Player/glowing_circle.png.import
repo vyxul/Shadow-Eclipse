@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dopmhlwnubn3n"
-path="res://.godot/imported/art_sprite_sheet.png-a140684b54713cc541ddbcbc175e84e8.ctex"
+uid="uid://c0fd02t2g1yco"
+path="res://.godot/imported/glowing_circle.png-85d082040c42640b519ee6742bc60bc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png"
-dest_files=["res://.godot/imported/art_sprite_sheet.png-a140684b54713cc541ddbcbc175e84e8.ctex"]
+source_file="res://GameFiles/Assets/Art/Player/glowing_circle.png"
+dest_files=["res://.godot/imported/glowing_circle.png-85d082040c42640b519ee6742bc60bc2.ctex"]
 
 [params]
 

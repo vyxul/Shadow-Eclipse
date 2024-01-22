@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dopmhlwnubn3n"
-path="res://.godot/imported/art_sprite_sheet.png-a140684b54713cc541ddbcbc175e84e8.ctex"
+uid="uid://bdfni2ylplekc"
+path="res://.godot/imported/melee_attack_sprite_sheet.png-2d064e3d6e07ffb2e8afbfab34391916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png"
-dest_files=["res://.godot/imported/art_sprite_sheet.png-a140684b54713cc541ddbcbc175e84e8.ctex"]
+source_file="res://GameFiles/Assets/Art/Player/Attacks/Melee/melee_attack_sprite_sheet.png"
+dest_files=["res://.godot/imported/melee_attack_sprite_sheet.png-2d064e3d6e07ffb2e8afbfab34391916.ctex"]
 
 [params]
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt63tc60emsw"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_ranged_controller.gd" id="1_d5l2r"]
+
+[node name="PlayerRangedController" type="Node"]
+script = ExtResource("1_d5l2r")
