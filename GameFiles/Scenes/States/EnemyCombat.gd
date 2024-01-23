@@ -19,6 +19,7 @@ func enter():
 	this_navigation_timer = this_entity.get_navigation_timer() as Timer
 	this_search_radius = get_parent().get_search_radius() as SearchRadius
 	focus_target = this_search_radius.get_closest_tracked_enemy() as CharacterBody2D
+	get_parent().get_animation_player().play("walk")
 
 	get_parent().get_state_label().text = "Combat"
 	get_parent().get_search_radius().not_tracking_enemy.connect(on_not_tracking_enemy)
@@ -32,6 +33,7 @@ func exit():
 	this_navigation_timer.stop()
 	focus_target = null
 	in_combat = false
+	get_parent().get_animation_player().play("RESET")
 
 
 func update(delta):
@@ -44,6 +46,7 @@ func physics_update(delta):
 	
 	var move_direction = this_entity.to_local(this_navigation_agent.get_next_path_position()).normalized()
 	this_entity.velocity = move_direction * move_speed
+	this_entity.get_sprite().flip_h = this_entity.velocity.x < 0
 
 
 func make_path() -> void:
