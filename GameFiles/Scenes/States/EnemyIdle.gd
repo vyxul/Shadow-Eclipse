@@ -44,4 +44,4 @@ func physics_update(delta: float):
 
 func on_tracking_enemy():
 	transitioned.emit(self, "enemycombat")
-	print_debug("Transitioning from idle to combat")
+	#print_debug("Transitioning from idle to combat")

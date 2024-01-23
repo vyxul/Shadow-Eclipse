@@ -9,6 +9,7 @@ extends Node
 @export var state_label: Label
 
 var current_state: State
+var previous_state: State
 var states: Dictionary = {}
 
 
@@ -71,6 +72,7 @@ func on_child_transition(state, new_state_name: String):
 	
 	if current_state:
 		current_state.exit()
+		previous_state = current_state
 		
 	current_state = new_state
 	new_state.enter()
@@ -79,10 +81,11 @@ func on_child_transition(state, new_state_name: String):
 func on_hurt():
 	if current_state:
 		current_state.exit()
+		previous_state = current_state
 	
 	var new_state = states.get("enemyhurt")
-	new_state.enter()
 	current_state = new_state
+	new_state.enter()
 
 
 func on_health_depleted():
@@ -97,6 +100,7 @@ func on_health_depleted():
 func on_new_follower_added(entity: NonPlayerCharacter):
 	if current_state:
 		current_state.exit()
+		previous_state = current_state
 	
 	var new_state = states.get("followstate")
 	new_state.enter()
