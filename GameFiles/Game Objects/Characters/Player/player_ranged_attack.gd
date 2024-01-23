@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 const extension_range = 16
 
+var attack_faction: GameData.Factions
 var projectile_direction: Vector2
 var projectile_speed: float
 var projectile_time: float
@@ -36,6 +37,14 @@ func set_pierce_limit(number: int):
 
 func get_damage():
 	return range_attack_damage
+
+
+func set_faction(faction: GameData.Factions):
+	attack_faction = faction
+
+
+func get_faction() -> GameData.Factions:
+	return attack_faction
 
 
 func set_attack_position():
