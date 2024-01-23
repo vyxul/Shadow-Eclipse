@@ -13,7 +13,7 @@ script = ExtResource("1_ikolb")
 
 [node name="Tracked_Enemies_Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 14
 
 [node name="Tracked_Enemies_CollisionShape2D" type="CollisionShape2D" parent="Tracked_Enemies_Area2D"]
 shape = SubResource("CircleShape2D_2llua")
@@ -21,7 +21,7 @@ debug_color = Color(0, 0.631373, 0.454902, 0.419608)
 
 [node name="Discovery_Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 14
 
 [node name="Discovery_CollisionShape2D" type="CollisionShape2D" parent="Discovery_Area2D"]
 shape = SubResource("CircleShape2D_26jxf")
@@ -29,7 +29,7 @@ debug_color = Color(0.960784, 0, 0.517647, 0.419608)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 modulate = Color(0, 0, 1, 1)
-collision_mask = 3
+collision_mask = 11
 
 [connection signal="body_exited" from="Tracked_Enemies_Area2D" to="." method="_on_tracking_area_2d_body_exited"]
 [connection signal="body_entered" from="Discovery_Area2D" to="." method="_on_discovery_area_2d_body_entered"]

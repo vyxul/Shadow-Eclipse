@@ -95,7 +95,6 @@ func on_health_depleted():
 
 
 func on_new_follower_added(entity: NonPlayerCharacter):
-	print_debug("Follow stated not yet implemented")
 	if current_state:
 		current_state.exit()
 	

@@ -15,6 +15,7 @@ var is_following: bool = false
 func enter():
 	this_entity = get_parent().get_this_entity()
 	this_entity.faction = GameData.Factions.SHADOW
+	this_entity.collision_layer = 8
 	this_conversion_component = get_parent().get_conversion_component() as ConversionComponent
 	follow_marker = this_conversion_component.follow_marker as Marker2D
 	player = this_conversion_component.player as Player

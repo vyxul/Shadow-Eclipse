@@ -75,8 +75,7 @@ r={
 2d_physics/layer_1="world"
 2d_physics/layer_2="entity"
 2d_physics/layer_3="interactable"
-2d_physics/layer_4="player weapon"
-2d_physics/layer_5="enemy weapon"
+2d_physics/layer_4="followers"
 
 [navigation]
 
