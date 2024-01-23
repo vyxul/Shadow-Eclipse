@@ -41,7 +41,13 @@ func _physics_process(delta):
 		ranged_attack()
 
 	if Input.is_action_just_pressed("x"):
-		command_followers_move()
+		command_follow_target()
+		
+	if Input.is_action_just_pressed("c"):
+		command_follow_player()
+	
+	if Input.is_action_just_pressed("z"):
+		command_attack_target()
 
 func move(delta: float):
 	var move_direction = Input.get_vector("left", "right", "up", "down")
@@ -112,9 +118,25 @@ func ranged_attack():
 	player_ranged_controller.attack()
 
 
-func command_followers_move():
+func command_follow_target():
 	var mouse_position = get_global_mouse_position()
 	var nav_agent = $NavigationAgent2D
 	nav_agent.target_position = mouse_position
 	if nav_agent.is_target_reachable():
-		GameData.follow_target_set.emit(mouse_position)
+		GameData.emit_follow_target(mouse_position)
+
+
+func command_follow_player():
+	GameData.emit_follow_player()
+
+
+func command_attack_target():
+	var target: NonPlayerCharacter
+	var target_count = GameData.targets_under_mouse.size()
+	if target_count > 0:
+		var mouse_position = get_global_mouse_position()
+		target = GameData.closest_target_to_mouse(mouse_position)
+	
+	if target:
+		GameData.set_attack_target(target)
+		GameData.emit_attack_target_command()

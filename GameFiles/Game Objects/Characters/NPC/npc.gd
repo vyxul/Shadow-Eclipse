@@ -34,5 +34,18 @@ func get_conversion_component() -> ConversionComponent:
 	return $ConversionComponent
 
 
+func get_npc_attack_component() -> NpcAttackComponent:
+	return $NpcAttackComponent
+
+
 func get_weapon_origin():
 	return marker_2d.global_position
+
+
+func _on_mouse_entered():
+	if faction != GameData.Factions.SHADOW:
+		GameData.add_target_under_mouse(self)
+
+
+func _on_mouse_exited():
+	GameData.remove_target_under_mouse(self)

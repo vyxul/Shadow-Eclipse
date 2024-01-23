@@ -1,49 +1,50 @@
 extends State
-class_name EnemyCombat
+class_name AttackTargetState
 
-@export var npc_attack_component: NpcAttackComponent
 @export var move_speed: float = 50
 @export var attack_cooldown: float = 1
 
-var focus_target: CharacterBody2D
 var this_entity: NonPlayerCharacter
-var this_search_radius: SearchRadius
+var this_npc_attack_component: NpcAttackComponent
 var this_navigation_agent: NavigationAgent2D
 var this_navigation_timer: Timer
+var focus_target: NonPlayerCharacter
 var attack_cd_timer: float = 0
 
-var in_combat: bool = false
+var in_attack_target: bool = false
 var is_setup: bool = false
 var is_attacking: bool = false
+
 
 func enter():
 	if !is_setup:
 		setup()
 	
+	focus_target = GameData.get_attack_target()
 	get_parent().get_animation_player().play("walk")
+	get_parent().get_state_label().text = "Attack Target"
 
-	get_parent().get_state_label().text = "Combat"
-
-	in_combat = true
+	in_attack_target = true
 	this_navigation_timer.start()
 
 
 func exit():
 	this_navigation_timer.stop()
 	focus_target = null
-	in_combat = false
+	in_attack_target = false
 	get_parent().get_animation_player().play("RESET")
 
 
 func update(delta):
-	focus_target = this_search_radius.get_closest_tracked_enemy()
-	
+	if !focus_target:
+		return
+		
 	if !is_attacking:
 		attack_cd_timer -= delta
 	
-	if npc_attack_component.is_body_in_attack_range(focus_target) && (attack_cd_timer <= 0):
+	if this_npc_attack_component.is_body_in_attack_range(focus_target) && (attack_cd_timer <= 0):
 		is_attacking = true
-		npc_attack_component.attack(focus_target)
+		this_npc_attack_component.attack(focus_target)
 		attack_cd_timer = attack_cooldown
 
 
@@ -58,14 +59,18 @@ func physics_update(delta):
 
 func setup():
 	this_entity = get_parent().get_this_entity() as NonPlayerCharacter
+	this_npc_attack_component = this_entity.get_npc_attack_component() as NpcAttackComponent
 	this_navigation_agent = this_entity.get_navigation_agent() as NavigationAgent2D
 	this_navigation_timer = this_entity.get_navigation_timer() as Timer
-	this_search_radius = get_parent().get_search_radius() as SearchRadius
-	focus_target = this_search_radius.get_closest_tracked_enemy() as CharacterBody2D
 	
-	get_parent().get_search_radius().not_tracking_enemy.connect(on_not_tracking_enemy)
 	this_navigation_timer.timeout.connect(on_navigation_timer_timeout)
-	npc_attack_component.attack_finished.connect(on_attack_finished)
+	this_npc_attack_component.attack_finished.connect(on_attack_finished)
+	
+	# set up connections for follower commands
+	GameData.follow_target_set.connect(on_follow_target_set)
+	GameData.follow_player.connect(on_follow_player)
+	GameData.attack_target_command.connect(on_attack_target_command)
+	GameData.npc_died.connect(on_npc_died)
 	
 	is_setup = true
 
@@ -77,13 +82,8 @@ func make_path() -> void:
 	this_navigation_agent.target_position = focus_target.global_position
 
 
-func on_not_tracking_enemy():
-	transitioned.emit(self, "enemyidle")
-	#print_debug("Transitioning from combat to idle")
-
-
 func on_navigation_timer_timeout():
-	if !in_combat:
+	if !in_attack_target:
 		return
 	
 	make_path()
@@ -91,3 +91,22 @@ func on_navigation_timer_timeout():
 
 func on_attack_finished():
 	is_attacking = false
+
+
+func on_follow_player():
+	transitioned.emit(self, "followplayerstate")
+
+
+func on_follow_target_set():
+	transitioned.emit(self, "followtargetstate")
+
+
+func on_attack_target_command():
+	transitioned.emit(self, "attacktargetstate")
+
+
+func on_npc_died(npc: NonPlayerCharacter):
+	print_debug("here")
+	if focus_target == npc:
+		focus_target = null
+		transitioned.emit(self, "followplayerstate")

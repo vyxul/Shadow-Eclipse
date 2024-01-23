@@ -32,7 +32,6 @@ shape = SubResource("CapsuleShape2D_b0bgo")
 
 [node name="PlayerRecruitController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ve0m4")]
 player = NodePath("..")
-focus_time_needed = 3.0
 
 [node name="FollowerMarkers" type="Node2D" parent="."]
 

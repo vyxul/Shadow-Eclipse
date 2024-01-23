@@ -107,6 +107,6 @@ func on_new_follower_added(entity: NonPlayerCharacter):
 		current_state.exit()
 		previous_state = current_state
 	
-	var new_state = states.get("followstate")
+	var new_state = states.get("followplayerstate")
 	new_state.enter()
 	current_state = new_state

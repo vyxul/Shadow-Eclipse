@@ -11,4 +11,5 @@ func enter():
 	
 	await animation_player.animation_finished
 	if this_entity:
+		GameData.emit_npc_died(this_entity)
 		this_entity.queue_free()

@@ -12,6 +12,7 @@ func enter():
 	hurtbox_component = get_parent().get_hurtbox_component()
 	get_parent().get_state_label().text = "Hurt"
 	timer = invincibility_time
+	hurtbox_component.collision_layer = 0
 	
 	if this_entity:
 		this_entity.set_process(false)
@@ -21,6 +22,7 @@ func update(delta):
 	timer -= delta
 	
 	if timer <= 0:
+		hurtbox_component.collision_layer = 2
 		if this_entity:
 			this_entity.set_process(true)
 		
@@ -29,13 +31,18 @@ func update(delta):
 		if previous_state is SpawnState:
 			this_entity.collision_layer = 2
 			transitioned.emit(self, "SpawnState")
-			return
+		
 		if previous_state is EnemyIdle:
 			transitioned.emit(self, "EnemyIdle")
-			return
+		
 		if previous_state is EnemyCombat:
 			transitioned.emit(self, "EnemyCombat")
-			return
-		if previous_state is FollowState:
-			transitioned.emit(self, "FollowState")
-			return
+		
+		if previous_state is FollowPlayerState:
+			transitioned.emit(self, "FollowPlayerState")
+		
+		if previous_state is FollowTargetState:
+			transitioned.emit(self, "FollowTargetState")
+		
+		if previous_state is AttackTargetState:
+			transitioned.emit(self, "AttackTargetState")
