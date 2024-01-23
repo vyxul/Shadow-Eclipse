@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmq5j3ahv2uxn"]
+
+[ext_resource type="PackedScene" uid="uid://dapjt02jspsb" path="res://GameFiles/Game Objects/Components/hitbox_component.tscn" id="1_28x2u"]
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc_attack_scene.gd" id="1_qk60t"]
+[ext_resource type="Texture2D" uid="uid://cxyrfb1sb30ow" path="res://GameFiles/Assets/Art/Enemies/bandit/bandit_axe_attack_spritesheet.png" id="2_xvwvw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0k5uf"]
+size = Vector2(42, 20)
+
+[sub_resource type="Animation" id="Animation_v0fe1"]
+resource_name = "attack"
+length = 0.41
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.41),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"emit_finished"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HitboxComponent/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_n11v8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hl5b4"]
+_data = {
+"RESET": SubResource("Animation_n11v8"),
+"attack": SubResource("Animation_v0fe1")
+}
+
+[node name="BanditMeleeAttack" type="Node2D"]
+script = ExtResource("1_qk60t")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_28x2u")]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_0k5uf")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_hl5b4")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, 0)
+rotation = -1.5708
+texture = ExtResource("2_xvwvw")
+hframes = 8

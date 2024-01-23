@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1vd2dg80c1sj"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Components/npc_attack_component.gd" id="1_5b3qc"]
+
+[node name="NpcAttackComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("1_5b3qc")

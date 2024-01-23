@@ -3,6 +3,7 @@ extends Node2D
 const extension_range = 8
 
 var melee_attack_damage: int = 0
+var attack_faction: GameData.Factions
 
 
 #func _process(delta):
@@ -15,6 +16,14 @@ func set_damage(dmg: int):
 
 func get_damage():
 	return melee_attack_damage
+
+
+func set_faction(faction: GameData.Factions):
+	attack_faction = faction
+
+
+func get_faction() -> GameData.Factions:
+	return attack_faction
 
 
 func set_attack_position():

@@ -94,3 +94,4 @@ region_enabled = true
 region_rect = Rect2(7, 169, 16, 23)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
