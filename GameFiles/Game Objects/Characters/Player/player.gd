@@ -26,10 +26,13 @@ func _ready():
 
 
 func _process(delta):
-	update_follower_markers()
+	#update_follower_markers()
+	pass
 
 
 func _physics_process(delta):
+	
+	update_follower_markers()
 	move(delta)
 	if Input.is_action_just_pressed("left_click"):
 		melee_attack()
@@ -37,6 +40,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("right_click"):
 		ranged_attack()
 
+	if Input.is_action_just_pressed("x"):
+		command_followers_move()
 
 func move(delta: float):
 	var move_direction = Input.get_vector("left", "right", "up", "down")
@@ -78,7 +83,8 @@ func set_follower_slot(follower_marker: Marker2D, follower: NonPlayerCharacter):
 	for marker in follower_markers:
 		if marker == follower_marker:
 			key = index
-			
+		index += 1
+	
 	followers[key] = follower
 
 
@@ -87,7 +93,9 @@ func update_follower_markers():
 		var follower = followers[key]
 		if follower != null:
 			var follower_marker = follower_markers[key] as Marker2D
-			var marker_raycast = follower_marker.get_children()[0] as RayCast2D
+			var marker_raycasts = $FollowerRaycasts.get_children()
+			var marker_raycast = marker_raycasts[key] as RayCast2D
+			marker_raycast.force_raycast_update()
 			if marker_raycast.is_colliding():
 				var colliding_point = marker_raycast.get_collision_point()
 				
@@ -102,3 +110,11 @@ func melee_attack():
 
 func ranged_attack():
 	player_ranged_controller.attack()
+
+
+func command_followers_move():
+	var mouse_position = get_global_mouse_position()
+	var nav_agent = $NavigationAgent2D
+	nav_agent.target_position = mouse_position
+	if nav_agent.is_target_reachable():
+		GameData.follow_target_set.emit(mouse_position)
