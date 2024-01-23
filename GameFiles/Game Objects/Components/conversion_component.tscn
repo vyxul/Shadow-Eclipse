@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwy0ayt20opw1"]
+[gd_scene load_steps=2 format=3 uid="uid://crnse58x3gauc"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Components/conversion_component.gd" id="1_xcnp2"]
 
 [node name="ConversionComponent" type="Node"]
 script = ExtResource("1_xcnp2")
+max_conversion_hp = null
+current_conversion_hp = null
+start_at_max_conversion_hp = null
