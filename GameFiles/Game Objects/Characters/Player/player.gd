@@ -14,11 +14,19 @@ class_name Player
 # 360 degrees / number of followers, create a point at each multiple
 # helps with even spreading
 var followers: Dictionary = {}
+var follower_markers: Array = []
 
 
 func _ready():
+	var index = 0
 	for child in $FollowerMarkers.get_children():
-		followers[child] = null
+		followers[index] = null
+		follower_markers.append(child)
+		index += 1
+
+
+func _process(delta):
+	update_follower_markers()
 
 
 func _physics_process(delta):
@@ -59,13 +67,33 @@ func get_faction() -> GameData.Factions:
 func get_empty_follower_slot() -> Marker2D:
 	for key in followers.keys():
 		if followers[key] == null:
-			return key
+			return follower_markers[key]
 	
 	return null
 
 
-func set_follower_slot(marker2d_key: Marker2D, follower: NonPlayerCharacter):
-	followers[marker2d_key] = follower
+func set_follower_slot(follower_marker: Marker2D, follower: NonPlayerCharacter):
+	var index = 0
+	var key
+	for marker in follower_markers:
+		if marker == follower_marker:
+			key = index
+			
+	followers[key] = follower
+
+
+func update_follower_markers():
+	for key in followers.keys():
+		var follower = followers[key]
+		if follower != null:
+			var follower_marker = follower_markers[key] as Marker2D
+			var marker_raycast = follower_marker.get_children()[0] as RayCast2D
+			if marker_raycast.is_colliding():
+				var colliding_point = marker_raycast.get_collision_point()
+				
+				follower_marker.position = to_local(colliding_point)
+			else:
+				follower_marker.position = marker_raycast.target_position
 
 
 func melee_attack():
