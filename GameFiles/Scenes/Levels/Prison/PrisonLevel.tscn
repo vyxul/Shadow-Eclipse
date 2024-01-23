@@ -24,7 +24,7 @@ layer_1/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0
 [node name="NPC" type="Node2D" parent="Entities"]
 
 [node name="enemy_bandit" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(61, 218)
+position = Vector2(80, 116)
 
 [node name="ally_bandit" parent="Entities/NPC" node_paths=PackedStringArray("animation_player") instance=ExtResource("3_f07v3")]
 position = Vector2(242, 56)

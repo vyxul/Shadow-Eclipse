@@ -97,6 +97,24 @@ func get_closest_tracked_enemy():
 			closest_distance = distance
 	
 	return closest_enemy
+
+
+func search_surroundings():
+	#var this_parent = get_parent()
+	#var this_faction = this_parent.get_faction()
+	#
+	#var bodies_in_discovery_range = discovery_area_2d.get_overlapping_bodies()
+	#for body in bodies_in_discovery_range:
+		#var that_faction = body.get_faction()
+		#var body_is_ally = GameData.is_faction_ally(this_faction, that_faction)
+		#if !body_is_ally:
+			#if !tracked_enemies_in_range.has(body):
+				#enemies_in_discovery_range.erase(body)
+				#add_enemy_to_tracking(body)
+	if !tracked_enemies_in_range.is_empty():
+		currently_tracking_enemy = false
+		emit_tracking_enemy()
+		
 #endregion
 
 
