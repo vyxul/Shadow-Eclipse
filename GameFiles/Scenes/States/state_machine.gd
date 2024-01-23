@@ -7,6 +7,7 @@ extends Node
 @export var conversion_component: ConversionComponent
 @export var search_radius: SearchRadius
 @export var state_label: Label
+@export var animation_player: AnimationPlayer
 
 var current_state: State
 var previous_state: State
@@ -35,6 +36,10 @@ func get_search_radius() -> SearchRadius:
 
 func get_state_label() -> Label:
 	return state_label
+
+
+func get_animation_player() -> AnimationPlayer:
+	return animation_player
 
 
 func _ready():

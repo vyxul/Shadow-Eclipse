@@ -14,6 +14,10 @@ func get_faction() -> int:
 	return faction
 
 
+func get_sprite() -> Sprite2D:
+	return $Sprite2D
+
+
 func get_animation_player() -> AnimationPlayer:
 	return animation_player
 
