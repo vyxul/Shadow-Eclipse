@@ -12,11 +12,6 @@ class_name Player
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var mana_component: ManaComponent = $ManaComponent
 
-
-func _ready():
-	GameData.player_hp_ui_ready.connect(on_player_hp_ui_ready)
-	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)
-
 # another way i could spread out summons is:
 # 360 degrees / number of followers, create a point at each multiple
 # helps with even spreading
@@ -30,6 +25,9 @@ func _ready():
 		followers[index] = null
 		follower_markers.append(child)
 		index += 1
+		
+	GameData.player_hp_ui_ready.connect(on_player_hp_ui_ready)
+	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)
 
 
 func _process(delta):

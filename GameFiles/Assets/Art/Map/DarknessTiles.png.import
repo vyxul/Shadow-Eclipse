@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c56u1n242i5r5"
-path="res://.godot/imported/DarknessTiles.png-e21dd0eb66076f273385a9474837b87b.ctex"
+path="res://.godot/imported/DarknessTiles.png-443d3b96d784bbe094f4adcc2c97533e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameFiles/Resources/Tilesets/DarknessTiles.png"
-dest_files=["res://.godot/imported/DarknessTiles.png-e21dd0eb66076f273385a9474837b87b.ctex"]
+source_file="res://GameFiles/Assets/Art/Map/DarknessTiles.png"
+dest_files=["res://.godot/imported/DarknessTiles.png-443d3b96d784bbe094f4adcc2c97533e.ctex"]
 
 [params]
 

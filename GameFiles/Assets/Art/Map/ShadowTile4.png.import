@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ecd14etrilm1"
-path="res://.godot/imported/ShadowTile4.png-d6d54475e3f657bf9ea549655c08d1a0.ctex"
+path="res://.godot/imported/ShadowTile4.png-e5ad3ada1e1420423324bcd73d2b0eb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameFiles/Resources/Tilesets/ShadowTile4.png"
-dest_files=["res://.godot/imported/ShadowTile4.png-d6d54475e3f657bf9ea549655c08d1a0.ctex"]
+source_file="res://GameFiles/Assets/Art/Map/ShadowTile4.png"
+dest_files=["res://.godot/imported/ShadowTile4.png-e5ad3ada1e1420423324bcd73d2b0eb2.ctex"]
 
 [params]
 

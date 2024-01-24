@@ -10,7 +10,7 @@ var base_bar_3 = preload("res://GameFiles/Assets/Art/UI/PlayerUI/003 base bar - 
 var player_heart_scene = preload("res://GameFiles/Scenes/UI/player_heart.tscn")
 
 var current_hearts_displayed: int = 0
-@export var hp_per_heart: int = 10
+@export var hp_per_heart: float = 10
 
 
 func _ready():
@@ -65,7 +65,7 @@ func update_hearts_display(player_current_hp):
 	var partial_heart_count = 0
 	# if player current hp is not cleanly divisible by hp_per_heart, 
 	# we have a partial heart
-	if ((player_current_hp % hp_per_heart) > 0):
+	if (fmod(player_current_hp, hp_per_heart) > 0):
 		partial_heart_count = 1
 	# empty hearts should just be whatever is left after subtracting 
 	# full and partial from total heart count
