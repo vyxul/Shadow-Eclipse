@@ -2,10 +2,10 @@ extends Node
 class_name HealthComponent
 
 signal health_depleted
-signal health_lost
+signal health_lost(healthDecrease : float)
 
-@export var max_health_points: int = 1
-@export var current_health_points: int = 1
+@export var max_health_points: float = 1
+@export var current_health_points: float = 1
 @export var start_full_hp: bool = true
 
 func _ready():
@@ -21,11 +21,11 @@ func check_hp_in_range():
 		health_depleted.emit()
 
 
-func damage(dmg: int):
+func damage(dmg: float):
 	if dmg <= 0:
 		return
 	
 	current_health_points -= dmg
-	health_lost.emit()
+	health_lost.emit(dmg)
 	
 	check_hp_in_range()

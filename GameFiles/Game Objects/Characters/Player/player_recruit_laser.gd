@@ -7,11 +7,13 @@ extends RayCast2D
 
 @export var laser_width: float = 25
 
+signal DamageConversionComponent(TargetID, amage)
+
 var laser_in_use: bool = false
 var focus_time_needed: float
 var current_focus_time: float = 0
 var conversion_damage: int
-var focus_target: CharacterBody2D
+var focus_target: Node2D
 
 
 func _ready():
@@ -61,7 +63,7 @@ func _physics_process(delta):
 				#print_debug("Focused on the same target for the focus time needed")
 				# Add code here to refer to the targets conversion component
 				# and reduce their gauge after making that conversion component
-				var target_conversion_component = focus_target.get_conversion_component() as ConversionComponent
+				var target_conversion_component = collider.GetConversionComponent() as ConversionComponent
 				target_conversion_component.conversion_damage(conversion_damage)
 	
 	else:
@@ -90,4 +92,5 @@ func disappear():
 	#beam_particles.emitting = false
 	var tween = create_tween()
 	tween.tween_property(line_2d, "width",  0, .2)
+	tween.tween_property(line_2d, "points[1]", Vector2.ZERO, .2)
 	focus_target = null

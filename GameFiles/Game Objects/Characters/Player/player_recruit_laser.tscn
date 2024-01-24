@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5ia4yxscqfaq"]
+[gd_scene load_steps=10 format=3 uid="uid://bftntgk4bife1"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_laser.gd" id="1_bqyua"]
 [ext_resource type="Texture2D" uid="uid://c0fd02t2g1yco" path="res://GameFiles/Assets/Art/Player/glowing_circle.png" id="2_lvrly"]

@@ -175,7 +175,6 @@ height = 26.0
 collision_layer = 2
 collision_mask = 11
 motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_eque4")
 faction = 1
 
@@ -189,7 +188,6 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_4fmbg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qnwby")]
-max_health_points = 3
 
 [node name="ConversionComponent" parent="." instance=ExtResource("3_12554")]
 
@@ -210,7 +208,9 @@ shape = SubResource("CapsuleShape2D_c2tat")
 debug_color = Color(0.839216, 0.384314, 0, 0.207843)
 
 [node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
-tracked_enemies_range = 110.0
+position = Vector2(-1, 2)
+tracked_enemies_range = 60.0
+discovery_range = 50.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "this_entity", "hurtbox_component", "health_component", "conversion_component", "npc_attack_component", "search_radius", "state_label", "animation_player") instance=ExtResource("5_ibxij")]
 initial_state = NodePath("state_spawn")
@@ -281,3 +281,11 @@ position = Vector2(0, -2)
 
 [connection signal="mouse_entered" from="HurtboxComponent" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HurtboxComponent" to="." method="_on_mouse_exited"]
+texture = ExtResource("10_byu28")
+hframes = 13
+vframes = 6
+frame = 4
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavigationTimer" type="Timer" parent="."]

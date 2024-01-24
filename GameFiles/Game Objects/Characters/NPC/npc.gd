@@ -5,6 +5,13 @@ class_name NonPlayerCharacter
 @export var kill_score: int = 1
 
 @onready var marker_2d = $Marker2D
+@export var animation_player: AnimationPlayer
+@onready var conversion_component: ConversionComponent = $ConversionComponent
+@onready var hurtboxComponent: HurtboxComponent = $HurtboxComponent
+
+
+func _ready():
+	hurtboxComponent.SetConversionComponent(conversion_component)
 
 func _process(delta):
 	move_and_slide()

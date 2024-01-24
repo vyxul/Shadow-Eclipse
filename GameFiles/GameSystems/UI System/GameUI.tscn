@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpa62ad4wiyvc"]
+
+[ext_resource type="Script" path="res://UI System.gd" id="1_usyyf"]
+[ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="2_7ccwl"]
+[ext_resource type="PackedScene" uid="uid://dsvwi6p7idd3a" path="res://GameFiles/Scenes/UI/player_resource_bars.tscn" id="3_fcdpe"]
+
+[node name="GameUI" type="CanvasLayer"]
+follow_viewport_scale = 143.857
+script = ExtResource("1_usyyf")
+
+[node name="InGamePanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 1154.0
+offset_bottom = 651.0
+
+[node name="FinishGame" type="Button" parent="InGamePanel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="EndOfGameScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="Next Button" type="Button" parent="EndOfGameScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 503.0
+offset_top = 498.0
+offset_right = 568.0
+offset_bottom = 529.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next"
+flat = true
+icon_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="EndOfGameScreen/Next Button"]
+z_index = -1
+texture_filter = 3
+position = Vector2(32, 16.0001)
+scale = Vector2(3.70455, 1.56818)
+texture = ExtResource("2_7ccwl")
+region_enabled = true
+region_rect = Rect2(77, 13, 22, 22)
+
+[node name="Sprite2D" type="Sprite2D" parent="EndOfGameScreen"]
+texture_filter = 3
+position = Vector2(538, 292)
+scale = Vector2(26.1818, 16.7273)
+texture = ExtResource("2_7ccwl")
+region_enabled = true
+region_rect = Rect2(77, 13, 22, 22)
+
+[node name="EndText" type="Label" parent="EndOfGameScreen"]
+offset_left = 302.0
+offset_top = 141.0
+offset_right = 769.0
+offset_bottom = 442.0
+text = "Victory!
+
+You won!
+Your score is: "
+horizontal_alignment = 1
+
+[node name="EndGameTip" type="Label" parent="EndOfGameScreen/EndText"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 222.0
+offset_right = 469.0
+offset_bottom = 297.0
+text = "Remember  you can use those points
+ to upgrage your character"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Score" type="Label" parent="EndOfGameScreen/EndText"]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 100.0
+offset_right = 293.0
+offset_bottom = 148.0
+horizontal_alignment = 1
+
+[node name="PlayerResourceBars" parent="." instance=ExtResource("3_fcdpe")]
+
+[connection signal="pressed" from="InGamePanel/FinishGame" to="." method="_on_finish_game_pressed"]
+[connection signal="pressed" from="EndOfGameScreen/Next Button" to="." method="_on_next_button_pressed"]
