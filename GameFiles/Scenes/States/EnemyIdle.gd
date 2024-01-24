@@ -14,12 +14,15 @@ func randomize_wander():
 
 
 func enter():
+	get_parent().get_state_label().text = "Idle"
 	this_entity = get_parent().get_this_entity()
 	randomize_wander()
-	get_parent().get_state_label().text = "Idle"
 	
 	# set up connections with search_radius
 	get_parent().get_search_radius().tracking_enemy.connect(on_tracking_enemy)
+	
+	# check to see if needs to go into combat right away
+	get_parent().get_search_radius().search_surroundings()
 
 
 func exit():
@@ -41,4 +44,4 @@ func physics_update(delta: float):
 
 func on_tracking_enemy():
 	transitioned.emit(self, "enemycombat")
-	print_debug("Transitioning from idle to combat")
+	#print_debug("Transitioning from idle to combat")

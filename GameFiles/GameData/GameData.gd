@@ -1,5 +1,7 @@
 extends Node
 
+signal follow_target_set(follow_target_position: Vector2)
+
 enum Factions {SHADOW, LIGHT, MONSTER}
 
 
