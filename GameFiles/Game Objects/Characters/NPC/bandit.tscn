@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_eque4"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_qnwby"]
-[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="3_12554"]
+[ext_resource type="PackedScene" uid="uid://bwy0ayt20opw1" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="3_12554"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="4_nn6pb"]
-[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
+[ext_resource type="PackedScene" uid="uid://bcqjrpm3xolli" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
 [ext_resource type="PackedScene" uid="uid://bxk0ha72ft7ep" path="res://GameFiles/Scenes/States/state_machine.tscn" id="5_ibxij"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyIdle.gd" id="6_hywir"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyHurt.gd" id="8_tu6pd"]

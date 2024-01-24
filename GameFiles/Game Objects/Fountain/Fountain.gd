@@ -57,6 +57,9 @@ func AddNodeAndAttach(Locations):
 		TileCoordinates[Locations.z] = 1
 		var tile = darknessTile.instantiate()
 		tile.position = Vector2(Locations.x, Locations.y)
+		
+		tile.TileDestroyed.connect(_on_darkness_tile_tile_destroyed)
+		tile.TileReceivedDamage.connect(_on_darkness_tile_tile_received_damage)
 		tile.SetCoordinates(Locations.z)
 		tile.ShowBehindParent()
 		add_child(tile)
@@ -94,9 +97,10 @@ func _on_darkness_tile_tile_destroyed(_Tile):
 	var coordinates = _Tile.GetCoordinates()
 	TileCoordinates[coordinates] = 0
 	remove_child(_Tile)
+	print("Fountain Health " + str($HealthComponent.current_health_points))
 
 func _on_darkness_tile_tile_received_damage(_damage):
-	healthComponent.damage(_damage * DamagePercentageTakenPerTileDamage)
+	healthComponent.damage(_damage)
 
 func GetUp(idx) -> int:
 	var result = idx - MAX_EXPANSION_X

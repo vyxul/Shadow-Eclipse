@@ -10,7 +10,7 @@ var Coordinates : int = 0
 func SetCoordinates(_coordinates):
 	Coordinates = _coordinates
 	
-func GetCoordinates(_coordinates) -> int:
+func GetCoordinates() -> int:
 	return Coordinates
 
 func _on_health_component_health_lost(damage):
