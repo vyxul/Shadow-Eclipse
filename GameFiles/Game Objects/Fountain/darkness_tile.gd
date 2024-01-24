@@ -8,7 +8,7 @@ signal TileReceivedDamage(_damage : int)
 var Coordinates : int = 0
 
 func _ready():
-	AnimSprite.frame = randi() % 4
+	AnimSprite.frame = randi_range(0, 3)
 
 func SetCoordinates(_coordinates):
 	Coordinates = _coordinates
