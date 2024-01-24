@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyIdle.gd" id="6_hywir"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyHurt.gd" id="8_tu6pd"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyDeath.gd" id="9_rkc4m"]
-[ext_resource type="Texture2D" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="10_byu28"]
+[ext_resource type="Texture2D" uid="uid://dg4r5cpf0vlj" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="10_byu28"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/SpawnState.gd" id="10_ob4bv"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyCombat.gd" id="11_13o03"]
 
@@ -58,6 +58,7 @@ radius = 9.0
 height = 26.0
 
 [node name="bandit" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
+z_index = 1
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
@@ -75,7 +76,6 @@ position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_4fmbg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qnwby")]
-max_health_points = 3
 
 [node name="ConversionComponent" parent="." instance=ExtResource("3_12554")]
 

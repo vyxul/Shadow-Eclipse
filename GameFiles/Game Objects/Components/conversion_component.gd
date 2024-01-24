@@ -2,7 +2,7 @@ extends Node
 class_name ConversionComponent
 
 signal conversion_hp_depleted
-signal conversion_hp_lost
+signal conversion_hp_lost(max_hp, current_hp, dmg)
 
 @export var max_conversion_hp: int = 1
 @export var current_conversion_hp: int = 1
@@ -26,5 +26,5 @@ func conversion_damage(convert_dmg: int):
 		return
 	
 	current_conversion_hp -= convert_dmg
-	conversion_hp_lost.emit()
+	conversion_hp_lost.emit(max_conversion_hp, current_conversion_hp, convert_dmg)
 	check_conversion_hp_in_range()

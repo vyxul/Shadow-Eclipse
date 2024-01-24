@@ -5,11 +5,12 @@ class_name NonPlayerCharacter
 
 @export var animation_player: AnimationPlayer
 @onready var conversion_component: ConversionComponent = $ConversionComponent
+@onready var hurtboxComponent: HurtboxComponent = $HurtboxComponent
 
 
 func _ready():
 	conversion_component.conversion_hp_depleted.connect(on_conversion_hp_depleted)
-
+	hurtboxComponent.SetConversionComponent(conversion_component)
 
 func _process(delta):
 	move_and_slide()
