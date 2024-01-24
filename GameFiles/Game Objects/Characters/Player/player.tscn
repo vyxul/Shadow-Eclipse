@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf2x6amj6vpyd"]
+[gd_scene load_steps=11 format=3 uid="uid://cf2x6amj6vpyd"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player.gd" id="1_n8ck6"]
-[ext_resource type="Texture2D" uid="uid://dg4r5cpf0vlj" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="2_pacww"]
+[ext_resource type="Texture2D" uid="uid://dopmhlwnubn3n" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="2_pacww"]
+[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Components/mana_component.tscn" id="3_cju8r"]
 [ext_resource type="PackedScene" uid="uid://c41nwnahfi0b8" path="res://GameFiles/Game Objects/Characters/Player/player_melee_controller.tscn" id="3_k76rs"]
-[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Characters/Player/player_ranged_controller.tscn" id="4_nx2hv"]
-[ext_resource type="PackedScene" uid="uid://dx8yxflpkvne7" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_controller.tscn" id="4_ve0m4"]
+[ext_resource type="PackedScene" uid="uid://dt63tc60emsw" path="res://GameFiles/Game Objects/Characters/Player/player_ranged_controller.tscn" id="4_nx2hv"]
+[ext_resource type="PackedScene" uid="uid://b1un8xwx3gpmx" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_controller.tscn" id="4_ve0m4"]
+[ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="5_d4vni"]
+[ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="6_bsnab"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d3kbv"]
+radius = 5.0
+height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0bgo"]
 radius = 3.99999
@@ -18,6 +25,23 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_n8ck6")
 player_speed = 100.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_d4vni")]
+max_health_points = 100
+current_health_points = 50
+
+[node name="ManaComponent" parent="." instance=ExtResource("3_cju8r")]
+max_mana_points = 50
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_bsnab")]
+collision_layer = 2
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_d3kbv")
+debug_color = Color(0.980392, 0, 0.384314, 0.129412)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -4)
@@ -95,3 +119,8 @@ region_enabled = true
 region_rect = Rect2(7, 169, 16, 23)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]
+[connection signal="mana_depleted" from="ManaComponent" to="." method="_on_mana_component_mana_depleted"]
+[connection signal="mana_lost" from="ManaComponent" to="." method="_on_mana_component_mana_lost"]

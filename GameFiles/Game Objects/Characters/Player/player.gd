@@ -9,6 +9,8 @@ class_name Player
 @onready var sprite_2d = $Sprite2D
 @onready var player_melee_controller = $PlayerMeleeController
 @onready var player_ranged_controller = $PlayerRangedController
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var mana_component: ManaComponent = $ManaComponent
 
 # another way i could spread out summons is:
 # 360 degrees / number of followers, create a point at each multiple
@@ -23,6 +25,9 @@ func _ready():
 		followers[index] = null
 		follower_markers.append(child)
 		index += 1
+		
+	GameData.player_hp_ui_ready.connect(on_player_hp_ui_ready)
+	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)
 
 
 func _process(delta):
@@ -112,6 +117,36 @@ func ranged_attack():
 	player_ranged_controller.attack()
 
 
+func emit_player_hp():
+	GameData.player_health_changed.emit(health_component.current_health_points, health_component.max_health_points)
+
+
+func emit_player_mp():
+	GameData.player_mana_changed.emit(mana_component.current_mana_points, mana_component.max_mana_points)
+
+
+func _on_health_component_health_lost():
+	emit_player_hp()
+
+
+func _on_health_component_health_depleted():
+	GameData.player_died.emit()
+
+
+func _on_mana_component_mana_lost():
+	emit_player_mp()
+
+
+func _on_mana_component_mana_depleted():
+	GameData.player_mana_empty.emit()
+
+
+func on_player_hp_ui_ready():
+	emit_player_hp()
+
+
+func on_player_mp_ui_ready():
+	emit_player_mp()
 func command_followers_move():
 	var mouse_position = get_global_mouse_position()
 	var nav_agent = $NavigationAgent2D

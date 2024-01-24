@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgdwd5ax2u1uo"]
+
+[ext_resource type="Script" path="res://GameFiles/Scenes/UI/player_mana.gd" id="1_h603b"]
+[ext_resource type="Texture2D" uid="uid://bpgb8nb3lrffw" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - mana.png" id="2_swvbl"]
+[ext_resource type="Texture2D" uid="uid://ba0e68o3trye2" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - mana - empty single.png" id="3_kxc3o"]
+[ext_resource type="Texture2D" uid="uid://dob5kg2p4y6ma" path="res://GameFiles/Assets/Art/UI/PlayerUI/000 base bar - mana - single.png" id="4_fvuu5"]
+
+[sub_resource type="Animation" id="Animation_t2hd4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullManaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q8073"]
+resource_name = "mana_full"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullManaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wdmy"]
+_data = {
+"RESET": SubResource("Animation_t2hd4"),
+"mana_full": SubResource("Animation_q8073")
+}
+
+[node name="PlayerMana" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h603b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2wdmy")
+}
+
+[node name="FullManaSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, 8)
+texture = ExtResource("2_swvbl")
+hframes = 6
+
+[node name="PartialMana" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="PartialManaOutline" type="TextureRect" parent="PartialMana"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 12.0
+offset_bottom = 15.0
+texture = ExtResource("3_kxc3o")
+
+[node name="PartialManaProgressBar" type="TextureProgressBar" parent="PartialMana/PartialManaOutline"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 7.0
+offset_bottom = 8.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+fill_mode = 3
+texture_progress = ExtResource("4_fvuu5")
