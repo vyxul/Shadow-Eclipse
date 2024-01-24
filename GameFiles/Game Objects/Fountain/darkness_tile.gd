@@ -4,6 +4,9 @@ class_name DarknessTile
 
 signal TileDestroyed(_Tile : Node2D)
 signal TileReceivedDamage(_damage : int)
+
+@export var faction: GameData.Factions
+
 @onready var  AnimSprite = $AnimatedSprite2D
 var Coordinates : int = 0
 
@@ -27,3 +30,11 @@ func _on_health_component_health_depleted():
 
 func _on_hurtbox_component_hurt():
 	pass # Replace with function body.
+
+
+func set_faction(_faction: GameData.Factions):
+	faction = _faction
+
+
+func get_faction() -> int:
+	return faction

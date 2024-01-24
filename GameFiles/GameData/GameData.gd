@@ -1,6 +1,5 @@
 extends Node
 
-signal follow_target_set
 signal follow_player
 signal attack_target_command
 signal npc_died(npc: NonPlayerCharacter)

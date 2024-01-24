@@ -61,6 +61,7 @@ func AddNodeAndAttach(Locations):
 		tile.TileDestroyed.connect(_on_darkness_tile_tile_destroyed)
 		tile.TileReceivedDamage.connect(_on_darkness_tile_tile_received_damage)
 		tile.SetCoordinates(Locations.z)
+		tile.set_faction(faction)
 		tile.ShowBehindParent()
 		add_child(tile)
 
@@ -81,7 +82,7 @@ func _on_conversion_component_conversion_hp_depleted():
 		Converted_30.visible = false
 		Converted_60.visible = false
 		FountainOfDarkness.visible = true
-		OnFactionChanged(0)
+		OnFactionChanged(faction)
 
 func _on_conversion_component_conversion_hp_lost(max_hp, current_hp, dmg):
 	var ConvHealthPercentage =  float(current_hp) / float(max_hp)
@@ -154,3 +155,7 @@ func SpawnOnLocations():
 	for LocationToSpawn in LocationsToSpawnDarkness:
 		AddNodeAndAttach(LocationToSpawn)
 	LocationsToSpawnDarkness.clear()
+
+
+func get_faction() -> int:
+	return faction

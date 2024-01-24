@@ -23,7 +23,8 @@ func _ready():
 		current_conversion_hp = max_conversion_hp
 	
 	this_entity = get_parent()
-	this_search_radius = this_entity.get_search_radius()
+	if this_entity is NonPlayerCharacter:
+		this_search_radius = this_entity.get_search_radius()
 
 
 func check_conversion_hp_in_range():
@@ -35,8 +36,9 @@ func check_conversion_hp_in_range():
 		player = get_tree().get_first_node_in_group("player") as Player
 		follow_marker = player.get_empty_follower_slot()
 		this_entity.faction = GameData.Factions.SHADOW
-		this_entity.collision_layer = 8
-		GameData.emit_npc_converted(this_entity)
+		if this_entity is NonPlayerCharacter:
+			this_entity.collision_layer = 8
+			GameData.emit_npc_converted(this_entity)
 		
 		if CanParentBecomeFollower:
 			if !follow_marker:
@@ -45,6 +47,8 @@ func check_conversion_hp_in_range():
 			else:
 				player.set_follower_slot(follow_marker, this_entity)
 				new_follower_added.emit(this_entity)
+				
+		conversion_hp_depleted.emit()
 
 
 func conversion_damage(convert_dmg: int):
