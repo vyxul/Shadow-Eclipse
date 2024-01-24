@@ -58,6 +58,8 @@ func set_max_hearts(player_max_hp):
 
 
 func update_hearts_display(player_current_hp):
+	if player_current_hp < 0:
+		return
 	#player_current_hp = PlayerStats.stats.current_hp
 	
 	# get counts of full, partial, and empty hearts

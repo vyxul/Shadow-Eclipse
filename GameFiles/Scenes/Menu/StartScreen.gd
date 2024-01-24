@@ -3,6 +3,7 @@ extends Node2D
 @onready var LoadingScreen = $"../LoadingScreen"
 @onready var SettingsScreen = $"../SettingsMenu"
 @onready var Interactables = $Interactables
+@onready var continue_texture = $"../Interactables/ContinueButton/ContinueTexture"
 
 var Game = "res://GameFiles/Scenes/Levels/Prison/PrisonLevel.tscn"
 
@@ -10,7 +11,7 @@ var Game = "res://GameFiles/Scenes/Levels/Prison/PrisonLevel.tscn"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SettingsScreen.ShowStartMenuButtons.connect(ShowStartMenuButtons)
-	$Interactables/ContinueButton.visible = false;
+	continue_texture.visible = false;
 	
 #func _on_options_button_pressed():
 	#SettingsScreen.visible = true

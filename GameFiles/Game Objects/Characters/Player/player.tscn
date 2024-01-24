@@ -27,7 +27,7 @@ script = ExtResource("1_n8ck6")
 player_speed = 100.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_d4vni")]
-max_health_points = 10.0
+max_health_points = 11.0
 
 [node name="ManaComponent" parent="." instance=ExtResource("3_cju8r")]
 max_mana_points = 50
