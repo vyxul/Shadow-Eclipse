@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://dimxkh5vbaxfx"]
+[gd_scene load_steps=19 format=3 uid="uid://dimxkh5vbaxfx"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_eque4"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_qnwby"]
-[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="3_12554"]
+[ext_resource type="PackedScene" uid="uid://crnse58x3gauc" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="3_12554"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="4_nn6pb"]
-[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
+[ext_resource type="PackedScene" uid="uid://bx64g1nxqnxx8" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
 [ext_resource type="PackedScene" uid="uid://bxk0ha72ft7ep" path="res://GameFiles/Scenes/States/state_machine.tscn" id="5_ibxij"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyIdle.gd" id="6_hywir"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyHurt.gd" id="8_tu6pd"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyDeath.gd" id="9_rkc4m"]
-[ext_resource type="Texture2D" uid="uid://dg4r5cpf0vlj" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="10_byu28"]
+[ext_resource type="Texture2D" uid="uid://dopmhlwnubn3n" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="10_byu28"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/SpawnState.gd" id="10_ob4bv"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyCombat.gd" id="11_13o03"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/FollowState.gd" id="12_x8bcf"]
 
 [sub_resource type="Animation" id="Animation_cjgvt"]
 length = 0.001
@@ -62,6 +63,7 @@ z_index = 1
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_eque4")
 faction = 1
 animation_player = NodePath("AnimationPlayer")
@@ -91,14 +93,14 @@ debug_color = Color(0.992157, 0, 0.235294, 0.419608)
 
 [node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
 position = Vector2(-1, 2)
-tracked_enemies_range = 60.0
-discovery_range = 50.0
+tracked_enemies_range = 110.0
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("this_entity", "initial_state", "hurtbox_component", "health_component", "search_radius", "state_label") instance=ExtResource("5_ibxij")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("this_entity", "initial_state", "hurtbox_component", "health_component", "conversion_component", "search_radius", "state_label") instance=ExtResource("5_ibxij")]
 this_entity = NodePath("..")
 initial_state = NodePath("SpawnState")
 hurtbox_component = NodePath("../HurtboxComponent")
 health_component = NodePath("../HealthComponent")
+conversion_component = NodePath("../ConversionComponent")
 search_radius = NodePath("../SearchRadius")
 state_label = NodePath("../StateLabel")
 
@@ -117,6 +119,16 @@ move_speed = 20.0
 
 [node name="SpawnState" type="Node" parent="StateMachine"]
 script = ExtResource("10_ob4bv")
+
+[node name="FollowState" type="Node" parent="StateMachine"]
+script = ExtResource("12_x8bcf")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
+debug_enabled = true
+
+[node name="NavigationTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -28.3333

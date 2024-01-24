@@ -60,7 +60,7 @@ func _physics_process(delta):
 			
 			if current_focus_time >= focus_time_needed:
 				current_focus_time = 0
-				print_debug("Focused on the same target for the focus time needed")
+				#print_debug("Focused on the same target for the focus time needed")
 				# Add code here to refer to the targets conversion component
 				# and reduce their gauge after making that conversion component
 				var target_conversion_component = collider.GetConversionComponent() as ConversionComponent
