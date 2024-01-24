@@ -13,11 +13,17 @@ func setup():
 	this_entity = get_parent().get_this_entity()
 	
 	defend_target_distance = get_parent().defend_target_distance
+	
+	GameData.follow_player.connect(on_follow_player)
+	GameData.follow_target_set.connect(on_follow_target_set)
+	GameData.attack_target_command.connect(on_attack_target_command)
+	get_parent().get_search_radius().tracking_enemy.connect(on_tracking_enemy)
 
 
 func enter():
 	defend_target = GameData.follow_target_position
 	get_parent().get_state_label().text = "Defend Target"
+	this_entity.velocity = Vector2.ZERO
 
 
 func update(delta):
@@ -25,3 +31,18 @@ func update(delta):
 	if distance_to_target >= defend_target_distance:
 		transitioned.emit(self, "state_follow_target")
 
+
+func on_follow_player():
+	transitioned.emit(self, "state_follow_player")
+
+
+func on_follow_target_set():
+	transitioned.emit(self, "state_follow_target")
+
+
+func on_attack_target_command():
+	transitioned.emit(self, "state_attack_target")
+
+
+func on_tracking_enemy():
+	transitioned.emit(self, "state_combat")

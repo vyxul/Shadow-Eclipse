@@ -38,6 +38,10 @@ func get_npc_attack_component() -> NpcAttackComponent:
 	return $NpcAttackComponent
 
 
+func get_search_radius() -> SearchRadius:
+	return $SearchRadius
+
+
 func get_weapon_origin():
 	return marker_2d.global_position
 

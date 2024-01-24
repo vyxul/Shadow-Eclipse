@@ -92,4 +92,23 @@ func on_navigation_timer_timeout():
 
 
 func on_not_tracking_enemy():
+	var previous_state = get_parent().previous_state
+	var last_follower_state = get_parent().last_follower_state
+
+	if last_follower_state is state_follow_player:
+		transitioned.emit(self, "state_follow_player")
+		return
+		
+	if last_follower_state is state_follow_target:
+		transitioned.emit(self, "state_follow_target")
+		return
+		
+	if last_follower_state is state_defend_target:
+		transitioned.emit(self, "state_defend_target")
+		return
+
+	if last_follower_state is state_attack_target:
+		transitioned.emit(self, "state_follow_player")
+		return
+
 	transitioned.emit(self, "state_idle")

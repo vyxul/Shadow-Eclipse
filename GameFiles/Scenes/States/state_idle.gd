@@ -3,6 +3,7 @@ class_name state_idle
 
 
 var this_entity: CharacterBody2D
+var this_search_radius: SearchRadius
 var this_animation_player: AnimationPlayer
 
 var idle_time
@@ -38,6 +39,7 @@ func switch_to_wander():
 func setup():
 	# set up component references
 	this_entity = get_parent().get_this_entity()
+	this_search_radius = get_parent().get_search_radius()
 	this_animation_player = get_parent().get_animation_player()
 	
 	# set up state properties
@@ -53,7 +55,8 @@ func enter():
 	switch_to_idle()
 	
 	# check to see if needs to go into combat right away
-	get_parent().get_search_radius().search_surroundings()
+	#get_parent().get_search_radius().search_surroundings()
+	this_search_radius.reset()
 
 
 func exit():

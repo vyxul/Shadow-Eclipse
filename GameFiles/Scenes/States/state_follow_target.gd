@@ -25,8 +25,8 @@ func setup():
 	this_navigation_timer.timeout.connect(on_navigation_timer_timeout)
 	GameData.follow_player.connect(on_follow_player)
 	GameData.attack_target_command.connect(on_attack_target_command)
-	# set up event for when npc reaches target, move onto defend state?
 	this_navigation_agent.target_reached.connect(on_target_reached)
+	get_parent().get_search_radius().tracking_enemy.connect(on_tracking_enemy)
 
 
 func enter():
@@ -73,3 +73,7 @@ func on_attack_target_command():
 
 func on_target_reached():
 	transitioned.emit(self, "state_defend_target")
+
+
+func on_tracking_enemy():
+	transitioned.emit(self, "state_combat")

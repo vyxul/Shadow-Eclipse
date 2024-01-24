@@ -29,13 +29,11 @@ func setup():
 	this_navigation_timer.timeout.connect(on_navigation_timer_timeout)
 	GameData.follow_target_set.connect(on_follow_target_set)
 	GameData.attack_target_command.connect(on_attack_target_command)
+	get_parent().get_search_radius().tracking_enemy.connect(on_tracking_enemy)
 	
 
 
 func enter():
-	# can move next 2 lines to conversion component
-	this_entity.faction = GameData.Factions.SHADOW
-	this_entity.collision_layer = 8
 	follow_marker = this_conversion_component.follow_marker as Marker2D
 	
 	get_parent().get_state_label().text = "Follow Player"
@@ -74,3 +72,7 @@ func on_follow_target_set():
 
 func on_attack_target_command():
 	transitioned.emit(self, "state_attack_target")
+
+
+func on_tracking_enemy():
+	transitioned.emit(self, "state_combat")

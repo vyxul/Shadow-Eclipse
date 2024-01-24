@@ -39,6 +39,7 @@ class_name StateMachine
 
 var current_state: State
 var previous_state: State
+var last_follower_state: State = null
 var states: Dictionary = {}
 
 #region Getter Functions
@@ -113,9 +114,24 @@ func on_child_transition(state, new_state_name: String):
 	if current_state:
 		current_state.exit()
 		previous_state = current_state
+		if is_state_follower(current_state):
+			last_follower_state = current_state
+		
 		
 	current_state = new_state
 	new_state.enter()
+
+
+func is_state_follower(state: State):
+	if state is state_follow_player:
+		return true
+	if state is state_follow_target:
+		return true
+	if state is state_defend_target:
+		return true
+	if state is state_attack_target:
+		return true
+	return false
 
 
 func on_hurt():

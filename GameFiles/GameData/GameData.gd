@@ -4,6 +4,7 @@ signal follow_target_set
 signal follow_player
 signal attack_target_command
 signal npc_died(npc: NonPlayerCharacter)
+signal npc_converted(npc: NonPlayerCharacter)
 
 enum Factions {SHADOW, LIGHT, MONSTER}
 
@@ -34,6 +35,10 @@ func emit_attack_target_command():
 
 func emit_npc_died(npc: NonPlayerCharacter):
 	npc_died.emit(npc)
+
+
+func emit_npc_converted(npc: NonPlayerCharacter):
+	npc_converted.emit(npc)
 
 
 func add_target_under_mouse(target: NonPlayerCharacter):

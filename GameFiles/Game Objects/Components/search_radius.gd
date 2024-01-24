@@ -27,6 +27,8 @@ func _ready():
 	discovery_collision_shape_2d.shape.radius = discovery_range
 	raycast_length = tracked_enemies_range
 	ray_cast_2d.position = Vector2.ZERO
+	
+	GameData.npc_converted.connect(on_npc_converted)
 
 
 func _physics_process(delta):
@@ -100,10 +102,62 @@ func get_closest_tracked_enemy():
 
 
 func search_surroundings():
-	if !tracked_enemies_in_range.is_empty():
-		currently_tracking_enemy = false
-		emit_tracking_enemy()
+	#if !tracked_enemies_in_range.is_empty():
+		#currently_tracking_enemy = false
+		#emit_tracking_enemy()
 		
+	var overlapping_bodies = discovery_area_2d.get_overlapping_bodies()
+	var this_parent = get_parent()
+	for body in overlapping_bodies:
+		if body == this_parent:
+			continue
+			
+		var this_faction = this_parent.get_faction()
+		var that_faction = body.get_faction()
+		var body_is_ally = GameData.is_faction_ally(this_faction, that_faction)
+		if body_is_ally:
+			continue
+		
+		if !enemies_in_discovery_range.has(body):
+			enemies_in_discovery_range.append(body)
+
+
+func clear_lists():
+	enemies_in_discovery_range.clear()
+	tracked_enemies_in_range.clear()
+
+
+func reset():
+	clear_lists()
+	emit_not_tracking_enemy()
+	search_surroundings()
+
+
+func remove_same_faction_from_list():
+	var this_parent = get_parent()
+	var discovery_range_purge_list = []
+	for enemy in enemies_in_discovery_range:
+		var this_faction = this_parent.get_faction()
+		var that_faction = enemy.get_faction()
+		var enemy_is_ally = GameData.is_faction_ally(this_faction, that_faction)
+
+		if enemy_is_ally:
+			discovery_range_purge_list.append(enemy)
+	
+	var tracked_enemies_purge_list = []
+	for enemy in tracked_enemies_in_range:
+		
+		var this_faction = this_parent.get_faction()
+		var that_faction = enemy.get_faction()
+		var enemy_is_ally = GameData.is_faction_ally(this_faction, that_faction)
+
+		if enemy_is_ally:
+			tracked_enemies_purge_list.append(enemy)
+	
+	for entity in discovery_range_purge_list:
+		enemies_in_discovery_range.erase(entity)
+	for entity in tracked_enemies_in_range:
+		tracked_enemies_in_range.erase(entity)
 #endregion
 
 
@@ -146,3 +200,7 @@ func _on_discovery_area_2d_body_exited(body):
 func _on_tracking_area_2d_body_exited(body):
 	remove_enemy_from_tracking(body)
 #endregion
+
+
+func on_npc_converted(npc: NonPlayerCharacter):
+	reset()

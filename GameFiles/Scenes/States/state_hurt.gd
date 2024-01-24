@@ -29,25 +29,21 @@ func update(delta):
 	
 	if timer <= 0:
 		hurtbox_component.collision_layer = 2
-		
-		var previous_state = get_parent().previous_state
+	
+		var last_follower_state = get_parent().last_follower_state
 		
 		# need to change to be enum check instead of string check later
-		if previous_state is state_spawn:
-			this_entity.collision_layer = 2
-			transitioned.emit(self, "state_spawn")
 		
-		if previous_state is state_idle:
-			transitioned.emit(self, "state_idle")
-		
-		if previous_state is state_combat:
-			transitioned.emit(self, "state_combat")
-		
-		if previous_state is state_follow_player:
+		if last_follower_state is state_follow_player:
 			transitioned.emit(self, "state_follow_player")
+			return
 		
-		if previous_state is state_follow_target:
+		if last_follower_state is state_follow_target:
 			transitioned.emit(self, "state_follow_target")
+			return
 		
-		if previous_state is state_attack_target:
+		if last_follower_state is state_attack_target:
 			transitioned.emit(self, "state_attack_target")
+			return
+			
+		transitioned.emit(self, "state_idle")
