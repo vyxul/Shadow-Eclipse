@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dimxkh5vbaxfx"]
+[gd_scene load_steps=28 format=3 uid="uid://dimxkh5vbaxfx"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_eque4"]
 [ext_resource type="Texture2D" uid="uid://uua45kiiiyr8" path="res://GameFiles/Assets/Art/Enemies/bandit/bandit_spritesheet.png" id="2_esfb5"]
@@ -8,14 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="4_nn6pb"]
 [ext_resource type="PackedScene" uid="uid://bx64g1nxqnxx8" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
 [ext_resource type="PackedScene" uid="uid://bxk0ha72ft7ep" path="res://GameFiles/Scenes/States/state_machine.tscn" id="5_ibxij"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyIdle.gd" id="6_hywir"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyHurt.gd" id="8_tu6pd"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyDeath.gd" id="9_rkc4m"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/SpawnState.gd" id="10_ob4bv"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyCombat.gd" id="11_13o03"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/FollowPlayerState.gd" id="13_bgu52"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/FollowTargetState.gd" id="14_jjpnn"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/AttackTargetState.gd" id="15_vtn6p"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_idle.gd" id="6_hywir"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_hurt.gd" id="8_tu6pd"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_death.gd" id="9_rkc4m"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_spawn.gd" id="10_ob4bv"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_combat.gd" id="11_13o03"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_follow_player.gd" id="13_bgu52"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_follow_target.gd" id="14_jjpnn"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_attack_target.gd" id="15_vtn6p"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_defend_target.gd" id="16_cut3i"]
 
 [sub_resource type="Animation" id="Animation_cjgvt"]
 length = 0.001
@@ -211,41 +212,43 @@ debug_color = Color(0.839216, 0.384314, 0, 0.207843)
 [node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
 tracked_enemies_range = 110.0
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("this_entity", "initial_state", "hurtbox_component", "health_component", "conversion_component", "search_radius", "state_label", "animation_player") instance=ExtResource("5_ibxij")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "this_entity", "hurtbox_component", "health_component", "conversion_component", "npc_attack_component", "search_radius", "state_label", "animation_player") instance=ExtResource("5_ibxij")]
+initial_state = NodePath("state_spawn")
 this_entity = NodePath("..")
-initial_state = NodePath("SpawnState")
 hurtbox_component = NodePath("../HurtboxComponent")
 health_component = NodePath("../HealthComponent")
 conversion_component = NodePath("../ConversionComponent")
+npc_attack_component = NodePath("../NpcAttackComponent")
 search_radius = NodePath("../SearchRadius")
 state_label = NodePath("../StateLabel")
 animation_player = NodePath("../AnimationPlayer")
 
-[node name="EnemyIdle" type="Node" parent="StateMachine"]
-script = ExtResource("6_hywir")
-
-[node name="EnemyHurt" type="Node" parent="StateMachine"]
-script = ExtResource("8_tu6pd")
-
-[node name="EnemyDeath" type="Node" parent="StateMachine"]
-script = ExtResource("9_rkc4m")
-
-[node name="EnemyCombat" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_attack_component")]
-script = ExtResource("11_13o03")
-npc_attack_component = NodePath("../../NpcAttackComponent")
-move_speed = 20.0
-
-[node name="SpawnState" type="Node" parent="StateMachine"]
+[node name="state_spawn" type="Node" parent="StateMachine"]
 script = ExtResource("10_ob4bv")
 
-[node name="FollowPlayerState" type="Node" parent="StateMachine"]
+[node name="state_idle" type="Node" parent="StateMachine"]
+script = ExtResource("6_hywir")
+
+[node name="state_combat" type="Node" parent="StateMachine"]
+script = ExtResource("11_13o03")
+
+[node name="state_hurt" type="Node" parent="StateMachine"]
+script = ExtResource("8_tu6pd")
+
+[node name="state_death" type="Node" parent="StateMachine"]
+script = ExtResource("9_rkc4m")
+
+[node name="state_follow_player" type="Node" parent="StateMachine"]
 script = ExtResource("13_bgu52")
 
-[node name="FollowTargetState" type="Node" parent="StateMachine"]
+[node name="state_follow_target" type="Node" parent="StateMachine"]
 script = ExtResource("14_jjpnn")
 
-[node name="AttackTargetState" type="Node" parent="StateMachine"]
+[node name="state_attack_target" type="Node" parent="StateMachine"]
 script = ExtResource("15_vtn6p")
+
+[node name="state_defend_target" type="Node" parent="StateMachine"]
+script = ExtResource("16_cut3i")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0

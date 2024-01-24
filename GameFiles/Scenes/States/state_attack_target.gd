@@ -1,25 +1,40 @@
 extends State
-class_name AttackTargetState
+class_name state_attack_target
 
-@export var move_speed: float = 50
-@export var attack_cooldown: float = 1
 
 var this_entity: NonPlayerCharacter
 var this_npc_attack_component: NpcAttackComponent
 var this_navigation_agent: NavigationAgent2D
 var this_navigation_timer: Timer
+
+var attack_target_move_speed
+var attack_cooldown
+
 var focus_target: NonPlayerCharacter
 var attack_cd_timer: float = 0
-
 var in_attack_target: bool = false
-var is_setup: bool = false
 var is_attacking: bool = false
 
 
-func enter():
-	if !is_setup:
-		setup()
+func setup():
+	this_entity = get_parent().get_this_entity() as NonPlayerCharacter
+	this_npc_attack_component = this_entity.get_npc_attack_component() as NpcAttackComponent
+	this_navigation_agent = this_entity.get_navigation_agent() as NavigationAgent2D
+	this_navigation_timer = this_entity.get_navigation_timer() as Timer
 	
+	attack_target_move_speed = get_parent().attack_target_move_speed
+	attack_cooldown = get_parent().attack_cooldown
+	
+	# set up event listeners
+	this_navigation_timer.timeout.connect(on_navigation_timer_timeout)
+	this_npc_attack_component.attack_finished.connect(on_attack_finished)
+	GameData.follow_target_set.connect(on_follow_target_set)
+	GameData.follow_player.connect(on_follow_player)
+	GameData.attack_target_command.connect(on_attack_target_command)
+	GameData.npc_died.connect(on_npc_died)
+
+
+func enter():
 	focus_target = GameData.get_attack_target()
 	get_parent().get_animation_player().play("walk")
 	get_parent().get_state_label().text = "Attack Target"
@@ -29,10 +44,10 @@ func enter():
 
 
 func exit():
-	this_navigation_timer.stop()
 	focus_target = null
-	in_attack_target = false
 	get_parent().get_animation_player().play("RESET")
+	in_attack_target = false
+	this_navigation_timer.stop()
 
 
 func update(delta):
@@ -53,26 +68,8 @@ func physics_update(delta):
 	#this_entity.velocity = move_direction.normalized() * move_speed
 	
 	var move_direction = this_entity.to_local(this_navigation_agent.get_next_path_position()).normalized()
-	this_entity.velocity = move_direction * move_speed
+	this_entity.velocity = move_direction * attack_target_move_speed
 	this_entity.get_sprite().flip_h = this_entity.velocity.x < 0
-
-
-func setup():
-	this_entity = get_parent().get_this_entity() as NonPlayerCharacter
-	this_npc_attack_component = this_entity.get_npc_attack_component() as NpcAttackComponent
-	this_navigation_agent = this_entity.get_navigation_agent() as NavigationAgent2D
-	this_navigation_timer = this_entity.get_navigation_timer() as Timer
-	
-	this_navigation_timer.timeout.connect(on_navigation_timer_timeout)
-	this_npc_attack_component.attack_finished.connect(on_attack_finished)
-	
-	# set up connections for follower commands
-	GameData.follow_target_set.connect(on_follow_target_set)
-	GameData.follow_player.connect(on_follow_player)
-	GameData.attack_target_command.connect(on_attack_target_command)
-	GameData.npc_died.connect(on_npc_died)
-	
-	is_setup = true
 
 
 func make_path() -> void:
@@ -94,19 +91,18 @@ func on_attack_finished():
 
 
 func on_follow_player():
-	transitioned.emit(self, "followplayerstate")
+	transitioned.emit(self, "state_follow_player")
 
 
 func on_follow_target_set():
-	transitioned.emit(self, "followtargetstate")
+	transitioned.emit(self, "state_follow_target")
 
 
 func on_attack_target_command():
-	transitioned.emit(self, "attacktargetstate")
+	focus_target = GameData.get_attack_target()
 
 
 func on_npc_died(npc: NonPlayerCharacter):
-	print_debug("here")
 	if focus_target == npc:
 		focus_target = null
-		transitioned.emit(self, "followplayerstate")
+		transitioned.emit(self, "state_follow_player")

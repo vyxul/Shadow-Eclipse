@@ -1,16 +1,20 @@
 extends State
-class_name SpawnState
+class_name state_spawn
 
 var this_entity: CharacterBody2D
+var animation_player: AnimationPlayer
+
+
+func setup():
+	this_entity = get_parent().get_this_entity()
+	animation_player = this_entity.get_animation_player() as AnimationPlayer
+	animation_player.animation_finished.connect(on_animation_finished)
+
 
 func enter():
 	# play spawn animation
-	this_entity = get_parent().get_this_entity()
-	var animation_player = this_entity.get_animation_player() as AnimationPlayer
 	get_parent().get_state_label().text = "Spawn"
-	animation_player.animation_finished.connect(on_animation_finished)
 	animation_player.play("spawn")
-	pass
 
 
 func exit():
@@ -21,4 +25,4 @@ func exit():
 func on_animation_finished(animation):
 	if animation == "spawn":
 		#print_debug("finished spawn animation")
-		transitioned.emit(self, "enemyidle")
+		transitioned.emit(self, "state_idle")
