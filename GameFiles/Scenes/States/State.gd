@@ -3,6 +3,11 @@ class_name State
 
 signal transitioned
 
+
+func setup():
+	pass
+
+
 func enter():
 	pass
 
@@ -17,3 +22,4 @@ func update(_delta: float):
 
 func physics_update(_delta: float):
 	pass
+

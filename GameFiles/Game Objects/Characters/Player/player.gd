@@ -12,11 +12,15 @@ class_name Player
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var mana_component: ManaComponent = $ManaComponent
 
+@onready var attack_flag = preload("res://GameFiles/Game Objects/UI Object/FollowerFlags/attack_flag.tscn")
+@onready var follow_target_flag = preload("res://GameFiles/Game Objects/UI Object/FollowerFlags/follow_target_flag.tscn")
+
 # another way i could spread out summons is:
 # 360 degrees / number of followers, create a point at each multiple
 # helps with even spreading
 var followers: Dictionary = {}
 var follower_markers: Array = []
+var follower_count: int = 0
 
 
 func _ready():
@@ -25,6 +29,8 @@ func _ready():
 		followers[index] = null
 		follower_markers.append(child)
 		index += 1
+	
+	GameData.npc_died.connect(on_npc_died)
 		
 	GameData.player_hp_ui_ready.connect(on_player_hp_ui_ready)
 	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)
@@ -46,7 +52,13 @@ func _physics_process(delta):
 		ranged_attack()
 
 	if Input.is_action_just_pressed("x"):
-		command_followers_move()
+		command_follow_target()
+		
+	if Input.is_action_just_pressed("c"):
+		command_follow_player()
+	
+	if Input.is_action_just_pressed("z"):
+		command_attack_target()
 
 func move(delta: float):
 	var move_direction = Input.get_vector("left", "right", "up", "down")
@@ -91,6 +103,7 @@ func set_follower_slot(follower_marker: Marker2D, follower: NonPlayerCharacter):
 		index += 1
 	
 	followers[key] = follower
+	follower_count += 1
 
 
 func update_follower_markers():
@@ -147,9 +160,68 @@ func on_player_hp_ui_ready():
 
 func on_player_mp_ui_ready():
 	emit_player_mp()
-func command_followers_move():
+
+
+func command_follow_target():
+	print_debug("follow target")
 	var mouse_position = get_global_mouse_position()
 	var nav_agent = $NavigationAgent2D
 	nav_agent.target_position = mouse_position
 	if nav_agent.is_target_reachable():
-		GameData.follow_target_set.emit(mouse_position)
+		GameData.emit_follow_target(mouse_position)
+		
+		var flags_layer = get_tree().get_first_node_in_group("flags")
+		for child in flags_layer.get_children():
+			child.queue_free()
+			
+		var follow_target_flag_instance = follow_target_flag.instantiate()
+		flags_layer.add_child(follow_target_flag_instance)
+		follow_target_flag_instance.global_position = mouse_position
+
+
+func command_follow_player():
+	print_debug("follow player")
+	if follower_count == 0:
+		return
+		
+	GameData.emit_follow_player()
+		
+	var flags_layer = get_tree().get_first_node_in_group("flags")
+	for child in flags_layer.get_children():
+		child.queue_free()
+
+
+func command_attack_target():
+	print_debug("attack target")
+	if follower_count == 0:
+		return
+		
+	var target: NonPlayerCharacter
+	var target_count = GameData.targets_under_mouse.size()
+	if target_count > 0:
+		var mouse_position = get_global_mouse_position()
+		target = GameData.closest_target_to_mouse(mouse_position)
+	
+	if target:
+		GameData.set_attack_target(target)
+		GameData.emit_attack_target_command()
+		
+		var flags_layer = get_tree().get_first_node_in_group("flags")
+		for child in flags_layer.get_children():
+			child.queue_free()
+			
+		var attack_flag_instance = attack_flag.instantiate()
+		flags_layer.add_child(attack_flag_instance)
+		attack_flag_instance.attack_target = target
+
+
+func on_npc_died(npc: NonPlayerCharacter):
+	for key in followers.keys():
+		if followers[key] == npc:
+			followers[key] == null
+			follower_count -= 1
+	
+	if follower_count == 0:
+		var flags_layer = get_tree().get_first_node_in_group("flags")
+		for child in flags_layer.get_children():
+			child.queue_free()

@@ -18,3 +18,7 @@ func damage(dmg: int):
 
 	health_component.damage(dmg)
 	hurt.emit()
+
+
+func get_faction() -> GameData.Factions:
+	return get_parent().get_faction()

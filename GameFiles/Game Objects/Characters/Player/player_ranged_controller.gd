@@ -17,5 +17,6 @@ func attack():
 	player_range_attack_instance.set_projectile_time(projectile_time)
 	player_range_attack_instance.set_damage(range_attack_damage)
 	player_range_attack_instance.set_pierce_limit(range_attack_pierce_limit)
+	player_range_attack_instance.set_faction(GameData.Factions.SHADOW)
 	
 	player_range_attack_instance.attack()

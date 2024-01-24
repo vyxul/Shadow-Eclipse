@@ -1,40 +1,40 @@
 [gd_scene load_steps=11 format=3 uid="uid://bs7ixulkrq5ho"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Fountain/darkness_tile.gd" id="1_6068e"]
-[ext_resource type="Texture2D" uid="uid://c56u1n242i5r5" path="res://GameFiles/Resources/Tilesets/DarknessTiles.png" id="1_oqdpt"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="2_5vul1"]
+[ext_resource type="Texture2D" path="res://GameFiles/Assets/Art/Map/DarknessTiles.png" id="2_dfrgd"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="4_7errf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d7lfg"]
-atlas = ExtResource("1_oqdpt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeiyh"]
+atlas = ExtResource("2_dfrgd")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6yql1"]
-atlas = ExtResource("1_oqdpt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c831s"]
+atlas = ExtResource("2_dfrgd")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7yew"]
-atlas = ExtResource("1_oqdpt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_way2n"]
+atlas = ExtResource("2_dfrgd")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6juf0"]
-atlas = ExtResource("1_oqdpt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyr7n"]
+atlas = ExtResource("2_dfrgd")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fvtnk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d7lfg")
+"texture": SubResource("AtlasTexture_yeiyh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6yql1")
+"texture": SubResource("AtlasTexture_c831s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k7yew")
+"texture": SubResource("AtlasTexture_way2n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6juf0")
+"texture": SubResource("AtlasTexture_xyr7n")
 }],
 "loop": true,
 "name": &"default",
