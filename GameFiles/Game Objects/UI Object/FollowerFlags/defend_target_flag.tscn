@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://w1cw6a2j6d31"]
+
+[ext_resource type="Texture2D" uid="uid://dbi4836imp7uw" path="res://GameFiles/Assets/Art/UI/FollowerFlags/follower_flags_spritesheet.png" id="1_4pqmc"]
+
+[node name="DefendTargetFlag" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -18)
+texture = ExtResource("1_4pqmc")
+hframes = 3

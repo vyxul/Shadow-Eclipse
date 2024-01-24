@@ -14,6 +14,7 @@ var current_wander_time: float
 enum {IDLE, WANDERING}
 var current_state
 
+var is_setup: bool = false
 
 func randomize_wander():
 	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -21,15 +22,13 @@ func randomize_wander():
 
 
 func enter():
+	if !is_setup:
+		setup()
+	
 	get_parent().get_state_label().text = "Idle"
-	this_entity = get_parent().get_this_entity()
-	animation_player = get_parent().get_animation_player()
 	current_idle_time = idle_time
 	current_state = IDLE
 	animation_player.play("idle")
-	
-	# set up connections with search_radius
-	get_parent().get_search_radius().tracking_enemy.connect(on_tracking_enemy)
 	
 	# check to see if needs to go into combat right away
 	get_parent().get_search_radius().search_surroundings()
@@ -65,6 +64,16 @@ func physics_update(delta: float):
 				var new_velocity = move_direction * move_speed
 				this_entity.velocity = new_velocity
 				this_entity.get_sprite().flip_h = new_velocity.x < 0
+
+
+func setup():
+	this_entity = get_parent().get_this_entity()
+	animation_player = get_parent().get_animation_player()
+	
+	# set up connections with search_radius
+	get_parent().get_search_radius().tracking_enemy.connect(on_tracking_enemy)
+	
+	is_setup = true
 
 
 func switch_state():

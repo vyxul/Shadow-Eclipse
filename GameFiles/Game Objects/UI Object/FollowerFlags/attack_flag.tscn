@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ta7hqokndp6"]
+
+[ext_resource type="Script" path="res://GameFiles/Game Objects/UI Object/FollowerFlags/attack_flag.gd" id="1_8wh40"]
+[ext_resource type="Texture2D" uid="uid://dbi4836imp7uw" path="res://GameFiles/Assets/Art/UI/FollowerFlags/follower_flags_spritesheet.png" id="1_obuih"]
+
+[node name="AttackFlag" type="Node2D"]
+script = ExtResource("1_8wh40")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -18)
+texture = ExtResource("1_obuih")
+hframes = 3
+frame = 1

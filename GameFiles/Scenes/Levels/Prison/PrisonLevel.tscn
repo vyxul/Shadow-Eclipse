@@ -19,6 +19,8 @@ layer_1/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0
 
 [node name="Entities" type="Node2D" parent="."]
 
+[node name="Flags" type="Node2D" parent="Entities" groups=["flags"]]
+
 [node name="Projectiles" type="Node2D" parent="Entities" groups=["projectiles"]]
 
 [node name="NPC" type="Node2D" parent="Entities"]
