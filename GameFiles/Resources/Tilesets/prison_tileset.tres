@@ -1,6 +1,20 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cdnlcy1rvyrqi"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cdnlcy1rvyrqi"]
 
 [ext_resource type="Texture2D" uid="uid://box5fjdga22j5" path="res://GameFiles/Assets/Art/Map/prison_tileset.png" id="1_bnxnl"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1gogu"]
+vertices = PackedVector2Array(2, 2, -2, 2, -2, -2, 2, -2)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0u8pu"]
+vertices = PackedVector2Array(2, 2, -2, 2, -2, -2, 2, -2)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qok6x"]
 texture = ExtResource("1_bnxnl")
@@ -121,26 +135,32 @@ texture = ExtResource("1_bnxnl")
 2:4/0/y_sort_origin = 7
 2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1gogu")
 3:4/0 = 0
 3:4/0/y_sort_origin = 7
 3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 4:4/0 = 0
 4:4/0/y_sort_origin = 7
 4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 5:4/0 = 0
 5:4/0/y_sort_origin = 7
 5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:4/0/physics_layer_0/angular_velocity = 0.0
+5:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 6:4/0 = 0
 6:4/0/y_sort_origin = 7
 6:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:4/0/physics_layer_0/angular_velocity = 0.0
+6:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 7:4/0 = 0
 7:4/0/y_sort_origin = 7
 7:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:4/0/physics_layer_0/angular_velocity = 0.0
+7:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 1:5/0 = 0
 1:5/0/y_sort_origin = 7
 1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -150,34 +170,42 @@ texture = ExtResource("1_bnxnl")
 2:5/0/y_sort_origin = 7
 2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:5/0/physics_layer_0/angular_velocity = 0.0
+2:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 3:5/0 = 0
 3:5/0/y_sort_origin = 7
 3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 4:5/0 = 0
 4:5/0/y_sort_origin = 7
 4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 5:5/0 = 0
 5:5/0/y_sort_origin = 7
 5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 6:5/0 = 0
 6:5/0/y_sort_origin = 7
 6:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:5/0/physics_layer_0/angular_velocity = 0.0
+6:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 7:5/0 = 0
 7:5/0/y_sort_origin = 7
 7:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:5/0/physics_layer_0/angular_velocity = 0.0
+7:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0u8pu")
 0:6/0 = 0
 0:6/0/y_sort_origin = 7
 0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:6/0/physics_layer_0/angular_velocity = 0.0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, 0, 0, 0, 8, -8, 8)
 1:6/0 = 0
 1:6/0/y_sort_origin = 7
 1:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:6/0/physics_layer_0/angular_velocity = 0.0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 0, 8, 0, 0, -8, 0)
 2:6/0 = 0
 2:6/0/y_sort_origin = 7
 2:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -252,4 +280,5 @@ texture = ExtResource("1_bnxnl")
 [resource]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_qok6x")
