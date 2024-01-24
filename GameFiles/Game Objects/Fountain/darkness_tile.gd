@@ -4,8 +4,11 @@ class_name DarknessTile
 
 signal TileDestroyed(_Tile : Node2D)
 signal TileReceivedDamage(_damage : int)
-
+@onready var  AnimSprite = $AnimatedSprite2D
 var Coordinates : int = 0
+
+func _ready():
+	AnimSprite.frame = randi() % 4
 
 func SetCoordinates(_coordinates):
 	Coordinates = _coordinates
@@ -21,7 +24,6 @@ func ShowBehindParent():
 
 func _on_health_component_health_depleted():
 	TileDestroyed.emit(self)
-
 
 func _on_hurtbox_component_hurt():
 	pass # Replace with function body.
