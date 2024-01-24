@@ -9,7 +9,6 @@ class_name NonPlayerCharacter
 
 
 func _ready():
-	conversion_component.conversion_hp_depleted.connect(on_conversion_hp_depleted)
 	hurtboxComponent.SetConversionComponent(conversion_component)
 
 func _process(delta):

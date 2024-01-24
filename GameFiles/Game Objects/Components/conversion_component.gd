@@ -9,10 +9,11 @@ signal new_follower_added(entity: NonPlayerCharacter)
 @export var max_conversion_hp: int = 1
 @export var current_conversion_hp: int = 1
 @export var start_at_max_conversion_hp: bool = true
+@export var CanParentBecomeFollower: bool = true
 
 var converted: bool = false
 
-var this_entity: NonPlayerCharacter
+var this_entity: Node2D
 var player: Player
 var follow_marker: Marker2D
 
@@ -32,12 +33,13 @@ func check_conversion_hp_in_range():
 		player = get_tree().get_first_node_in_group("player") as Player
 		follow_marker = player.get_empty_follower_slot()
 		
-		if !follow_marker:
-			no_follow_slot_available.emit(this_entity)
-		
-		else:
-			player.set_follower_slot(follow_marker, this_entity)
-			new_follower_added.emit(this_entity)
+		if CanParentBecomeFollower:
+			if !follow_marker:
+				no_follow_slot_available.emit(this_entity)
+			
+			else:
+				player.set_follower_slot(follow_marker, this_entity)
+				new_follower_added.emit(this_entity)
 
 
 func conversion_damage(convert_dmg: int):
