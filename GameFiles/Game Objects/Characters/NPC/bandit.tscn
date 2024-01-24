@@ -9,10 +9,10 @@
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyIdle.gd" id="6_hywir"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyHurt.gd" id="8_tu6pd"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyDeath.gd" id="9_rkc4m"]
-[ext_resource type="Texture2D" uid="uid://dopmhlwnubn3n" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="10_byu28"]
+[ext_resource type="Texture2D" uid="uid://dg4r5cpf0vlj" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="10_byu28"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/SpawnState.gd" id="10_ob4bv"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/States/EnemyCombat.gd" id="11_13o03"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/FollowState.gd" id="12_x8bcf"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/FollowState.gd" id="12_jp6ml"]
 
 [sub_resource type="Animation" id="Animation_cjgvt"]
 length = 0.001
@@ -59,10 +59,10 @@ radius = 9.0
 height = 26.0
 
 [node name="bandit" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
+z_index = 1
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_eque4")
 faction = 1
 animation_player = NodePath("AnimationPlayer")
@@ -77,7 +77,6 @@ position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_4fmbg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qnwby")]
-max_health_points = 3
 
 [node name="ConversionComponent" parent="." instance=ExtResource("3_12554")]
 
@@ -93,7 +92,8 @@ debug_color = Color(0.992157, 0, 0.235294, 0.419608)
 
 [node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
 position = Vector2(-1, 2)
-tracked_enemies_range = 110.0
+tracked_enemies_range = 60.0
+discovery_range = 50.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("this_entity", "initial_state", "hurtbox_component", "health_component", "conversion_component", "search_radius", "state_label") instance=ExtResource("5_ibxij")]
 this_entity = NodePath("..")
@@ -121,14 +121,7 @@ move_speed = 20.0
 script = ExtResource("10_ob4bv")
 
 [node name="FollowState" type="Node" parent="StateMachine"]
-script = ExtResource("12_x8bcf")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 8.0
-debug_enabled = true
-
-[node name="NavigationTimer" type="Timer" parent="."]
-wait_time = 0.1
+script = ExtResource("12_jp6ml")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -28.3333
@@ -147,3 +140,7 @@ texture = ExtResource("10_byu28")
 hframes = 13
 vframes = 6
 frame = 4
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavigationTimer" type="Timer" parent="."]

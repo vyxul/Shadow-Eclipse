@@ -4,6 +4,3 @@
 
 [node name="ConversionComponent" type="Node"]
 script = ExtResource("1_xcnp2")
-max_conversion_hp = null
-current_conversion_hp = null
-start_at_max_conversion_hp = null

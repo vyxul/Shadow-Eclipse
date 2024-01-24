@@ -4,7 +4,12 @@ class_name NonPlayerCharacter
 @export var faction: GameData.Factions
 
 @export var animation_player: AnimationPlayer
+@onready var conversion_component: ConversionComponent = $ConversionComponent
+@onready var hurtboxComponent: HurtboxComponent = $HurtboxComponent
 
+
+func _ready():
+	hurtboxComponent.SetConversionComponent(conversion_component)
 
 func _process(delta):
 	move_and_slide()
