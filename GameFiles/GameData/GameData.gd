@@ -7,6 +7,7 @@ signal player_mana_empty
 
 signal player_hp_ui_ready
 signal player_mp_ui_ready
+signal follow_target_set(follow_target_position: Vector2)
 
 enum Factions {SHADOW, LIGHT, MONSTER}
 

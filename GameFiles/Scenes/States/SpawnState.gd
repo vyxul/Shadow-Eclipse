@@ -20,5 +20,5 @@ func exit():
 
 func on_animation_finished(animation):
 	if animation == "spawn":
-		print_debug("finished spawn animation")
+		#print_debug("finished spawn animation")
 		transitioned.emit(self, "enemyidle")

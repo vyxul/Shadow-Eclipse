@@ -71,14 +71,22 @@ r={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"echo":false,"script":null)
 ]
 }
+x={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
 2d_physics/layer_1="world"
 2d_physics/layer_2="entity"
 2d_physics/layer_3="interactable"
-2d_physics/layer_4="player weapon"
-2d_physics/layer_5="enemy weapon"
+2d_physics/layer_4="followers"
+
+[navigation]
+
+2d/default_edge_connection_margin=16.0
 
 [rendering]
 
