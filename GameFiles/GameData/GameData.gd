@@ -10,6 +10,7 @@ enum Factions {SHADOW, LIGHT, MONSTER}
 var targets_under_mouse: Array
 var follow_target_position
 var attack_target: NonPlayerCharacter
+var player_score: int
 
 func is_faction_ally(faction_1: Factions, faction_2: Factions): 
 	if faction_1 == faction_2:
@@ -66,3 +67,7 @@ func set_attack_target(target: NonPlayerCharacter):
 
 func get_attack_target() -> NonPlayerCharacter:
 	return attack_target
+
+
+func add_score(score: int):
+	player_score += score

@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name NonPlayerCharacter
 
 @export var faction: GameData.Factions
-@export var attack_component: NpcAttackComponent
+@export var kill_score: int = 1
 
 @onready var marker_2d = $Marker2D
 
