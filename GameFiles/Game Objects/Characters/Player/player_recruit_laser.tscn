@@ -52,6 +52,7 @@ tangential_accel_min = -50.0
 tangential_accel_max = 50.0
 
 [node name="PlayerRecruitLaser" type="RayCast2D"]
+visible = false
 target_position = Vector2(200, 0)
 collision_mask = 3
 collide_with_areas = true

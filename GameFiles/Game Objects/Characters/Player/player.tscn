@@ -60,6 +60,7 @@ laser_range = 128.0
 focus_time_needed = 0.5
 
 [node name="FollowerMarkers" type="Node2D" parent="."]
+visible = false
 
 [node name="Marker2D_1" type="Marker2D" parent="FollowerMarkers"]
 position = Vector2(0, -24)
@@ -86,6 +87,7 @@ position = Vector2(-24, 0)
 position = Vector2(-16, -16)
 
 [node name="FollowerRaycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="Follower_Raycast_1" type="RayCast2D" parent="FollowerRaycasts"]
 target_position = Vector2(0, -24)
@@ -113,8 +115,9 @@ target_position = Vector2(-16, -16)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -7)
+position = Vector2(0, 3)
 texture = ExtResource("2_pacww")
+offset = Vector2(0, -11)
 region_enabled = true
 region_rect = Rect2(7, 169, 16, 23)
 

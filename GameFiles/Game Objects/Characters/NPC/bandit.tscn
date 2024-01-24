@@ -211,6 +211,7 @@ shape = SubResource("CapsuleShape2D_c2tat")
 debug_color = Color(0.839216, 0.384314, 0, 0.207843)
 
 [node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
+visible = false
 tracked_enemies_range = 110.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "this_entity", "hurtbox_component", "health_component", "conversion_component", "npc_attack_component", "search_radius", "state_label", "animation_player") instance=ExtResource("5_ibxij")]
