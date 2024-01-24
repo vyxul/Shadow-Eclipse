@@ -15,6 +15,7 @@ var attack_cd_timer: float = 0
 
 var in_combat: bool = false
 var is_attacking: bool = false
+var is_follower: bool
 
 
 func setup():
@@ -33,6 +34,9 @@ func setup():
 	this_npc_attack_component.attack_finished.connect(on_attack_finished)
 	this_navigation_timer.timeout.connect(on_navigation_timer_timeout)
 	get_parent().get_search_radius().not_tracking_enemy.connect(on_not_tracking_enemy)
+	GameData.follow_player.connect(on_follow_player)
+	GameData.follow_target_set.connect(on_follow_target_set)
+	GameData.attack_target_command.connect(on_attack_target_command)
 	
 	focus_target = this_search_radius.get_closest_tracked_enemy() as CharacterBody2D
 
@@ -43,6 +47,7 @@ func enter():
 
 	in_combat = true
 	this_navigation_timer.start()
+	is_follower = get_parent().is_follower
 
 
 func exit():
@@ -94,21 +99,45 @@ func on_navigation_timer_timeout():
 func on_not_tracking_enemy():
 	var previous_state = get_parent().previous_state
 	var last_follower_state = get_parent().last_follower_state
+	var is_follower = get_parent().is_follower
+	
+	if is_follower:
+		if last_follower_state is state_follow_player:
+			transitioned.emit(self, "state_follow_player")
+			return
+			
+		if last_follower_state is state_follow_target:
+			transitioned.emit(self, "state_follow_target")
+			return
+			
+		if last_follower_state is state_defend_target:
+			transitioned.emit(self, "state_defend_target")
+			return
 
-	if last_follower_state is state_follow_player:
-		transitioned.emit(self, "state_follow_player")
-		return
-		
-	if last_follower_state is state_follow_target:
-		transitioned.emit(self, "state_follow_target")
-		return
-		
-	if last_follower_state is state_defend_target:
-		transitioned.emit(self, "state_defend_target")
-		return
+		if last_follower_state is state_attack_target:
+			transitioned.emit(self, "state_follow_player")
+			return
 
-	if last_follower_state is state_attack_target:
-		transitioned.emit(self, "state_follow_player")
-		return
+	else:
+		transitioned.emit(self, "state_idle")
 
-	transitioned.emit(self, "state_idle")
+
+func on_follow_player():
+	if !is_follower:
+		return
+	
+	transitioned.emit(self, "state_follow_player")
+
+
+func on_follow_target_set():
+	if !is_follower:
+		return
+	
+	transitioned.emit(self, "state_follow_target")
+
+
+func on_attack_target_command():
+	if !is_follower:
+		return
+	
+	transitioned.emit(self, "state_attack_target")

@@ -40,6 +40,7 @@ class_name StateMachine
 var current_state: State
 var previous_state: State
 var last_follower_state: State = null
+var is_follower: bool = false
 var states: Dictionary = {}
 
 #region Getter Functions
@@ -161,3 +162,4 @@ func on_new_follower_added(entity: NonPlayerCharacter):
 	var new_state = states.get("state_follow_player")
 	new_state.enter()
 	current_state = new_state
+	is_follower = true
