@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bftntgk4bife1"]
+[gd_scene load_steps=11 format=3 uid="uid://bftntgk4bife1"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_laser.gd" id="1_bqyua"]
+[ext_resource type="Texture2D" uid="uid://ct5rddj2bv5h7" path="res://GameFiles/Assets/Art/Player/Black_Particle.png" id="2_a34ur"]
 [ext_resource type="Texture2D" uid="uid://c0fd02t2g1yco" path="res://GameFiles/Assets/Art/Player/glowing_circle.png" id="2_lvrly"]
 
 [sub_resource type="Gradient" id="Gradient_7nnxk"]
@@ -20,8 +21,8 @@ curve = SubResource("Curve_s03w8")
 particle_flag_disable_z = true
 spread = 70.0
 flatness = 0.4
-initial_velocity_min = 90.0
-initial_velocity_max = 90.0
+initial_velocity_min = 16.0
+initial_velocity_max = 16.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_62ybr")
 color = Color(0, 0, 0, 1)
@@ -33,8 +34,8 @@ emission_shape_offset = Vector3(200, 0, 0)
 direction = Vector3(-1, 0, 0)
 spread = 70.0
 flatness = 0.5
-initial_velocity_min = 50.0
-initial_velocity_max = 70.0
+initial_velocity_min = 8.0
+initial_velocity_max = 24.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_62ybr")
 color = Color(0, 0, 0, 1)
@@ -56,25 +57,26 @@ target_position = Vector2(200, 0)
 collision_mask = 3
 collide_with_areas = true
 script = ExtResource("1_bqyua")
+laser_width = 10.0
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 200, 0)
-width = 25.0
 default_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 
 [node name="CastingParticles" type="GPUParticles2D" parent="."]
-emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_rnqw2")
-texture = ExtResource("2_lvrly")
+texture = ExtResource("2_a34ur")
 
 [node name="CollisionParticles" type="GPUParticles2D" parent="."]
-emitting = false
+modulate = Color(1, 1, 1, 0.807843)
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_dtqwc")
-texture = ExtResource("2_lvrly")
+texture = ExtResource("2_a34ur")
 
 [node name="BeamParticles" type="GPUParticles2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_g78b4")
 texture = ExtResource("2_lvrly")

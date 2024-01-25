@@ -58,6 +58,8 @@ func set_max_hearts(player_max_hp):
 
 
 func update_hearts_display(player_current_hp):
+	if player_current_hp < 0:
+		return
 	#player_current_hp = PlayerStats.stats.current_hp
 	
 	# get counts of full, partial, and empty hearts
@@ -81,7 +83,7 @@ func update_hearts_display(player_current_hp):
 		index += 1
 	# partial heart, should only be 1 if not 0
 	if partial_heart_count == 1:
-		var heart_percentage = float(player_current_hp % hp_per_heart) / hp_per_heart
+		var heart_percentage = float(fmod(player_current_hp, hp_per_heart) / hp_per_heart)
 		hearts[index].set_heart_partial(heart_percentage)
 		index += 1
 	# empty hearts, could be 0 or up to max_hearts - 1

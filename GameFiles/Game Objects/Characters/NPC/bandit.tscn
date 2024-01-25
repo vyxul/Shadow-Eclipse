@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://uua45kiiiyr8" path="res://GameFiles/Assets/Art/Enemies/bandit/bandit_spritesheet.png" id="2_esfb5"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_qnwby"]
 [ext_resource type="PackedScene" uid="uid://crnse58x3gauc" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="3_12554"]
-[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Components/npc_attack_component.tscn" id="4_ik222"]
+[ext_resource type="PackedScene" uid="uid://c8nx2wo8waryo" path="res://GameFiles/Game Objects/Components/npc_attack_component.tscn" id="4_ik222"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="4_nn6pb"]
 [ext_resource type="PackedScene" uid="uid://bx64g1nxqnxx8" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
 [ext_resource type="PackedScene" uid="uid://bxk0ha72ft7ep" path="res://GameFiles/Scenes/States/state_machine.tscn" id="5_ibxij"]
@@ -172,6 +172,7 @@ radius = 9.0
 height = 26.0
 
 [node name="bandit" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 2
 collision_mask = 11
 motion_mode = 1
@@ -191,6 +192,7 @@ shape = SubResource("CapsuleShape2D_4fmbg")
 max_health_points = 3.0
 
 [node name="ConversionComponent" parent="." instance=ExtResource("3_12554")]
+max_conversion_hp = 10
 
 [node name="NpcAttackComponent" parent="." instance=ExtResource("4_ik222")]
 attack_scene_path = "res://GameFiles/Game Objects/Characters/NPC/bandit_melee_attack.tscn"
@@ -209,6 +211,7 @@ shape = SubResource("CapsuleShape2D_c2tat")
 debug_color = Color(0.839216, 0.384314, 0, 0.207843)
 
 [node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
+visible = false
 tracked_enemies_range = 110.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "this_entity", "hurtbox_component", "health_component", "conversion_component", "npc_attack_component", "search_radius", "state_label", "animation_player") instance=ExtResource("5_ibxij")]

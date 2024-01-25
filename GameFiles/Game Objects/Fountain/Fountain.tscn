@@ -15,8 +15,9 @@ script = ExtResource("1_rheew")
 faction = 1
 darknessTile = ExtResource("7_rqkjj")
 
-[node name="HurtboxComponent" parent="." instance=ExtResource("2_sgnlf")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_sgnlf")]
 position = Vector2(-7.45058e-09, 0)
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 visible = false

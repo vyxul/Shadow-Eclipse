@@ -79,6 +79,5 @@ offset_right = 7.0
 offset_bottom = 8.0
 max_value = 1.0
 step = 0.01
-value = 1.0
 fill_mode = 3
 texture_progress = ExtResource("4_fvuu5")

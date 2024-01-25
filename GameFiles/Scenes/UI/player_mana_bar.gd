@@ -56,6 +56,8 @@ func set_max_orbs(player_max_mana):
 
 
 func update_orbs_display(player_current_mana):
+	if player_current_mana < 0:
+		return
 	#player_current_mana = PlayerStats.stats.current_mana
 	
 	# get counts of full, partial, and empty orbs

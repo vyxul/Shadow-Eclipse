@@ -138,7 +138,7 @@ func emit_player_mp():
 	GameData.player_mana_changed.emit(mana_component.current_mana_points, mana_component.max_mana_points)
 
 
-func _on_health_component_health_lost():
+func _on_health_component_health_lost(health_lost: float):
 	emit_player_hp()
 
 
