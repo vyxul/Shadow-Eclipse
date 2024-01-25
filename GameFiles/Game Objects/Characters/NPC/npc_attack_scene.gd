@@ -25,19 +25,27 @@ func get_faction() -> GameData.Factions:
 	return attack_faction
 
 
-func set_attack_position(this_entity: NonPlayerCharacter, target: CharacterBody2D):
+func set_attack_position(this_entity: NonPlayerCharacter, direction: Vector2):
 	var entity_position = this_entity.get_weapon_origin() as Vector2
-	var weapon_direction = entity_position.direction_to(target.position)
-	var weapon_position = entity_position + (weapon_direction * extension_range)
-	var weapon_angle = weapon_direction.angle()
+	var weapon_position = entity_position + (direction * extension_range)
+	var weapon_angle = direction.angle()
 	global_position = weapon_position
 	rotation = weapon_angle + (PI/2)
 
 
 func attack(this_entity: NonPlayerCharacter, target: CharacterBody2D):
-	set_attack_position(this_entity, target)
+	var entity_position = this_entity.get_weapon_origin() as Vector2
+	var target_direction = entity_position.direction_to(target.position)
+	set_attack_position(this_entity, target_direction)
 	var animation_player = $AnimationPlayer as AnimationPlayer
 	animation_player.play("attack")
+
+
+func attack_direction(this_entity: NonPlayerCharacter, direction: Vector2):
+	set_attack_position(this_entity, direction)
+	var animation_player = $AnimationPlayer as AnimationPlayer
+	animation_player.play("attack")
+	
 
 
 func emit_finished():

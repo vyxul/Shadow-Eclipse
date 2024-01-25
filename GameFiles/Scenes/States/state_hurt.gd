@@ -33,8 +33,13 @@ func update(delta):
 		var previous_state = get_parent().previous_state
 		var last_follower_state = get_parent().last_follower_state
 		var is_follower = get_parent().is_follower
+		var swarm_phase = this_entity.swarm_phase
 		
 	# need to change to be enum check instead of string check later
+		if swarm_phase && !is_follower:
+			transitioned.emit(self, "state_swarm_phase")
+			return
+	
 		if previous_state is state_combat:
 			transitioned.emit(self, "state_combat")
 			return

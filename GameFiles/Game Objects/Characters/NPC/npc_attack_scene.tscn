@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://rvsipgr7qdp1"]
+[gd_scene load_steps=2 format=3 uid="uid://dy8jgdcnw7i74"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc_attack_scene.gd" id="1_sxixg"]
 
