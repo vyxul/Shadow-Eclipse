@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player_melee_attack = preload("res://GameFiles/Game Objects/Characters/Player/player_melee_attack.tscn")
+@onready var audio_stream_player = $AudioStreamPlayer
 
 @export var melee_attack_damage: int = 1
 
@@ -18,6 +19,8 @@ func attack(player_sprite: Node):
 	player_melee_attack_instance.set_faction(GameData.Factions.SHADOW)
 	player_melee_attack_instance.finished.connect(on_finished)
 	player_melee_attack_instance.attack()
+	
+	audio_stream_player.play()
 	
 	var player = get_parent()
 	var animation_player = player.animation_player

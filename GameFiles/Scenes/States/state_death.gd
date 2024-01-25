@@ -11,7 +11,6 @@ func setup():
 
 func enter():
 	this_entity.velocity = Vector2.ZERO
-	print_debug(this_entity.name + " entered EnemyDeath state")
 	this_animation_player.play("death")
 	
 	await this_animation_player.animation_finished

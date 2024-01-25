@@ -16,6 +16,8 @@ signal PlayerMoved(NewPosition : Vector2)
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var mana_component: ManaComponent = $ManaComponent
 @onready var animation_player = $AnimationPlayer
+@onready var audio_stream_player = $HealthComponent/AudioStreamPlayer
+
 
 @onready var attack_flag = preload("res://GameFiles/Game Objects/UI Object/FollowerFlags/attack_flag.tscn")
 @onready var follow_target_flag = preload("res://GameFiles/Game Objects/UI Object/FollowerFlags/follow_target_flag.tscn")
@@ -166,6 +168,7 @@ func emit_player_mp():
 
 
 func _on_health_component_health_lost(health_lost: float):
+	audio_stream_player.play()
 	emit_player_hp()
 
 
