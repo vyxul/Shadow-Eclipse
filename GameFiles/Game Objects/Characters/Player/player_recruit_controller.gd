@@ -4,6 +4,7 @@ extends Node2D
 @onready var timer = $Timer
 
 @export var mana_component: ManaComponent
+@export var hurtbox_component: HurtboxComponent
 @export var player: CharacterBody2D
 @export var laser_range: float = 500
 @export var focus_time_needed: float = 1
@@ -18,6 +19,7 @@ func _ready():
 	set_physics_process(false)
 	player_recruitment.line_2d.points[1] = Vector2.ZERO
 	timer.wait_time = mana_use_timer
+	hurtbox_component.hurt.connect(on_hurt)
 
 
 func _process(delta):
@@ -54,3 +56,8 @@ func _on_timer_timeout():
 		return
 		
 	mana_component.use(mana_cost)
+
+
+func on_hurt():
+	if is_casting:
+		set_is_casting(false)
