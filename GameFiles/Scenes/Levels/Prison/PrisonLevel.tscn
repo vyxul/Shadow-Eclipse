@@ -87,7 +87,7 @@ mouse_filter = 2
 
 [node name="Fountain" parent="." instance=ExtResource("5_lghrh")]
 z_index = 1
-position = Vector2(766, 749)
+position = Vector2(770, 752)
 scale = Vector2(2, 2)
 
 [node name="Fog" type="Sprite2D" parent="."]
