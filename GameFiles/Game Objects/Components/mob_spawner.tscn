@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4m6igx5c48o1"]
+[gd_scene load_steps=4 format=3 uid="uid://ul8nkucwgivb"]
 
 [ext_resource type="Script" path="res://GameFiles/Scripts/MobSpawner.gd" id="1_vovge"]
 [ext_resource type="Texture2D" uid="uid://kdrfyyyjdhgc" path="res://GameFiles/Assets/Art/Map/prison_tileset_2.png" id="2_8jxtu"]

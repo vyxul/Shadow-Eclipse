@@ -43,7 +43,12 @@ func attack():
 	var animation_player = player.animation_player
 	animation_player.play("attack", -1, 2)
 	var attack_direction = get_global_mouse_position() - player.global_position
-	player.sprite_2d.flip_h = attack_direction.x < 0
+	if attack_direction.x < 0:
+		player.sprite_2d.flip_h = true
+		player.direction = -1
+	elif attack_direction.x > 0:
+		player.sprite_2d.flip_h = false
+		player.direction = 1
 
 func _on_timer_timeout():
 	is_attacking = false

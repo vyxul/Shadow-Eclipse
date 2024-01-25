@@ -7,6 +7,12 @@
 [node name="PlayerResourceBars" type="CanvasLayer"]
 
 [node name="PlayerIcon" parent="." instance=ExtResource("2_jlqfy")]
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.178
+offset_right = 0.0
+offset_bottom = -0.0800018
+mouse_filter = 2
 
 [node name="PlayerHeartBar" parent="." instance=ExtResource("2_rrjye")]
 offset_left = 94.0
@@ -14,6 +20,7 @@ offset_top = 27.0
 offset_right = 94.0
 offset_bottom = 27.0
 scale = Vector2(1.5, 1.5)
+mouse_filter = 2
 
 [node name="PlayerManaBar" parent="." instance=ExtResource("3_sa83v")]
 offset_left = 93.0
@@ -21,6 +28,7 @@ offset_top = 51.0
 offset_right = 93.0
 offset_bottom = 51.0
 scale = Vector2(1.5, 1.5)
+mouse_filter = 2
 
 [node name="hp_Label" type="Label" parent="."]
 offset_left = 76.0

@@ -91,7 +91,7 @@ script = ExtResource("1_qk60t")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("1_28x2u")]
 collision_layer = 0
-collision_mask = 10
+collision_mask = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(1, -10)
