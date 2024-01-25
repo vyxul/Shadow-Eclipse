@@ -1,8 +1,6 @@
 extends Node2D
 
-@onready var LoadingScreen = $"../LoadingScreen"
 @onready var SettingsScreen = $"../SettingsMenu"
-@onready var Interactables = $Interactables
 @onready var continue_texture = $"../Interactables/ContinueButton/ContinueTexture"
 
 var Game = "res://GameFiles/Scenes/Levels/Prison/PrisonLevel.tscn"
@@ -24,7 +22,7 @@ func _on_start_button_pressed():
 	SceneChanger.ChangeScene(Game)
 
 func ShowStartMenuButtons():
-	Interactables.visible = true
+	pass
 
 func _on_continue_button_pressed():
 	SceneChanger.ChangeScene(Game)

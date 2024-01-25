@@ -29,5 +29,8 @@ func exit():
 
 func on_animation_finished(animation):
 	if animation == "spawn":
-		#print_debug("finished spawn animation")
-		transitioned.emit(self, "state_idle")
+		var swarm_phase = this_entity.swarm_phase
+		if swarm_phase:
+			transitioned.emit(self, "state_swarm_phase")
+		else:
+			transitioned.emit(self, "state_idle")

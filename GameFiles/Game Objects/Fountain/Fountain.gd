@@ -11,13 +11,13 @@ extends Node2D
 @onready var healthComponent: HealthComponent = $HealthComponent	
 @onready var conversion_component: ConversionComponent = $ConversionComponent
 @onready var hurtboxComponent: HurtboxComponent = $HurtboxComponent
-@onready var FountainOfDarkness = $"FountainOfLight Image/FountainOfDarkness Image"
+@onready var FountainOfDarkness = $"FountainOfLight Image/FountainOfLight Upper/FountainOfDarkness Image"
 @onready var _Timer = $Timer
-@onready var Converted_30 = $"FountainOfLight Image/Converted_30"
-@onready var Converted_60 = $"FountainOfLight Image/Converted_60"
-@onready var Health_60 = $"FountainOfLight Image/Health_60"
+@onready var Converted_30 = $"FountainOfLight Image/FountainOfLight Upper/Converted_30"
+@onready var Converted_60 = $"FountainOfLight Image/FountainOfLight Upper/Converted_60"
+@onready var Health_60 = $"FountainOfLight Image/FountainOfLight Upper/Health_60"
 
-var tileHalfSize = 16
+var tileHalfSize = GameData.GetGameTileSize() / 2
 var topLeftWorldLocation : Vector2i = Vector2i.ZERO
 var TileCoordinates  = []
 var LocationsToSpawnDarkness  = [] 
@@ -42,14 +42,15 @@ func _ready():
 	
 
 func OnFactionChanged(Faction : GameData.Factions):
-	match Faction: #{SHADOW = 0, LIGHT  = 1, MONSTER = 2} 
-		0: 
+	match Faction: 
+		GameData.Factions.SHADOW: 
 			var StartIndex = GetStartIndex()
 			var Location = GetLocationFromIndex(StartIndex)
 			AddNodeAndAttach(Vector3(Location.x, Location.y, StartIndex ))
 			Expand()
 			_Timer.start()
-		1:
+			GameState.ChangeGameState(GameState.EGameState.Expansion)
+		GameData.Factions.LIGHT:
 			FountainOfDarkness.visible = false
 			_Timer.stop()
 
@@ -92,13 +93,13 @@ func _on_conversion_component_conversion_hp_lost(max_hp, current_hp, dmg):
 	elif (ConvHealthPercentage < 0.7):
 		Converted_30.visible = true
 		Converted_60.visible = false
-	print("Fountain Health: " + str(current_hp) + " out of " + str(max_hp))
+	#print("Fountain Health: " + str(current_hp) + " out of " + str(max_hp))
 
 func _on_darkness_tile_tile_destroyed(_Tile):	
 	var coordinates = _Tile.GetCoordinates()
 	TileCoordinates[coordinates] = 0
 	remove_child(_Tile)
-	print("Fountain Health " + str($HealthComponent.current_health_points))
+	#print("Fountain Health " + str($HealthComponent.current_health_points))
 
 func _on_darkness_tile_tile_received_damage(_damage):
 	healthComponent.damage(_damage)

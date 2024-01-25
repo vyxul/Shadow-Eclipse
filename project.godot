@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SceneChanger="*res://GameFiles/GameSystems/SceneChanger.gd"
 GameSettings="*res://GameFiles/GameData/GameSettings.gd"
 GameData="*res://GameFiles/GameData/GameData.gd"
+GameState="*res://GameFiles/GameSystems/GameState/GameState.tscn"
 
 [display]
 
@@ -94,6 +95,7 @@ z={
 2d_physics/layer_2="entity"
 2d_physics/layer_3="interactable"
 2d_physics/layer_4="followers"
+2d_physics/layer_5="shadow"
 
 [navigation]
 

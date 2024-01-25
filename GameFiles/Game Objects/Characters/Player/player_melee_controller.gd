@@ -23,7 +23,12 @@ func attack(player_sprite: Node):
 	var animation_player = player.animation_player
 	animation_player.play("attack")
 	var attack_direction = get_global_mouse_position() - player.global_position
-	player.sprite_2d.flip_h = attack_direction.x < 0
+	if attack_direction.x < 0:
+		player.sprite_2d.flip_h = true
+		player.direction = -1
+	elif attack_direction.x > 0:
+		player.sprite_2d.flip_h = false
+		player.direction = 1
 
 
 func on_finished():

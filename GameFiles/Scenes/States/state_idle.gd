@@ -52,7 +52,13 @@ func setup():
 
 
 func enter():
-	switch_to_idle()
+	match(GameState.EGameState):
+		GameState.EGameState.Conquer:
+			switch_to_idle()
+		GameState.EGameState.Expansion:
+			transitioned.emit(self, "state_combat")
+	
+	get_parent().get_state_label().text = "Idle/Wander"
 	
 	# check to see if needs to go into combat right away
 	#get_parent().get_search_radius().search_surroundings()

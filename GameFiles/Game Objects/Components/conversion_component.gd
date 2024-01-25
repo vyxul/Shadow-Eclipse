@@ -38,6 +38,7 @@ func check_conversion_hp_in_range():
 		this_entity.faction = GameData.Factions.SHADOW
 		if this_entity is NonPlayerCharacter:
 			this_entity.collision_layer = 8
+			this_entity.collision_mask -= 16
 			GameData.emit_npc_converted(this_entity)
 		
 		if CanParentBecomeFollower:

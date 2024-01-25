@@ -75,9 +75,13 @@ func _ready():
 
 
 func _process(delta):
-	if is_on_wall() || is_on_ceiling() || is_on_floor():
+	if is_colliding_with_terrain():
 		queue_free()
 	move_and_slide()
+
+
+func is_colliding_with_terrain():
+	return is_on_wall() || is_on_ceiling() || is_on_floor()
 
 
 func on_enemy_hit():

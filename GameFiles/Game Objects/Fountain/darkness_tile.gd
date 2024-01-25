@@ -1,5 +1,4 @@
-extends Node2D
-
+extends CharacterBody2D
 class_name DarknessTile
 
 signal TileDestroyed(_Tile : Node2D)
@@ -36,5 +35,5 @@ func set_faction(_faction: GameData.Factions):
 	faction = _faction
 
 
-func get_faction() -> int:
+func get_faction() -> GameData.Factions:
 	return faction

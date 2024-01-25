@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ul8nkucwgivb"]
+[gd_scene load_steps=3 format=3 uid="uid://b4m6igx5c48o1"]
 
 [ext_resource type="Script" path="res://GameFiles/Scripts/MobSpawner.gd" id="1_vovge"]
 [ext_resource type="Texture2D" uid="uid://kdrfyyyjdhgc" path="res://GameFiles/Assets/Art/Map/prison_tileset_2.png" id="2_8jxtu"]
-[ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/NPC/bandit.tscn" id="2_tnkx1"]
 
 [node name="MobSpawner" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_vovge")
-EnemyToSpawn = ExtResource("2_tnkx1")
 maxEnemies = 20
 spawnRadius = 30
 

@@ -44,11 +44,11 @@ func setup():
 func enter():
 	get_parent().get_animation_player().play("walk")
 	get_parent().get_state_label().text = "Combat"
-
+	
 	in_combat = true
 	this_navigation_timer.start()
 	is_follower = get_parent().is_follower
-
+	
 
 func exit():
 	in_combat = false
@@ -75,7 +75,7 @@ func physics_update(delta):
 	
 	var move_direction = this_entity.to_local(this_navigation_agent.get_next_path_position()).normalized()
 	this_entity.velocity = move_direction * combat_move_speed
-	this_entity.get_sprite().flip_h = this_entity.velocity.x < 0
+	#this_entity.get_sprite().flip_h = this_entity.velocity.x < 0
 
 
 func on_attack_finished():
