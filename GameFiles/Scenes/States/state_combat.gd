@@ -44,11 +44,11 @@ func setup():
 func enter():
 	get_parent().get_animation_player().play("walk")
 	get_parent().get_state_label().text = "Combat"
-
+	
 	in_combat = true
 	this_navigation_timer.start()
 	is_follower = get_parent().is_follower
-
+	
 
 func exit():
 	in_combat = false

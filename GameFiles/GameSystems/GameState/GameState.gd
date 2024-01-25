@@ -5,7 +5,7 @@ enum EGameState {Conquer, Expansion}
 signal SpawnEnemy
 
 @onready var EnemySpawnTimer = $EnemySpawnTimer
-@export var GameState : EGameState = EGameState.Conquer
+@export var _Game_State : EGameState = EGameState.Conquer
 @export var ConquerSpawnTimer : float = 30
 @export var ExpansionSpawnTimer : float = 4
 
@@ -21,10 +21,10 @@ func _process(delta):
 		EGameState.Expansion:
 			ProcessExpansion(delta)
 	
-func ChangeGameState(gameState):
-	GameState = gameState
+func ChangeGameState(gameState : EGameState):
+	_Game_State = gameState
 	EnemySpawnTimer.stop()
-	match (GameState):
+	match (gameState):
 		EGameState.Conquer:
 			EnemySpawnTimer.start(ConquerSpawnTimer)
 		EGameState.Expansion:
@@ -40,7 +40,8 @@ func SendAllEnemiesToFountain():
 	pass
 
 func GetGameState() -> EGameState :
-	return GameState
+	return _Game_State
 
 func _on_enemy_spawn_timer_timeout():
 	SpawnEnemy.emit()
+

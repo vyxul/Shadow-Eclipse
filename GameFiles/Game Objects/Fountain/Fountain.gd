@@ -17,7 +17,7 @@ extends Node2D
 @onready var Converted_60 = $"FountainOfLight Image/Converted_60"
 @onready var Health_60 = $"FountainOfLight Image/Health_60"
 
-var tileHalfSize = 16
+var tileHalfSize = GameData.GetGameTileSize() / 2
 var topLeftWorldLocation : Vector2i = Vector2i.ZERO
 var TileCoordinates  = []
 var LocationsToSpawnDarkness  = [] 
@@ -42,14 +42,15 @@ func _ready():
 	
 
 func OnFactionChanged(Faction : GameData.Factions):
-	match Faction: #{SHADOW = 0, LIGHT  = 1, MONSTER = 2} 
-		0: 
+	match Faction: 
+		GameData.Factions.SHADOW: 
 			var StartIndex = GetStartIndex()
 			var Location = GetLocationFromIndex(StartIndex)
 			AddNodeAndAttach(Vector3(Location.x, Location.y, StartIndex ))
 			Expand()
 			_Timer.start()
-		1:
+			GameState.ChangeGameState(GameState.EGameState.Expansion)
+		GameData.Factions.LIGHT:
 			FountainOfDarkness.visible = false
 			_Timer.stop()
 

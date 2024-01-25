@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal PlayerMoved(NewPosition : Vector2)
+
 @export var faction: GameData.Factions = GameData.Factions.SHADOW
 @export var player_speed: float = 500
 @export var run_speed_multiplier: float = 1.5
@@ -74,8 +76,11 @@ func move(delta: float):
 	var target_velocity = move_direction * move_speed
 	#velocity = velocity.lerp(target_velocity, 1 - exp(-delta * 5))
 	velocity = target_velocity
-	
+		
 	move_and_slide()
+	
+	if velocity.abs() > Vector2.ZERO:
+		PlayerMoved.emit(global_position)
 
 
 func get_weapon_origin():

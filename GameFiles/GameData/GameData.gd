@@ -19,6 +19,7 @@ var targets_under_mouse: Array
 var follow_target_position
 var attack_target: NonPlayerCharacter
 var player_score: int
+const TileSize = 32
 
 func is_faction_ally(faction_1: Factions, faction_2: Factions): 
 	if faction_1 == faction_2:
@@ -83,3 +84,7 @@ func get_attack_target() -> NonPlayerCharacter:
 
 func add_score(score: int):
 	player_score += score
+
+
+func GetGameTileSize() -> int:
+	return TileSize
