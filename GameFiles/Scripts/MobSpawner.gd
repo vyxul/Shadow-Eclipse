@@ -22,5 +22,4 @@ func spawn_ememy():
 		enemy_instance.translate(Vector2(rIntX, rIntY))
 	# Add the enemy instance as a child of the current node or another node
 		add_child(enemy_instance)
-		await get_tree().process_frame
 		enemy_instance.swarm_phase = true

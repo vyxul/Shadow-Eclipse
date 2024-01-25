@@ -174,7 +174,7 @@ radius = 8.0
 height = 26.0
 
 [node name="bandit" type="CharacterBody2D"]
-z_index = 1
+z_index = 5
 collision_layer = 2
 collision_mask = 27
 motion_mode = 1
@@ -197,7 +197,6 @@ max_health_points = 3.0
 max_conversion_hp = 10
 
 [node name="NpcAttackComponent" parent="." instance=ExtResource("4_ik222")]
-collision_mask = 26
 attack_scene = ExtResource("5_t204a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NpcAttackComponent"]
@@ -285,7 +284,7 @@ vframes = 4
 region_rect = Rect2(23, 29, 16, 19)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 
 [node name="state_attack_player" type="Node" parent="."]
 script = ExtResource("19_3j7b8")

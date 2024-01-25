@@ -10,7 +10,7 @@ var this_navigation_timer: Timer
 var attack_target_move_speed
 var attack_cooldown
 
-var focus_target: Player
+var focus_target: Node2D
 var attack_cd_timer: float = 0
 var in_attack_target: bool = false
 var is_attacking: bool = false
@@ -21,7 +21,12 @@ func setup():
 	this_npc_attack_component = this_entity.get_npc_attack_component() as NpcAttackComponent
 	this_navigation_agent = this_entity.get_navigation_agent() as NavigationAgent2D
 	this_navigation_timer = this_entity.get_navigation_timer() as Timer
-	focus_target = get_tree().get_first_node_in_group("player")
+	
+	var rand_number = randi_range(0, 1)
+	if rand_number == 0:
+		focus_target = get_tree().get_first_node_in_group("player")
+	elif rand_number == 1:
+		focus_target = get_tree().get_first_node_in_group("fountain")
 	
 	attack_target_move_speed = get_parent().attack_target_move_speed
 	attack_cooldown = get_parent().attack_cooldown
@@ -52,7 +57,7 @@ func update(delta):
 	#if this_npc_attack_component.is_body_in_attack_range(focus_target) && (attack_cd_timer <= 0):
 	if is_colliding_with_terrain() && attack_cd_timer <= 0:
 		is_attacking = true
-		this_npc_attack_component.attack(focus_target)
+		this_npc_attack_component.attack_direction(this_entity.velocity.normalized())
 		attack_cd_timer = attack_cooldown
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://41gmpj5u34w8"]
+[gd_scene load_steps=10 format=3 uid="uid://41gmpj5u34w8"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Fountain/Fountain.gd" id="1_rheew"]
 [ext_resource type="Texture2D" uid="uid://fg3xakyhlamx" path="res://GameFiles/Assets/Art/World Objects/everything.png" id="2_c75j0"]
@@ -9,20 +9,29 @@
 [ext_resource type="PackedScene" uid="uid://bs7ixulkrq5ho" path="res://GameFiles/Game Objects/Fountain/darkness_tile.tscn" id="7_rqkjj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rfk82"]
+radius = 11.25
+height = 34.0
 
-[node name="Fountain" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d0pl5"]
+radius = 8.0
+height = 32.0
+
+[node name="Fountain" type="StaticBody2D" groups=["fountain"]]
+z_index = 5
+collision_mask = 0
 script = ExtResource("1_rheew")
 faction = 1
 darknessTile = ExtResource("7_rqkjj")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_sgnlf")]
 position = Vector2(-7.45058e-09, 0)
+collision_layer = 17
+collision_mask = 0
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-visible = false
 position = Vector2(1.49012e-08, 7)
-rotation = 1.55509
+rotation = -1.57079
 scale = Vector2(0.8, 1)
 shape = SubResource("CapsuleShape2D_rfk82")
 
@@ -31,51 +40,66 @@ texture = ExtResource("2_c75j0")
 region_enabled = true
 region_rect = Rect2(385, 2, 30, 29)
 
-[node name="FountainOfDarkness Image" type="Sprite2D" parent="FountainOfLight Image"]
+[node name="FountainOfLight Upper" type="Sprite2D" parent="FountainOfLight Image"]
+z_index = 7
+position = Vector2(0, -5)
+texture = ExtResource("2_c75j0")
+region_enabled = true
+region_rect = Rect2(395, 2, 10, 19)
+
+[node name="FountainOfDarkness Image" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper"]
 visible = false
 modulate = Color(0, 0, 0, 0.67451)
 self_modulate = Color(0, 0, 0, 0.745098)
+position = Vector2(0, 5)
 texture = ExtResource("2_c75j0")
 region_enabled = true
 region_rect = Rect2(385, 2, 30, 29)
 
-[node name="DarkLight" type="Sprite2D" parent="FountainOfLight Image/FountainOfDarkness Image"]
+[node name="DarkLight" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper/FountainOfDarkness Image"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, -10)
 texture = ExtResource("3_r7an1")
 region_rect = Rect2(396, 2, 8, 9)
 
-[node name="Converted_30" type="Sprite2D" parent="FountainOfLight Image"]
+[node name="Converted_30" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper"]
 visible = false
 modulate = Color(0, 0, 0, 0.776471)
 self_modulate = Color(0, 0, 0, 0.956863)
-position = Vector2(0, 9)
+position = Vector2(0, 14)
 texture = ExtResource("2_c75j0")
 region_enabled = true
 region_rect = Rect2(385, 21, 30, 10)
 
-[node name="Converted_60" type="Sprite2D" parent="FountainOfLight Image"]
+[node name="Converted_60" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper"]
 visible = false
 modulate = Color(0, 0, 0, 0.776471)
 self_modulate = Color(0, 0, 0, 0.956863)
-position = Vector2(0, 5)
+position = Vector2(0, 10)
 texture = ExtResource("2_c75j0")
 region_enabled = true
 region_rect = Rect2(385, 12, 30, 19)
 
-[node name="Health_60" type="Sprite2D" parent="FountainOfLight Image"]
+[node name="Health_60" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper"]
 visible = false
+position = Vector2(0, 5)
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 3.0
 
 [node name="ConversionComponent" parent="." instance=ExtResource("4_fxn5n")]
+max_conversion_hp = 3
 current_conversion_hp = 3
 CanParentBecomeFollower = false
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_vuy3c")]
 max_health_points = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_d0pl5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="conversion_hp_depleted" from="ConversionComponent" to="." method="_on_conversion_component_conversion_hp_depleted"]
