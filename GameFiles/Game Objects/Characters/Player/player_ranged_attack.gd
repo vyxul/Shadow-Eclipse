@@ -75,6 +75,8 @@ func _ready():
 
 
 func _process(delta):
+	if is_on_wall() || is_on_ceiling() || is_on_floor():
+		queue_free()
 	move_and_slide()
 
 

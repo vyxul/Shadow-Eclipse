@@ -9,12 +9,17 @@ var base_bar_3 = preload("res://GameFiles/Assets/Art/UI/PlayerUI/006 base bar - 
 var player_mana_scene = preload("res://GameFiles/Scenes/UI/player_mana.tscn")
 
 var current_orbs_displayed: int = 0
-@export var mana_per_orb: int = 10
+@export var mana_per_orb: float = 10
+var updated_this_frame: bool = false
 
 func _ready():
 	#update_mana_display()
 	GameData.player_mana_changed.connect(update_mana_display)
 	GameData.player_mp_ui_ready.emit()
+
+
+func _process(delta):
+	updated_this_frame = false
 
 
 func clear_mana_display():
@@ -65,7 +70,7 @@ func update_orbs_display(player_current_mana):
 	var partial_orb_count = 0
 	# if player current mana is not cleanly divisible by mana_per_orb, 
 	# we have a partial orb
-	if ((player_current_mana % mana_per_orb) > 0):
+	if (fmod(player_current_mana, mana_per_orb) > 0):
 		partial_orb_count = 1
 	# empty orbs should just be whatever is left after subtracting 
 	# full and partial from total orb count
@@ -81,7 +86,7 @@ func update_orbs_display(player_current_mana):
 		index += 1
 	# partial orb, should only be 1 if not 0
 	if partial_orb_count == 1:
-		var mana_percentage = float(player_current_mana % mana_per_orb) / mana_per_orb
+		var mana_percentage = float(fmod(player_current_mana, mana_per_orb)) / mana_per_orb
 		orbs[index].set_mana_partial(mana_percentage)
 		index += 1
 	# empty orbs, could be 0 or up to max_orbs - 1
@@ -91,6 +96,13 @@ func update_orbs_display(player_current_mana):
 
 
 func update_mana_display(current_mana = 0, max_mana = 0):
+	if updated_this_frame:
+		return
+	
+	var mp_label = get_parent().get_node("mp_Label")
+	mp_label.text = str(current_mana)
+	
+	updated_this_frame = true
 	clear_mana_display()
 	# give time for clear_hp_display() to actually remove the old nodes
 	await get_tree().process_frame

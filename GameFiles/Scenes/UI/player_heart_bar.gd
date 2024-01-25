@@ -11,12 +11,17 @@ var player_heart_scene = preload("res://GameFiles/Scenes/UI/player_heart.tscn")
 
 var current_hearts_displayed: int = 0
 @export var hp_per_heart: float = 10
+var updated_this_frame: bool = false
 
 
 func _ready():
 	#update_hp_display()
 	GameData.player_health_changed.connect(update_hp_display)
 	GameData.player_hp_ui_ready.emit()
+
+
+func _process(delta):
+	updated_this_frame = false
 
 
 func clear_hp_display():
@@ -93,6 +98,12 @@ func update_hearts_display(player_current_hp):
 
 
 func update_hp_display(current_hp = 1, max_hp = 1):
+	if updated_this_frame:
+		return
+	
+	var hp_label = get_parent().get_node("hp_Label")
+	hp_label.text = str(current_hp)
+	
 	clear_hp_display()
 	# give time for clear_hp_display() to actually remove the old nodes
 	await get_tree().process_frame
