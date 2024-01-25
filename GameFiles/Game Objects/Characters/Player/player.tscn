@@ -223,5 +223,5 @@ libraries = {
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]
+[connection signal="mana_changed" from="ManaComponent" to="." method="_on_mana_component_mana_changed"]
 [connection signal="mana_depleted" from="ManaComponent" to="." method="_on_mana_component_mana_depleted"]
-[connection signal="mana_lost" from="ManaComponent" to="." method="_on_mana_component_mana_lost"]

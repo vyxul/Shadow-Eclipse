@@ -17,6 +17,12 @@ func attack():
 	if is_attacking:
 		return
 	
+	var enough_mana = mana_component.get_current_mana() >= mana_cost
+	if !enough_mana:
+		return
+		
+	mana_component.use(mana_cost)
+	
 	is_attacking = true
 	timer.wait_time = attack_cooldown
 	timer.start()

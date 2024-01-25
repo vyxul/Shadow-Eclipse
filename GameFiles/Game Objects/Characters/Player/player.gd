@@ -164,7 +164,7 @@ func _on_health_component_health_depleted():
 	GameData.player_died.emit()
 
 
-func _on_mana_component_mana_lost():
+func _on_mana_component_mana_changed():
 	emit_player_mp()
 
 
