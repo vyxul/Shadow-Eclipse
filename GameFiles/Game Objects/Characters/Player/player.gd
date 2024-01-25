@@ -9,8 +9,10 @@ class_name Player
 @onready var sprite_2d = $Sprite2D
 @onready var player_melee_controller = $PlayerMeleeController
 @onready var player_ranged_controller = $PlayerRangedController
+@onready var hurtbox_component = $HurtboxComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var mana_component: ManaComponent = $ManaComponent
+@onready var animation_player = $AnimationPlayer
 
 @onready var attack_flag = preload("res://GameFiles/Game Objects/UI Object/FollowerFlags/attack_flag.tscn")
 @onready var follow_target_flag = preload("res://GameFiles/Game Objects/UI Object/FollowerFlags/follow_target_flag.tscn")
@@ -21,6 +23,8 @@ class_name Player
 var followers: Dictionary = {}
 var follower_markers: Array = []
 var follower_count: int = 0
+var direction: int = 1
+var player_dead: bool = false
 
 
 func _ready():
@@ -36,15 +40,12 @@ func _ready():
 	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)
 
 
-func _process(delta):
-	#update_follower_markers()
-	pass
-
-
 func _physics_process(delta):
+	if player_dead:
+		return
 	
 	update_follower_markers()
-	move(delta)
+	move()
 	if Input.is_action_just_pressed("left_click"):
 		melee_attack()
 		
@@ -60,7 +61,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("z"):
 		command_attack_target()
 
-func move(delta: float):
+func move():
 	var move_direction = Input.get_vector("left", "right", "up", "down")
 	move_direction = move_direction.normalized()
 	
@@ -72,8 +73,20 @@ func move(delta: float):
 		move_speed = player_speed
 	
 	var target_velocity = move_direction * move_speed
-	#velocity = velocity.lerp(target_velocity, 1 - exp(-delta * 5))
 	velocity = target_velocity
+	
+	if !player_melee_controller.is_attacking && !player_ranged_controller.is_attacking:
+		if velocity == Vector2.ZERO:
+			animation_player.play("idle")
+		else:
+			animation_player.play("walk")
+		
+	if   velocity.x < 0 && direction == 1:
+		sprite_2d.flip_h = true
+		direction = -1
+	elif velocity.x > 0 && direction == -1:
+		sprite_2d.flip_h = false
+		direction = 1
 	
 	move_and_slide()
 
@@ -143,6 +156,11 @@ func _on_health_component_health_lost(health_lost: float):
 
 
 func _on_health_component_health_depleted():
+	animation_player.play("death")
+	hurtbox_component.collision_layer = 0
+	player_dead = true
+	#set_process(false)
+	await animation_player.animation_finished
 	GameData.player_died.emit()
 
 

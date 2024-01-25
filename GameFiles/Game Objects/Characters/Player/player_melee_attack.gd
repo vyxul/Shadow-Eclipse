@@ -1,5 +1,7 @@
 extends Node2D
 
+signal finished
+
 const extension_range = 8
 
 var melee_attack_damage: int = 0
@@ -38,3 +40,7 @@ func set_attack_position():
 func attack():
 	set_attack_position()
 	$AnimationPlayer.play("attack")
+
+
+func emit_finished():
+	finished.emit()

@@ -4,8 +4,8 @@ class_name ManaComponent
 signal mana_depleted
 signal mana_lost
 
-@export var max_mana_points: int = 0
-@export var current_mana_points: int = 0
+@export var max_mana_points: float = 0
+@export var current_mana_points: float = 0
 @export var start_mana_hp: bool = true
 
 func _ready():
@@ -21,7 +21,7 @@ func check_mana_in_range():
 		mana_depleted.emit()
 
 
-func use(mana_used: int):
+func use(mana_used: float):
 	if mana_used <= 0:
 		return
 	

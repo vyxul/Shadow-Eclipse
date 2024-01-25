@@ -1,6 +1,7 @@
 extends Area2D
 class_name HitboxComponent
 
+signal wall_hit
 signal enemy_hit
 
 func _on_area_entered(area):

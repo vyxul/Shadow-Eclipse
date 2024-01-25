@@ -68,7 +68,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
-visible = false
 
 [node name="Fountain" parent="." instance=ExtResource("5_lghrh")]
 position = Vector2(762, 745)

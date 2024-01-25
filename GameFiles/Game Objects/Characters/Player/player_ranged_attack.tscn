@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctuvdhrpyu54g"]
+[gd_scene load_steps=9 format=3 uid="uid://ctuvdhrpyu54g"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_ranged_attack.gd" id="1_prh32"]
 [ext_resource type="Texture2D" uid="uid://ca7fs10bkxs6y" path="res://GameFiles/Assets/Art/Player/Attacks/Range/ranged_attack_sprite_sheet.png" id="2_hywmb"]
@@ -47,8 +47,12 @@ _data = {
 "attack": SubResource("Animation_03b6c")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ib3p"]
+height = 96.0
+
 [node name="PlayerRangedAttack" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
+collision_layer = 0
 script = ExtResource("1_prh32")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("3_2ccgd")]
@@ -75,3 +79,7 @@ rotation = -1.5708
 scale = Vector2(4, 4)
 texture = ExtResource("2_hywmb")
 hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64)
+shape = SubResource("CapsuleShape2D_4ib3p")
