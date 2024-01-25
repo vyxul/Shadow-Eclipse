@@ -87,15 +87,15 @@ func move():
 	
 	if player_melee_controller.is_attacking || player_ranged_controller.is_attacking || player_recruit_controller.is_casting:
 		velocity /= 2
-	
-		
+			
 	if   velocity.x < 0 && direction == 1:
 		sprite_2d.flip_h = true
 		direction = -1
 	elif velocity.x > 0 && direction == -1:
 		sprite_2d.flip_h = false
-		direction = 1
+		direction = 1	
 	
+	move_and_slide()
 	
 	if velocity.abs() > Vector2.ZERO:
 		PlayerMoved.emit(global_position)
