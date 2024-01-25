@@ -54,7 +54,12 @@ func update(delta):
 	if !is_attacking:
 		attack_cd_timer -= delta
 	
-	#if this_npc_attack_component.is_body_in_attack_range(focus_target) && (attack_cd_timer <= 0):
+	if this_npc_attack_component.is_body_in_attack_range(focus_target) && (attack_cd_timer <= 0):
+		is_attacking = true
+		this_npc_attack_component.attack(focus_target)
+		attack_cd_timer = attack_cooldown
+		return
+		
 	if is_colliding_with_terrain() && attack_cd_timer <= 0:
 		is_attacking = true
 		this_npc_attack_component.attack_direction(this_entity.velocity.normalized())

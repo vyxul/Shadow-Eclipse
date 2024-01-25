@@ -1,24 +1,24 @@
-[gd_scene load_steps=30 format=3 uid="uid://dimxkh5vbaxfx"]
+[gd_scene load_steps=30 format=3 uid="uid://btwm4ktyr5y1r"]
 
-[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_eque4"]
-[ext_resource type="Texture2D" uid="uid://uua45kiiiyr8" path="res://GameFiles/Assets/Art/Enemies/bandit/bandit_spritesheet.png" id="2_esfb5"]
-[ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_qnwby"]
-[ext_resource type="PackedScene" uid="uid://crnse58x3gauc" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="3_12554"]
-[ext_resource type="PackedScene" uid="uid://c8nx2wo8waryo" path="res://GameFiles/Game Objects/Components/npc_attack_component.tscn" id="4_ik222"]
-[ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="4_nn6pb"]
-[ext_resource type="PackedScene" uid="uid://bx64g1nxqnxx8" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
-[ext_resource type="PackedScene" uid="uid://bxk0ha72ft7ep" path="res://GameFiles/Scenes/States/state_machine.tscn" id="5_ibxij"]
-[ext_resource type="PackedScene" uid="uid://dbfo0aoo57fua" path="res://GameFiles/Game Objects/Characters/NPC/bandit_melee_attack.tscn" id="5_t204a"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_idle.gd" id="6_hywir"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_hurt.gd" id="8_tu6pd"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_death.gd" id="9_rkc4m"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_spawn.gd" id="10_ob4bv"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_combat.gd" id="11_13o03"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_follow_player.gd" id="13_bgu52"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_follow_target.gd" id="14_jjpnn"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_attack_target.gd" id="15_vtn6p"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_defend_target.gd" id="16_cut3i"]
-[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_swarm_phase.gd" id="19_3j7b8"]
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_86p3g"]
+[ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_x7ric"]
+[ext_resource type="PackedScene" uid="uid://crnse58x3gauc" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="3_7fkga"]
+[ext_resource type="PackedScene" uid="uid://c8nx2wo8waryo" path="res://GameFiles/Game Objects/Components/npc_attack_component.tscn" id="4_vxj1j"]
+[ext_resource type="PackedScene" uid="uid://c5mj0q2t3kfxm" path="res://GameFiles/Game Objects/Characters/NPC/soldier/soldier_melee_attack.tscn" id="5_dpnxv"]
+[ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="6_2yyog"]
+[ext_resource type="PackedScene" uid="uid://bx64g1nxqnxx8" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="7_eac5a"]
+[ext_resource type="PackedScene" uid="uid://bxk0ha72ft7ep" path="res://GameFiles/Scenes/States/state_machine.tscn" id="8_1df64"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_spawn.gd" id="9_sm15l"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_idle.gd" id="10_87nxx"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_combat.gd" id="11_jgrti"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_hurt.gd" id="12_356fx"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_death.gd" id="13_8r8be"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_follow_player.gd" id="14_cs61p"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_follow_target.gd" id="15_46a2s"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_attack_target.gd" id="16_pb2cp"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_defend_target.gd" id="17_f2g0b"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/States/state_swarm_phase.gd" id="18_c444e"]
+[ext_resource type="Texture2D" uid="uid://dmgerkvub1faq" path="res://GameFiles/Assets/Art/Enemies/soldier/soldier_spritesheet.png" id="19_nsemy"]
 
 [sub_resource type="Animation" id="Animation_cjgvt"]
 length = 0.001
@@ -58,10 +58,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
 
 [sub_resource type="Animation" id="Animation_dcmuy"]
 resource_name = "attack"
-length = 0.8
+length = 0.81
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -69,10 +81,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [24, 25, 26, 27, 28, 29, 30, 31]
+"values": [24, 25, 26, 27, 28, 29, 30, 31, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -90,6 +102,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_lurbk"]
 resource_name = "death"
 length = 0.8
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,7 +110,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.45, 0.55, 0.65, 0.7, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [16, 17, 18, 19, 20, 21, 22, 23]
@@ -139,6 +152,7 @@ tracks/0/keys = {
 resource_name = "walk"
 length = 0.8
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -163,22 +177,22 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fmbg"]
-radius = 4.0
-height = 14.0
+radius = 6.0
+height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k8qed"]
-radius = 26.0
+radius = 44.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2tat"]
-radius = 8.0
-height = 26.0
+radius = 15.0
+height = 36.0
 
-[node name="bandit" type="CharacterBody2D"]
+[node name="soldier" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
 collision_mask = 27
 motion_mode = 1
-script = ExtResource("1_eque4")
+script = ExtResource("1_86p3g")
 faction = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -190,19 +204,19 @@ libraries = {
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_4fmbg")
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_qnwby")]
+[node name="HealthComponent" parent="." instance=ExtResource("2_x7ric")]
 max_health_points = 3.0
 
-[node name="ConversionComponent" parent="." instance=ExtResource("3_12554")]
+[node name="ConversionComponent" parent="." instance=ExtResource("3_7fkga")]
 max_conversion_hp = 10
 
-[node name="NpcAttackComponent" parent="." instance=ExtResource("4_ik222")]
-attack_scene = ExtResource("5_t204a")
+[node name="NpcAttackComponent" parent="." instance=ExtResource("4_vxj1j")]
+attack_scene = ExtResource("5_dpnxv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NpcAttackComponent"]
 shape = SubResource("CircleShape2D_k8qed")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_nn6pb")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_2yyog")]
 collision_layer = 2
 collision_mask = 0
 health_component = NodePath("../HealthComponent")
@@ -212,11 +226,10 @@ position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_c2tat")
 debug_color = Color(0.839216, 0.384314, 0, 0.207843)
 
-[node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
-tracked_enemies_range = 70.0
-discovery_range = 60.0
+[node name="SearchRadius" parent="." instance=ExtResource("7_eac5a")]
+tracked_enemies_range = 110.0
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "this_entity", "hurtbox_component", "health_component", "conversion_component", "npc_attack_component", "search_radius", "state_label", "animation_player") instance=ExtResource("5_ibxij")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "this_entity", "hurtbox_component", "health_component", "conversion_component", "npc_attack_component", "search_radius", "state_label", "animation_player") instance=ExtResource("8_1df64")]
 initial_state = NodePath("state_spawn")
 this_entity = NodePath("..")
 hurtbox_component = NodePath("../HurtboxComponent")
@@ -228,34 +241,34 @@ state_label = NodePath("../StateLabel")
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="state_spawn" type="Node" parent="StateMachine"]
-script = ExtResource("10_ob4bv")
+script = ExtResource("9_sm15l")
 
 [node name="state_idle" type="Node" parent="StateMachine"]
-script = ExtResource("6_hywir")
+script = ExtResource("10_87nxx")
 
 [node name="state_combat" type="Node" parent="StateMachine"]
-script = ExtResource("11_13o03")
+script = ExtResource("11_jgrti")
 
 [node name="state_hurt" type="Node" parent="StateMachine"]
-script = ExtResource("8_tu6pd")
+script = ExtResource("12_356fx")
 
 [node name="state_death" type="Node" parent="StateMachine"]
-script = ExtResource("9_rkc4m")
+script = ExtResource("13_8r8be")
 
 [node name="state_follow_player" type="Node" parent="StateMachine"]
-script = ExtResource("13_bgu52")
+script = ExtResource("14_cs61p")
 
 [node name="state_follow_target" type="Node" parent="StateMachine"]
-script = ExtResource("14_jjpnn")
+script = ExtResource("15_46a2s")
 
 [node name="state_attack_target" type="Node" parent="StateMachine"]
-script = ExtResource("15_vtn6p")
+script = ExtResource("16_pb2cp")
 
 [node name="state_defend_target" type="Node" parent="StateMachine"]
-script = ExtResource("16_cut3i")
+script = ExtResource("17_f2g0b")
 
 [node name="state_swarm_phase" type="Node" parent="StateMachine"]
-script = ExtResource("19_3j7b8")
+script = ExtResource("18_c444e")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
@@ -277,14 +290,15 @@ horizontal_alignment = 1
 autowrap_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -11)
-texture = ExtResource("2_esfb5")
+z_index = 6
+position = Vector2(0, -12)
+texture = ExtResource("19_nsemy")
 hframes = 8
 vframes = 4
 region_rect = Rect2(23, 29, 16, 19)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 
 [connection signal="mouse_entered" from="HurtboxComponent" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HurtboxComponent" to="." method="_on_mouse_exited"]

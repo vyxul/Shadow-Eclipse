@@ -17,7 +17,7 @@ collision_mask = 26
 
 [node name="Tracked_Enemies_CollisionShape2D" type="CollisionShape2D" parent="Tracked_Enemies_Area2D"]
 shape = SubResource("CircleShape2D_2llua")
-debug_color = Color(0, 0, 0, 0.113725)
+debug_color = Color(1, 1, 1, 0.113725)
 
 [node name="Discovery_Area2D" type="Area2D" parent="."]
 collision_layer = 0
