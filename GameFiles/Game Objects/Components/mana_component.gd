@@ -52,4 +52,3 @@ func get_current_mana() -> float:
 
 func _on_timer_timeout():
 	regain()
-	print_debug("test")

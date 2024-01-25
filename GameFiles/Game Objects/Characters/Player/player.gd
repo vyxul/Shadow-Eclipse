@@ -9,6 +9,7 @@ class_name Player
 @onready var sprite_2d = $Sprite2D
 @onready var player_melee_controller = $PlayerMeleeController
 @onready var player_ranged_controller = $PlayerRangedController
+@onready var player_recruit_controller = $PlayerRecruitController
 @onready var hurtbox_component = $HurtboxComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var mana_component: ManaComponent = $ManaComponent
@@ -75,11 +76,17 @@ func move():
 	var target_velocity = move_direction * move_speed
 	velocity = target_velocity
 	
+	
+	
 	if !player_melee_controller.is_attacking && !player_ranged_controller.is_attacking:
 		if velocity == Vector2.ZERO:
 			animation_player.play("idle")
 		else:
 			animation_player.play("walk")
+	
+	if player_melee_controller.is_attacking || player_ranged_controller.is_attacking || player_recruit_controller.is_casting:
+		velocity /= 2
+	
 		
 	if   velocity.x < 0 && direction == 1:
 		sprite_2d.flip_h = true
