@@ -10,11 +10,16 @@ var player_mana_scene = preload("res://GameFiles/Scenes/UI/player_mana.tscn")
 
 var current_orbs_displayed: int = 0
 @export var mana_per_orb: float = 10
+var updated_this_frame: bool = false
 
 func _ready():
 	#update_mana_display()
 	GameData.player_mana_changed.connect(update_mana_display)
 	GameData.player_mp_ui_ready.emit()
+
+
+func _process(delta):
+	updated_this_frame = false
 
 
 func clear_mana_display():
@@ -91,6 +96,13 @@ func update_orbs_display(player_current_mana):
 
 
 func update_mana_display(current_mana = 0, max_mana = 0):
+	if updated_this_frame:
+		return
+	
+	var mp_label = get_parent().get_node("mp_Label")
+	mp_label.text = str(current_mana)
+	
+	updated_this_frame = true
 	clear_mana_display()
 	# give time for clear_hp_display() to actually remove the old nodes
 	await get_tree().process_frame

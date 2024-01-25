@@ -8,3 +8,7 @@ script = ExtResource("1_5g25i")
 
 [node name="PlayerRecruitLaser" parent="." instance=ExtResource("2_l2fld")]
 laser_width = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

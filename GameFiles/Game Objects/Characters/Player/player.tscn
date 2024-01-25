@@ -118,6 +118,7 @@ script = ExtResource("1_n8ck6")
 player_speed = 100.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_d4vni")]
+max_health_points = 20.0
 
 [node name="ManaComponent" parent="." instance=ExtResource("3_cju8r")]
 max_mana_points = 50.0
@@ -145,7 +146,8 @@ shape = SubResource("CapsuleShape2D_b0bgo")
 [node name="PlayerRangedController" parent="." node_paths=PackedStringArray("mana_component") instance=ExtResource("4_nx2hv")]
 mana_component = NodePath("../ManaComponent")
 
-[node name="PlayerRecruitController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ve0m4")]
+[node name="PlayerRecruitController" parent="." node_paths=PackedStringArray("mana_component", "player") instance=ExtResource("4_ve0m4")]
+mana_component = NodePath("../ManaComponent")
 player = NodePath("..")
 laser_range = 128.0
 focus_time_needed = 0.5
