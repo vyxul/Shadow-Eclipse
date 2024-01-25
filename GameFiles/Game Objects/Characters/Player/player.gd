@@ -72,7 +72,7 @@ func move():
 	
 	var player_running = Input.is_action_pressed("shift")
 	var move_speed: float
-	if player_running:
+	if player_running && !is_attacking() && !player_recruit_controller.is_casting:
 		move_speed = player_speed * run_speed_multiplier
 	else:
 		move_speed = player_speed
@@ -80,8 +80,7 @@ func move():
 	var target_velocity = move_direction * move_speed
 	velocity = target_velocity
 	
-	
-	if !player_melee_controller.is_attacking && !player_ranged_controller.is_attacking:
+	if !is_attacking():
 		if velocity == Vector2.ZERO:
 			animation_player.play("idle")
 		else:

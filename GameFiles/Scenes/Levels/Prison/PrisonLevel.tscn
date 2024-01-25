@@ -68,8 +68,7 @@ position = Vector2(210, 84)
 faction = 0
 
 [node name="enemy_bandit2" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(715, 597)
-swarm_phase = true
+position = Vector2(124, 387)
 
 [node name="soldier" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
 position = Vector2(802, 603)

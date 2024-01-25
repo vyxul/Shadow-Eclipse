@@ -71,5 +71,6 @@ func on_game_state_changed(game_state):
 		GameState.EGameState.Conquer:
 			timer.start()
 		GameState.EGameState.Expansion:
+			timer.stop()
 			audio_stream_player_2.play()
 			audio_stream_player.stop()
