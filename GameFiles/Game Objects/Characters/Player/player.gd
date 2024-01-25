@@ -85,13 +85,13 @@ func move():
 		else:
 			animation_player.play("walk")
 	
-	if player_melee_controller.is_attacking || player_ranged_controller.is_attacking || player_recruit_controller.is_casting:
+	if is_attacking() || player_recruit_controller.is_casting:
 		velocity /= 2
 			
-	if   velocity.x < 0 && direction == 1:
+	if   velocity.x < 0 && direction == 1 && !is_attacking():
 		sprite_2d.flip_h = true
 		direction = -1
-	elif velocity.x > 0 && direction == -1:
+	elif velocity.x > 0 && direction == -1 && !is_attacking():
 		sprite_2d.flip_h = false
 		direction = 1	
 	
@@ -99,6 +99,10 @@ func move():
 	
 	if velocity.abs() > Vector2.ZERO:
 		PlayerMoved.emit(global_position)
+
+
+func is_attacking():
+	return player_melee_controller.is_attacking || player_ranged_controller.is_attacking
 
 
 func get_weapon_origin():

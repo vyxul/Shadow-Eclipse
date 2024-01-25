@@ -3,18 +3,16 @@ class_name NpcAttackComponent
 
 signal attack_finished
 
-@export var attack_scene_path: String
+@export var attack_scene: PackedScene
 
 @export var attack_damage: int = 1
 
 @onready var this_entity: NonPlayerCharacter = get_parent()
 
-var attack_scene
 var attack_set: bool = false
 
 
 func _ready():
-	attack_scene = load(attack_scene_path)
 	if attack_scene:
 		attack_set = true
 

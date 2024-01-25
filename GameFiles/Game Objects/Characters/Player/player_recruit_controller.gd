@@ -30,7 +30,13 @@ func _process(delta):
 	var target_direction = (get_global_mouse_position() - player.global_position).normalized()
 	player_recruitment.target_position = target_direction * laser_range
 	
-	player.sprite_2d.flip_h = target_direction.x < 0
+	if is_casting:
+		if target_direction.x < 0:
+			player.sprite_2d.flip_h = true
+			player.direction = -1
+		elif target_direction.x > 0:
+			player.sprite_2d.flip_h = false
+			player.direction = 1
 
 
 func set_is_casting(cast: bool) -> void:

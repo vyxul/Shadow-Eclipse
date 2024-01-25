@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs7ixulkrq5ho"]
+[gd_scene load_steps=12 format=3 uid="uid://bs7ixulkrq5ho"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Fountain/darkness_tile.gd" id="1_6068e"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="2_5vul1"]
@@ -44,10 +44,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rphk0"]
 size = Vector2(32, 32)
 
-[node name="DarknessTile" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_316ax"]
+size = Vector2(32, 32)
+
+[node name="DarknessTile" type="CharacterBody2D"]
 z_index = 1
 position = Vector2(8, 8)
 scale = Vector2(0.5, 0.5)
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_6068e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -56,7 +61,8 @@ autoplay = "default"
 frame_progress = 0.614288
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5vul1")]
-collision_layer = 2
+collision_layer = 16
+collision_mask = 0
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -64,6 +70,9 @@ visible = false
 shape = SubResource("RectangleShape2D_rphk0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_7errf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_316ax")
 
 [connection signal="hurt" from="HurtboxComponent" to="." method="_on_hurtbox_component_hurt"]
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
