@@ -52,11 +52,7 @@ func setup():
 
 
 func enter():
-	match(GameState.EGameState):
-		GameState.EGameState.Conquer:
-			switch_to_idle()
-		GameState.EGameState.Expansion:
-			transitioned.emit(self, "state_combat")
+	switch_to_idle()
 	
 	get_parent().get_state_label().text = "Idle/Wander"
 	
