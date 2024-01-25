@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Fountain/darkness_tile.gd" id="1_6068e"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="2_5vul1"]
-[ext_resource type="Texture2D" path="res://GameFiles/Assets/Art/Map/DarknessTiles.png" id="2_dfrgd"]
+[ext_resource type="Texture2D" uid="uid://c56u1n242i5r5" path="res://GameFiles/Assets/Art/Map/DarknessTiles.png" id="2_dfrgd"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="4_7errf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yeiyh"]

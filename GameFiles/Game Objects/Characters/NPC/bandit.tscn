@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://uua45kiiiyr8" path="res://GameFiles/Assets/Art/Enemies/bandit/bandit_spritesheet.png" id="2_esfb5"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_qnwby"]
 [ext_resource type="PackedScene" uid="uid://crnse58x3gauc" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="3_12554"]
-[ext_resource type="PackedScene" uid="uid://c1vd2dg80c1sj" path="res://GameFiles/Game Objects/Components/npc_attack_component.tscn" id="4_ik222"]
+[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Components/npc_attack_component.tscn" id="4_ik222"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="4_nn6pb"]
 [ext_resource type="PackedScene" uid="uid://bx64g1nxqnxx8" path="res://GameFiles/Game Objects/Components/search_radius.tscn" id="5_46yan"]
 [ext_resource type="PackedScene" uid="uid://bxk0ha72ft7ep" path="res://GameFiles/Scenes/States/state_machine.tscn" id="5_ibxij"]
