@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneChanger="*res://GameFiles/GameSystems/SceneChanger.gd"
 GameSettings="*res://GameFiles/GameData/GameSettings.gd"
+LoadManager="*res://GameFiles/GameSystems/LoadManager.gd"
 GameData="*res://GameFiles/GameData/GameData.gd"
 GameState="*res://GameFiles/GameSystems/GameState/GameState.tscn"
 
@@ -104,3 +104,4 @@ z={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

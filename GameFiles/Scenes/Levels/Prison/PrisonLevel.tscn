@@ -21,6 +21,7 @@ LightTexture = ExtResource("2_e6brk")
 Player = NodePath("Player")
 
 [node name="Player_Camera2D" parent="." instance=ExtResource("1_8rapg")]
+position = Vector2(320, 180)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
@@ -77,7 +78,7 @@ swarm_phase = true
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
 top_level = true
 y_sort_enabled = true
-position = Vector2(787, 736)
+position = Vector2(76, 75)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
