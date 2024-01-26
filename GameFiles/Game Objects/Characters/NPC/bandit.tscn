@@ -270,6 +270,7 @@ debug_enabled = true
 wait_time = 0.1
 
 [node name="StateLabel" type="Label" parent="."]
+visible = false
 offset_left = -28.0
 offset_top = -35.0
 offset_right = 30.0

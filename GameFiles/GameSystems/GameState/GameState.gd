@@ -7,7 +7,7 @@ signal game_state_changed(state: EGameState)
 
 @onready var EnemySpawnTimer = $EnemySpawnTimer
 @onready var StateChangeTimer = $StateTimer
-@export var _Game_State : EGameState = EGameState.Conquer
+@export var _Game_State : EGameState = EGameState.Finished
 @export var ConquerSpawnTimer : float = 30
 @export var ExpansionSpawnTimer : float = 4
 @export var ConquerTimeMaxScore : float = 4
