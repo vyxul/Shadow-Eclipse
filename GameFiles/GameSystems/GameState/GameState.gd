@@ -11,8 +11,13 @@ signal game_state_changed(state: EGameState)
 @export var ConquerSpawnTimer : float = 300
 @export var ExpansionSpawnTimer : float = 40
 @export var ConquerTimeMaxScore : float = 4
+<<<<<<< HEAD
 var ConquerStateTimerRange : Vector2 = Vector2(420,720)
 var ExpansionStateTimerRange : Vector2 = Vector2(180,300)
+=======
+@export var ConquerStateTimerRange : Vector2 = Vector2(7,12)
+@export var ExpansionStateTimerRange : Vector2 = Vector2(3,5)
+>>>>>>> parent of 6f0780c (Merge branch 'main' into Timer-and-Spawns)
 
 @export var ConquerStateTimerMaxScore : int = 7200
 
