@@ -47,5 +47,3 @@ offset_right = 93.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 12
 text = "50"
-
-[editable path="PlayerIcon"]
