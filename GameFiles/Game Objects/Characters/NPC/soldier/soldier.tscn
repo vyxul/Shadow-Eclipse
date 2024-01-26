@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btwm4ktyr5y1r"]
+[gd_scene load_steps=34 format=3 uid="uid://btwm4ktyr5y1r"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_86p3g"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="2_x7ric"]
@@ -187,8 +187,24 @@ radius = 44.0
 radius = 15.0
 height = 36.0
 
+[sub_resource type="Gradient" id="Gradient_d5gti"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o2axu"]
+gradient = SubResource("Gradient_d5gti")
+width = 16
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_liab8"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wrs65"]
+gradient = SubResource("Gradient_liab8")
+width = 16
+height = 4
+
 [node name="soldier" type="CharacterBody2D"]
-z_index = 5
+z_index = 6
 collision_layer = 2
 collision_mask = 27
 motion_mode = 1
@@ -206,14 +222,16 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_4fmbg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_x7ric")]
-max_health_points = 25.0
+max_health_points = 20.0
+current_health_points = 20.0
 
 [node name="ConversionComponent" parent="." instance=ExtResource("3_7fkga")]
-max_conversion_hp = 25
+max_conversion_hp = 10
+current_conversion_hp = 10
 
 [node name="NpcAttackComponent" parent="." instance=ExtResource("4_vxj1j")]
 attack_scene = ExtResource("5_dpnxv")
-attack_damage = 5
+attack_damage = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NpcAttackComponent"]
 shape = SubResource("CircleShape2D_qvd13")
@@ -299,7 +317,6 @@ horizontal_alignment = 1
 autowrap_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 6
 position = Vector2(0, -12)
 texture = ExtResource("19_nsemy")
 hframes = 8
@@ -309,5 +326,18 @@ region_rect = Rect2(23, 29, 16, 19)
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -4)
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -8.0
+offset_top = -28.0
+offset_right = 8.0
+offset_bottom = -24.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+texture_under = SubResource("GradientTexture2D_o2axu")
+texture_progress = SubResource("GradientTexture2D_wrs65")
+
+[connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]
 [connection signal="mouse_entered" from="HurtboxComponent" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HurtboxComponent" to="." method="_on_mouse_exited"]

@@ -86,7 +86,7 @@ region_rect = Rect2(16, 136, 33, 15)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_1764v")
-volume_db = -42.889
+volume_db = -30.0
 autoplay = true
 bus = &"Music"
 

@@ -58,10 +58,4 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Continue"
 
-[node name="QuitButton" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-text = "Quit"
-
 [connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

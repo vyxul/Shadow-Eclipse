@@ -89,8 +89,8 @@ process_callback = 0
 wait_time = 3.0
 
 [node name="ConversionComponent" parent="." instance=ExtResource("4_fxn5n")]
-max_conversion_hp = 3
-current_conversion_hp = 3
+max_conversion_hp = 24
+current_conversion_hp = 24
 CanParentBecomeFollower = false
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_vuy3c")]
