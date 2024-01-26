@@ -5,7 +5,6 @@ enum EGameState {Conquer, Expansion, Finished}
 signal SpawnEnemy
 signal game_state_changed(state: EGameState)
 
-@onready var SaveLoad = $SaveLoad
 @onready var EnemySpawnTimer = $EnemySpawnTimer
 @onready var StateChangeTimer = $StateTimer
 @export var _Game_State : EGameState = EGameState.Conquer

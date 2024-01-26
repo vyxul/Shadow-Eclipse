@@ -41,4 +41,4 @@ func _on_quit_button_pressed():
 
 func _on_shop_button_pressed():
 	HideButtons()
-	Shop.show()
+	Shop.OpenShop.emit()
