@@ -25,6 +25,25 @@ fog = NodePath("Fog")
 LightTexture = ExtResource("2_e6brk")
 Player = NodePath("Player")
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
+
+[node name="Defeat Screen" parent="UI" instance=ExtResource("9_dm52a")]
+visible = false
+
+[node name="Victory Screen" parent="UI" instance=ExtResource("8_b8o3c")]
+visible = false
+
+[node name="StateTimerUI" parent="UI" instance=ExtResource("10_djq4y")]
+
+[node name="FollowerCommandUI" parent="UI" instance=ExtResource("11_hk7a0")]
+
 [node name="Player_Camera2D" parent="." instance=ExtResource("1_8rapg")]
 position = Vector2(320, 180)
 
@@ -63,25 +82,6 @@ y_sort_enabled = true
 top_level = true
 y_sort_enabled = true
 position = Vector2(678, 695)
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
-
-[node name="Defeat Screen" parent="UI" instance=ExtResource("9_dm52a")]
-visible = false
-
-[node name="Victory Screen" parent="UI" instance=ExtResource("8_b8o3c")]
-visible = false
-
-[node name="StateTimerUI" parent="UI" instance=ExtResource("10_djq4y")]
-
-[node name="FollowerCommandUI" parent="UI" instance=ExtResource("11_hk7a0")]
 
 [node name="Fountain" parent="." instance=ExtResource("5_lghrh")]
 y_sort_enabled = true
