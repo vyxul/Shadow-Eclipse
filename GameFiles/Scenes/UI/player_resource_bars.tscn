@@ -31,6 +31,7 @@ scale = Vector2(1.5, 1.5)
 mouse_filter = 2
 
 [node name="hp_Label" type="Label" parent="."]
+visible = false
 offset_left = 76.0
 offset_top = 29.0
 offset_right = 93.0
@@ -39,6 +40,7 @@ theme_override_font_sizes/font_size = 12
 text = "50"
 
 [node name="mp_Label" type="Label" parent="."]
+visible = false
 offset_left = 76.0
 offset_top = 52.0
 offset_right = 93.0
