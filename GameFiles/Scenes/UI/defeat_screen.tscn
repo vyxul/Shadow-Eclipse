@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dymorc4jdhp3t"]
+[gd_scene load_steps=2 format=3 uid="uid://fc024vld8fme"]
 
 [ext_resource type="Script" path="res://GameFiles/Scenes/UI/defeat_screen.gd" id="1_rlw8u"]
 
@@ -53,15 +53,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 16
 
-[node name="RetryButton" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(60, 0)
+[node name="ContinueButton" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-text = "Retry"
+text = "Continue"
 
 [node name="QuitButton" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
