@@ -8,9 +8,7 @@ class_name NonPlayerCharacter
 @onready var marker_2d = $Marker2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var conversion_component: ConversionComponent = $ConversionComponent
-@onready var health_component = $HealthComponent
 @onready var hurtboxComponent: HurtboxComponent = $HurtboxComponent
-@onready var texture_progress_bar = $TextureProgressBar
 
 
 
@@ -64,8 +62,3 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	GameData.remove_target_under_mouse(self)
-
-
-func _on_health_component_health_lost(healthDecrease):
-	texture_progress_bar.visible = true
-	texture_progress_bar.value = health_component.current_health_points / health_component.max_health_points
