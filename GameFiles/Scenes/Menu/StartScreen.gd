@@ -25,6 +25,7 @@ func HideButtons():
 	StartScreen.z_index = 10
 
 func _on_start_button_pressed():
+	SaveAndLoad.LoadData.emit()
 	LoadManager.load_scene(Game)
 	
 func ShowStartMenuButtons():

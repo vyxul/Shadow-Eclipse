@@ -12,7 +12,7 @@ func get_conversion_component() -> ConversionComponent:
 func set_conversion_component(_ConversionComponent):
 	conversionComponent = _ConversionComponent
 
-func damage(dmg: int):
+func damage(dmg: float):
 	if !health_component:
 		return
 

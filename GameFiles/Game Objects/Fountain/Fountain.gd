@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Fountain
 
 @export var faction: GameData.Factions
 #@export var ExpansionSpeed = 1

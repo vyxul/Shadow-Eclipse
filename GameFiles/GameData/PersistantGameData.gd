@@ -9,7 +9,7 @@ var ExtraDamagePercentCost = [150, 250, 300, 450, 600, 800, 900, 1000, 1100, 120
 var ExtraMaxMinionsCost =    [  0,   0,   0, 100, 200, 300, 400,  500,  600,  700,  800,   900, 1000, 1200, 1500, inf]
 
 @export var Darkness = 0
-@export var MaxHealth  = 2
+@export var MaxHealth  = 10
 @export var MaxMana = 2
 @export var MaxDamage = 0
 @export var MaxMinions = 2

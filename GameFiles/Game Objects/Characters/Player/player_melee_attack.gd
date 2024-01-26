@@ -4,7 +4,7 @@ signal finished
 
 const extension_range = 8
 
-var melee_attack_damage: int = 0
+var melee_attack_damage: float = 0
 var attack_faction: GameData.Factions
 
 
@@ -12,7 +12,7 @@ var attack_faction: GameData.Factions
 	#set_attack_position()
 
 
-func set_damage(dmg: int):
+func set_damage(dmg: float):
 	melee_attack_damage = dmg
 
 

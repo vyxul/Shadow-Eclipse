@@ -191,7 +191,7 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_4fmbg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qnwby")]
-max_health_points = 15.0
+max_health_points = 4.0
 
 [node name="ConversionComponent" parent="." instance=ExtResource("3_12554")]
 max_conversion_hp = 10
@@ -270,7 +270,6 @@ debug_enabled = true
 wait_time = 0.1
 
 [node name="StateLabel" type="Label" parent="."]
-visible = false
 offset_left = -28.0
 offset_top = -35.0
 offset_right = 30.0

@@ -149,7 +149,6 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_b0bgo")
 
 [node name="PlayerMeleeController" parent="." instance=ExtResource("3_k76rs")]
-melee_attack_damage = 3
 
 [node name="PlayerRangedController" parent="." node_paths=PackedStringArray("mana_component") instance=ExtResource("4_nx2hv")]
 mana_component = NodePath("../ManaComponent")
@@ -165,6 +164,7 @@ player = NodePath("..")
 laser_range = 192.0
 focus_time_needed = 0.5
 conversion_damage = 5
+mana_cost = 1.0
 
 [node name="FollowerMarkers" type="Node2D" parent="."]
 visible = false
