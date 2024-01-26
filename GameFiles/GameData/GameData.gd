@@ -111,7 +111,7 @@ func reset():
 	targets_under_mouse.clear()
 	follow_target_position = null
 	attack_target = null
-	player_score = 0
+
 
 func InreaseMaxHealth():
 	MaxHealth += 1

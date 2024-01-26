@@ -5,7 +5,6 @@
 [node name="GameState" type="Node2D"]
 script = ExtResource("1_ip225")
 ConquerStateTimerRange = Vector2(10, 10)
-ExpansionStateTimerRange = Vector2(30, 50)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 
