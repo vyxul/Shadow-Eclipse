@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://GameFiles/Scenes/Menu/LoadingScreen.gd" id="1_sowju"]
 [ext_resource type="Texture2D" uid="uid://4m64wvklpbhs" path="res://GameFiles/Assets/Art/UI/StartScreen.png" id="1_vs8d7"]
-[ext_resource type="Texture2D" uid="uid://cbwbqaw4ykrgi" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff_v2.png" id="3_b3w2j"]
+[ext_resource type="Texture2D" uid="uid://cbwbqaw4ykrgi" path="res://GameFiles/Assets/Art/UI/ui_buttons_and_stuff_v2.png" id="3_b3w2j"]
 [ext_resource type="Texture2D" uid="uid://c56u1n242i5r5" path="res://GameFiles/Assets/Art/Map/DarknessTiles.png" id="4_t7gse"]
 
 [sub_resource type="Animation" id="Animation_8575i"]

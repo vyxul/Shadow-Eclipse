@@ -147,6 +147,7 @@ mouse_filter = 2
 [node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
 
 [node name="Death Screen" parent="UI" instance=ExtResource("9_dm52a")]
+visible = true
 
 [node name="Fountain" parent="." instance=ExtResource("5_lghrh")]
 y_sort_enabled = true

@@ -35,7 +35,7 @@ func _on_retry_button_pressed():
 	disappear()
 	GameData.reset()
 	GameState.reset()
-	SceneChanger.ChangeScene(Game)
+	LoadManager.ChangeScene(Game)
 
 
 func _on_quit_button_pressed():
