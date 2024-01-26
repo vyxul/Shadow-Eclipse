@@ -13,6 +13,8 @@ extends Node2D
 @export var mana_cost: float = 4
 
 var is_attacking: bool = false
+var damage_multiplier: float = 0
+var current_damage: float = 0
 
 func attack():
 	if is_attacking:
@@ -25,6 +27,7 @@ func attack():
 	mana_component.use(mana_cost)
 	
 	is_attacking = true
+	calculate_damage()
 	timer.wait_time = attack_cooldown
 	timer.start()
 	
@@ -34,7 +37,7 @@ func attack():
 	
 	player_range_attack_instance.set_projectile_speed(projectile_speed)
 	player_range_attack_instance.set_projectile_time(projectile_time)
-	player_range_attack_instance.set_damage(range_attack_damage)
+	player_range_attack_instance.set_damage(current_damage)
 	player_range_attack_instance.set_pierce_limit(range_attack_pierce_limit)
 	player_range_attack_instance.set_faction(GameData.Factions.SHADOW)
 	
@@ -52,6 +55,15 @@ func attack():
 	elif attack_direction.x > 0:
 		player.sprite_2d.flip_h = false
 		player.direction = 1
+
+
+func calculate_damage():
+	current_damage = range_attack_damage + (range_attack_damage * damage_multiplier)
+
+
+func set_damage_multiplier(num: float):
+	damage_multiplier = num
+
 
 func _on_timer_timeout():
 	is_attacking = false

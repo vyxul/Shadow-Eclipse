@@ -29,3 +29,8 @@ func damage(dmg: float):
 	health_lost.emit(dmg)
 	
 	check_hp_in_range()
+
+
+func set_max_hp(num: float):
+	max_health_points = num
+	current_health_points = num

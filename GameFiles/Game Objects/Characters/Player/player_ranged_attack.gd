@@ -10,7 +10,7 @@ var projectile_direction: Vector2
 var projectile_speed: float
 var projectile_time: float
 
-var range_attack_damage: int = 0
+var range_attack_damage: float = 0
 var range_attack_pierce_limit: int = 1
 var current_pierce_count: int = 0
 
@@ -25,7 +25,7 @@ func set_projectile_time(number: float):
 	projectile_time = new_projectile_time
 
 
-func set_damage(number: int):
+func set_damage(number: float):
 	var new_range_attack_damage = max(1, number)
 	range_attack_damage = new_range_attack_damage
 

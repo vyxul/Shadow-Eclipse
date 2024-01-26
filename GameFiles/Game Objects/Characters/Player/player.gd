@@ -30,6 +30,7 @@ var follower_markers: Array = []
 var follower_count: int = 0
 var direction: int = 1
 var player_dead: bool = false
+var follower_limit: int = 0
 
 
 func _ready():
@@ -39,8 +40,22 @@ func _ready():
 		follower_markers.append(child)
 		index += 1
 	
+	# use the persistence data
+	var player_values = GameData.GetPersistantGameData()
+	var player_hp = player_values.MaxHealth * 10
+	var player_mana = player_values.MaxMana * 10
+	var player_dmg_multiplier = player_values.MaxDamage * .1
+	var player_follower_slots = player_values.MaxMinions
+	
+	# set the values in the components
+	health_component.set_max_hp(player_hp)
+	mana_component.set_max_mp(player_mana)
+	player_melee_controller.set_damage_multiplier(player_dmg_multiplier)
+	player_ranged_controller.set_damage_multiplier(player_dmg_multiplier)
+	follower_limit = player_follower_slots
+	
+	
 	GameData.npc_died.connect(on_npc_died)
-		
 	GameData.player_hp_ui_ready.connect(on_player_hp_ui_ready)
 	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)
 
@@ -115,6 +130,9 @@ func get_faction() -> GameData.Factions:
 
 
 func get_empty_follower_slot() -> Marker2D:
+	if follower_count >= follower_limit:
+		return null
+	
 	for key in followers.keys():
 		if followers[key] == null:
 			return follower_markers[key]

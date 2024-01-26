@@ -104,5 +104,5 @@ func CalculateTimerScore():
 func CalculateAndIncreaseDarknessFromScore(multiplier : float):
 	var player_score = GameData.GetPlayerScore()
 	var darkness = multiplier * player_score
-	GameData.IncreaseDarkness(darkness)
+	GameData.GetPersistantGameData().IncreaseDarkness(darkness)
 	

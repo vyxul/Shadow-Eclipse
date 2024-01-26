@@ -35,11 +35,17 @@ func check_conversion_hp_in_range():
 		conversion_hp_depleted.emit()
 		player = get_tree().get_first_node_in_group("player") as Player
 		follow_marker = player.get_empty_follower_slot()
-		this_entity.faction = GameData.Factions.SHADOW
-		if this_entity is NonPlayerCharacter:
+		if this_entity is NonPlayerCharacter && follow_marker:
+			this_entity.faction = GameData.Factions.SHADOW
 			this_entity.collision_layer = 8
 			this_entity.collision_mask -= 16
 			GameData.emit_npc_converted(this_entity)
+			conversion_hp_depleted.emit()
+		
+		if this_entity is Fountain:
+			this_entity.faction = GameData.Factions.SHADOW
+			conversion_hp_depleted.emit()
+			
 		
 		if CanParentBecomeFollower:
 			if !follow_marker:
@@ -48,8 +54,6 @@ func check_conversion_hp_in_range():
 			else:
 				player.set_follower_slot(follow_marker, this_entity)
 				new_follower_added.emit(this_entity)
-				
-		conversion_hp_depleted.emit()
 
 
 func conversion_damage(convert_dmg: int):

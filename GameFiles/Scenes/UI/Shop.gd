@@ -33,20 +33,29 @@ func UpdateButtons():
 	var TotalDarkenss = GetGameData().GetDarkness()
 	
 	var HealthCost = GetGameData().GetExtraHealthCost()
-	if HealthCost < -1 || TotalDarkenss > HealthCost:
+	if HealthCost < -1 || TotalDarkenss < HealthCost:
 		BuyExtraHealthButton.disabled = true
+	else:
+		BuyExtraHealthButton.disabled = false
+		
 		
 	var ManaCost = GetGameData().GetExtraManaCost()
-	if ManaCost < -1 || TotalDarkenss > ManaCost:
+	if ManaCost < -1 || TotalDarkenss < ManaCost:
 		BuyExtraManaButton.disabled = true
+	else:
+		BuyExtraManaButton.disabled = false
 		
 	var MinionsCost = GetGameData().GetExtraMinionsCost()
-	if MinionsCost < -1 || TotalDarkenss > MinionsCost:
+	if MinionsCost < -1 || TotalDarkenss < MinionsCost:
 		BuyExtraMinionsButton.disabled = true
+	else:
+		BuyExtraMinionsButton.disabled = false
 		
 	var DamagePercentCost = GetGameData().GetExtraDamageCost()
-	if DamagePercentCost < -1 || TotalDarkenss > DamagePercentCost:
+	if DamagePercentCost < -1 || TotalDarkenss < DamagePercentCost:
 		BuyExtraAttackButton.disabled = true
+	else:
+		BuyExtraAttackButton.disabled = false
 	
 func UpdateAllLabels():
 	UpdateExtraHealthCostLabel()

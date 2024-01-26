@@ -3,7 +3,8 @@ extends Node2D
 @onready var audio_stream_player = $AudioStreamPlayer
 @onready var audio_stream_player_2 = $AudioStreamPlayer2
 @onready var timer = $Timer
-@onready var death_screen = $"UI/Death Screen"
+@onready var defeat_screen = $"UI/Defeat Screen"
+@onready var victory_screen = $"UI/Victory Screen"
 
 # exports for editor
 @export var fog: Sprite2D
@@ -55,6 +56,10 @@ func update_fog(pos):
 	fogTexture.update(fogImage)
 
 
+func level_complete():
+	victory_screen.appear()
+
+
 func _on_player_player_moved(NewPosition):
 	var current_time = Time.get_ticks_msec()
 	if time_since_last_fog_update + debounce_time <= current_time:
@@ -69,7 +74,7 @@ func _on_timer_timeout():
 
 func on_player_died():
 	GameState.PlayerDied()
-	death_screen.appear()
+	defeat_screen.appear()
 
 
 func on_game_state_changed(game_state):
@@ -80,3 +85,9 @@ func on_game_state_changed(game_state):
 			timer.stop()
 			audio_stream_player_2.play()
 			audio_stream_player.stop()
+		GameState.EGameState.Finished:
+			timer.stop()
+			level_complete()
+
+
+

@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8mwsf2f6ora0"]
+
+[ext_resource type="Texture2D" uid="uid://c86mehakf26xb" path="res://GameFiles/Assets/Art/UI/FollowerFlags/follower_buttons.png" id="1_df410"]
+
+[node name="FollowerCommandUI" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 5.0
+offset_top = 320.0
+offset_right = 109.0
+offset_bottom = 354.0
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="AttackButton" type="Sprite2D" parent="."]
+position = Vector2(22, 337)
+scale = Vector2(2, 2)
+texture = ExtResource("1_df410")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="DefendButton" type="Sprite2D" parent="."]
+position = Vector2(57, 337)
+scale = Vector2(2, 2)
+texture = ExtResource("1_df410")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="FollowButton" type="Sprite2D" parent="."]
+position = Vector2(92, 337)
+scale = Vector2(2, 2)
+texture = ExtResource("1_df410")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="zLabel" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 321.0
+offset_right = 38.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 12
+text = "Z"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="xLabel" type="Label" parent="."]
+offset_left = 41.0
+offset_top = 321.0
+offset_right = 73.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 12
+text = "X"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="cLabel" type="Label" parent="."]
+offset_left = 76.0
+offset_top = 321.0
+offset_right = 108.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 12
+text = "C"
+horizontal_alignment = 2
+vertical_alignment = 2

@@ -169,6 +169,9 @@ func on_new_follower_added(entity: NonPlayerCharacter):
 
 
 func on_game_state_changed(gameState):
+	if is_follower:
+		return
+		
 	if gameState == GameState.EGameState.Expansion:
 		if current_state:
 			current_state.exit()

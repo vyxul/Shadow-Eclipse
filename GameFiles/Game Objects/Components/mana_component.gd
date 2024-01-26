@@ -50,5 +50,10 @@ func get_current_mana() -> float:
 	return current_mana_points
 
 
+func set_max_mp(num: float):
+	max_mana_points = num
+	current_mana_points = num
+
+
 func _on_timer_timeout():
 	regain()

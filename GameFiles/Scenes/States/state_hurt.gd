@@ -24,6 +24,10 @@ func enter():
 	this_entity.velocity = Vector2.ZERO
 
 
+func exit():
+	hurtbox_component.collision_layer = 2
+
+
 func update(delta):
 	timer -= delta
 	
