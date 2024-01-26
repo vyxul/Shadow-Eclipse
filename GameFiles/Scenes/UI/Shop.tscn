@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpkkckaqqs674"]
+
+[ext_resource type="Script" path="res://GameFiles/Scenes/UI/Shop.gd" id="1_d6we8"]
+[ext_resource type="Texture2D" uid="uid://bkrbmvxdq6yip" path="res://GameFiles/Assets/Art/UI/Shop/shop_screen.png" id="1_rllo6"]
+[ext_resource type="Theme" uid="uid://dchlpq43bgnij" path="res://ButtonOverlay.tres" id="2_1ubft"]
+
+[node name="Shop" type="CanvasLayer"]
+script = ExtResource("1_d6we8")
+
+[node name="Shop Page" type="Sprite2D" parent="."]
+position = Vector2(285, 166)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_rllo6")
+
+[node name="TotalDarkness" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 377.0
+offset_top = 60.0
+offset_right = 444.0
+offset_bottom = 83.0
+text = "116846"
+horizontal_alignment = 2
+
+[node name="ExtraHealthCost" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 207.0
+offset_top = 103.0
+offset_right = 274.0
+offset_bottom = 126.0
+text = "116846"
+horizontal_alignment = 2
+
+[node name="ExtraManaCost" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 207.0
+offset_top = 151.0
+offset_right = 274.0
+offset_bottom = 174.0
+text = "116846"
+horizontal_alignment = 2
+
+[node name="ExtraAttackCost" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 207.0
+offset_top = 200.0
+offset_right = 274.0
+offset_bottom = 223.0
+text = "116846"
+horizontal_alignment = 2
+
+[node name="ExtraMinionCost" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 207.0
+offset_top = 247.0
+offset_right = 274.0
+offset_bottom = 270.0
+text = "116846"
+horizontal_alignment = 2
+
+[node name="BuyExtraHealth" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 307.0
+offset_top = 106.0
+offset_right = 349.0
+offset_bottom = 122.0
+
+[node name="BuyExtraMana" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 307.0
+offset_top = 154.0
+offset_right = 349.0
+offset_bottom = 170.0
+
+[node name="BuyExtraAttack" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 307.0
+offset_top = 202.0
+offset_right = 349.0
+offset_bottom = 218.0
+
+[node name="BuyExtraMinion" type="Button" parent="."]
+offset_left = 307.0
+offset_top = 250.0
+offset_right = 349.0
+offset_bottom = 266.0
+theme = ExtResource("2_1ubft")
+action_mode = 0
+flat = true
+
+[node name="Continue" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 374.0
+offset_top = 259.0
+offset_right = 468.0
+offset_bottom = 275.0
+
+[connection signal="pressed" from="BuyExtraHealth" to="." method="_on_buy_extra_health_pressed"]
+[connection signal="pressed" from="BuyExtraMana" to="." method="_on_buy_extra_mana_pressed"]
+[connection signal="pressed" from="BuyExtraAttack" to="." method="_on_buy_extra_attack_pressed"]
+[connection signal="pressed" from="BuyExtraMinion" to="." method="_on_buy_extra_minion_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

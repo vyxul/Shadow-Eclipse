@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyyiwoe2lk5u7"]
+
+[ext_resource type="Script" path="res://GameFiles/Scenes/Menu/LoadingScreen.gd" id="1_sowju"]
+[ext_resource type="Texture2D" uid="uid://4m64wvklpbhs" path="res://GameFiles/Assets/Art/UI/StartScreen.png" id="1_vs8d7"]
+[ext_resource type="Texture2D" uid="uid://cbwbqaw4ykrgi" path="res://GameFiles/Assets/Art/UI/ui_buttons_and_stuff_v2.png" id="3_b3w2j"]
+[ext_resource type="Texture2D" uid="uid://c56u1n242i5r5" path="res://GameFiles/Assets/Art/Map/DarknessTiles.png" id="4_t7gse"]
+
+[sub_resource type="Animation" id="Animation_8575i"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/LoadingBar:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_x5yvq"]
+resource_name = "end_load"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/LoadingBar:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.8)
+}
+
+[sub_resource type="Animation" id="Animation_13165"]
+resource_name = "start_load"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.801478)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"loading_screen_has_full_coverage"],
+"method": &"emit_signal"
+}]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/LoadingBar:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.3, 0.9)
+}
+
+[sub_resource type="Animation" id="Animation_3kwyf"]
+resource_name = "start_node"
+length = 1.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvriw"]
+_data = {
+"RESET": SubResource("Animation_8575i"),
+"end_load": SubResource("Animation_x5yvq"),
+"start_load": SubResource("Animation_13165"),
+"start_node": SubResource("Animation_3kwyf")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fv6qr"]
+texture = ExtResource("3_b3w2j")
+texture_margin_left = 3.95689
+texture_margin_right = 4.0
+region_rect = Rect2(77, 13, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_djrre"]
+texture = ExtResource("4_t7gse")
+region_rect = Rect2(9, 25, 20, 6)
+
+[node name="LoadingScreen" type="CanvasLayer"]
+layer = 11
+follow_viewport_enabled = true
+script = ExtResource("1_sowju")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dvriw")
+}
+autoplay = "start_load"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(1.99688, 2.01111)
+texture = ExtResource("1_vs8d7")
+centered = false
+
+[node name="LoadingBar" type="ProgressBar" parent="Background"]
+top_level = true
+z_index = 11
+offset_left = 45.0
+offset_top = 306.0
+offset_right = 598.0
+offset_bottom = 329.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxTexture_fv6qr")
+theme_override_styles/fill = SubResource("StyleBoxTexture_djrre")

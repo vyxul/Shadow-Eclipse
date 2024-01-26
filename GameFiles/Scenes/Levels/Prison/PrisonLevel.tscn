@@ -25,6 +25,7 @@ LightTexture = ExtResource("2_e6brk")
 Player = NodePath("Player")
 
 [node name="Player_Camera2D" parent="." instance=ExtResource("1_8rapg")]
+position = Vector2(320, 180)
 
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
@@ -146,6 +147,7 @@ mouse_filter = 2
 [node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
 
 [node name="Death Screen" parent="UI" instance=ExtResource("9_dm52a")]
+visible = true
 
 [node name="Fountain" parent="." instance=ExtResource("5_lghrh")]
 y_sort_enabled = true

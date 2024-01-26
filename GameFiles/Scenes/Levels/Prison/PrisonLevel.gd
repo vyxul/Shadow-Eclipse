@@ -68,6 +68,7 @@ func _on_timer_timeout():
 
 
 func on_player_died():
+	GameState.PlayerDied()
 	death_screen.appear()
 
 
