@@ -6,8 +6,8 @@ class_name Fountain
 @export_range(0.01, 10) var DamagePercentageTakenPerTileDamage = 0.1
 @export var darknessTile: PackedScene
 
-@export var MAX_EXPANSION_X = 15
-@export var MAX_EXPANSION_Y = 15
+@export var MAX_EXPANSION_X = 31
+@export var MAX_EXPANSION_Y = 31
 
 @onready var healthComponent: HealthComponent = $HealthComponent	
 @onready var conversion_component: ConversionComponent = $ConversionComponent
@@ -18,8 +18,9 @@ class_name Fountain
 @onready var Converted_60 = $"FountainOfLight Image/FountainOfLight Upper/Converted_60"
 @onready var Health_70 = $"FountainOfLight Image/FountainOfLight Upper/Health70"
 @onready var Health_30 = $"FountainOfLight Image/FountainOfLight Upper/Health30"
+@onready var health_bar = $HealthBar
 
-var tileHalfSize = GameData.GetGameTileSize() / 2
+var tileHalfSize = GameData.GetGameTileSize() / 4
 var topLeftWorldLocation : Vector2i = Vector2i.ZERO
 var TileCoordinates  = []
 var LocationsToSpawnDarkness  = [] 
@@ -38,9 +39,7 @@ func _ready():
 	var coordX = StartingID % MAX_EXPANSION_X		
 	var coordY = floori(StartingID / MAX_EXPANSION_X)
 	topLeftWorldLocation = -Vector2(coordX * tileHalfSize, coordY * tileHalfSize)
-	
-	healthComponent.health_lost.connect()
-	
+		
 	OnFactionChanged(faction)
 	hurtboxComponent.set_conversion_component(conversion_component)
 	
@@ -105,8 +104,29 @@ func _on_darkness_tile_tile_destroyed(_Tile):
 	remove_child(_Tile)
 	#print("Fountain Health " + str($HealthComponent.current_health_points))
 
+func _on_health_component_health_lost(healthDecrease):
+	health_bar.visible = true
+	health_bar.value = healthComponent.current_health_points / healthComponent.max_health_points
+	UpdateFoutainHealthImage()
+	
+func UpdateFoutainHealthImage():
+	var current_health = healthComponent.current_health_points
+	var max_health = healthComponent.max_health_points
+	var health_Percentage = current_health / max_health
+	
+	if health_Percentage < 0.3:
+		Health_30.visible = true;
+		Health_70.visible = false;
+	elif health_Percentage < 0.7:
+		Health_30.visible = false;
+		Health_70.visible = true;
+	else:
+		Health_30.visible = false;
+		Health_70.visible = false;
+	
+
 func _on_darkness_tile_tile_received_damage(_damage):
-	healthComponent.damage(_damage)
+	healthComponent.damage(_damage * 0.01)
 
 func GetUp(idx) -> int:
 	var result = idx - MAX_EXPANSION_X
@@ -164,3 +184,7 @@ func SpawnOnLocations():
 
 func get_faction() -> int:
 	return faction
+
+
+func _on_health_component_health_depleted():
+	GameData.fountain_died.emit()

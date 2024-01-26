@@ -46,6 +46,7 @@ func _ready():
   # update fog once or player will be under fog until you start move
 	update_fog(Player.position)
 	
+	GameData.fountain_died.connect(on_fountain_died)
 	GameData.player_died.connect(on_player_died)
 	GameState.game_state_changed.connect(on_game_state_changed)
 	GameState.game_start()
@@ -74,7 +75,11 @@ func _on_timer_timeout():
 
 func on_player_died():
 	GameState.PlayerDied()
-	defeat_screen.appear()
+	defeat_screen.appear(0) #Reason
+	
+func on_fountain_died():
+	GameState.PlayerDied()
+	defeat_screen.appear(1) #Reason
 
 
 func on_game_state_changed(game_state):
