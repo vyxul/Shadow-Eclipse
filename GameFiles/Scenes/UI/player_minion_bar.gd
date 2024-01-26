@@ -3,9 +3,6 @@ extends Control
 signal MinionConverted
 signal MinionDied
 
-@onready var MinionSlotsUpper = $MinionsUpper
-@onready var MinionSlotsLower = $MinionsLower
-
 const maxnumberofminions = 15
 const minions_inUpper_Slots = 9
 
@@ -20,15 +17,14 @@ func _ready():
 	GameData.follower_died.connect(OnMinionDied)
 		
 	current_max_minions = GameData.GetPersistantGameData().MaxMinions
-	if current_max_minions > minions_inUpper_Slots:
-		MinionSlotsLower.visible = true
 		
 	var id = 0
 	for Minion in Minions:
 		if id < current_max_minions:
 			Minion.set_minion_slot_empty()
 		else:
-			Minion.hide()
+			Minion.set_invisible()
+		id += 1
 			
 
 func OnMinionConvered(npc: NonPlayerCharacter):

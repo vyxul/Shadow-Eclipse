@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmil3wvbtu1cx"]
+[gd_scene load_steps=3 format=3 uid="uid://bmil3wvbtu1cx"]
 
 [ext_resource type="Script" path="res://GameFiles/Scenes/UI/player_minion_bar.gd" id="1_o8g3c"]
-[ext_resource type="Texture2D" uid="uid://dxnnvui8ejv3q" path="res://GameFiles/Assets/Art/UI/PlayerUI/GUI_2.png" id="2_be5ou"]
 [ext_resource type="PackedScene" uid="uid://bsbsctrp3drv3" path="res://GameFiles/Scenes/UI/player_minion.tscn" id="3_mupki"]
 
 [node name="PlayerHeartBar" type="Control"]
@@ -9,151 +8,135 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_o8g3c")
 
-[node name="MinionsUpper" type="Sprite2D" parent="."]
-position = Vector2(0, -3.5)
-scale = Vector2(1, 0.9125)
-texture = ExtResource("2_be5ou")
-region_enabled = true
-region_rect = Rect2(0, 0, 128, 80)
-
 [node name="PlayerMinion1" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = -64.0
-offset_top = 12.0
-offset_right = -688.0
-offset_bottom = -332.0
+offset_left = 6.0
+offset_top = 79.0
+offset_right = -618.0
+offset_bottom = -265.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion2" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = -68.0
-offset_top = 27.0
-offset_right = -692.0
-offset_bottom = -317.0
+offset_top = 90.0
+offset_bottom = -254.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion3" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = -20.0
-offset_top = 12.0
-offset_right = -644.0
-offset_bottom = -332.0
+offset_left = 84.0
+offset_top = 89.0
+offset_right = -540.0
+offset_bottom = -255.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion4" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = -6.0
-offset_top = 26.0
-offset_right = -630.0
-offset_bottom = -318.0
+offset_left = 98.0
+offset_top = 103.0
+offset_right = -526.0
+offset_bottom = -241.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion5" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = 7.0
-offset_top = 14.0
-offset_right = -617.0
-offset_bottom = -330.0
+offset_left = 111.0
+offset_top = 91.0
+offset_right = -513.0
+offset_bottom = -253.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion6" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = 23.0
-offset_top = 25.0
-offset_right = -601.0
-offset_bottom = -319.0
+offset_left = 127.0
+offset_top = 102.0
+offset_right = -497.0
+offset_bottom = -242.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion7" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = 38.0
-offset_top = 26.0
-offset_right = -586.0
-offset_bottom = -318.0
+offset_left = 142.0
+offset_top = 103.0
+offset_right = -482.0
+offset_bottom = -241.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion8" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = 41.0
-offset_top = 13.0
-offset_right = -583.0
-offset_bottom = -331.0
+offset_left = 145.0
+offset_top = 90.0
+offset_right = -479.0
+offset_bottom = -254.0
 scale = Vector2(0.5, 0.5)
-
-[node name="MinionsLower" type="Sprite2D" parent="."]
-position = Vector2(-19, 41.5)
-scale = Vector2(1, 1.02941)
-texture = ExtResource("2_be5ou")
-region_enabled = true
-region_rect = Rect2(0, 79, 90, 17)
 
 [node name="PlayerMinion9" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = -66.0
-offset_top = 40.0
-offset_right = -690.0
-offset_bottom = -304.0
+offset_left = 38.0
+offset_top = 117.0
+offset_right = -586.0
+offset_bottom = -227.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion10" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = -43.0
-offset_top = 31.0
-offset_right = -667.0
-offset_bottom = -313.0
+offset_left = 61.0
+offset_top = 108.0
+offset_right = -563.0
+offset_bottom = -236.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion11" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = -25.0
-offset_top = 31.0
-offset_right = -649.0
-offset_bottom = -313.0
+offset_left = 79.0
+offset_top = 108.0
+offset_right = -545.0
+offset_bottom = -236.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion12" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = -12.0
-offset_top = 43.0
-offset_right = -636.0
-offset_bottom = -301.0
+offset_left = 92.0
+offset_top = 120.0
+offset_right = -532.0
+offset_bottom = -224.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion13" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = 7.0
-offset_top = 31.0
-offset_right = -617.0
-offset_bottom = -313.0
+offset_left = 111.0
+offset_top = 108.0
+offset_right = -513.0
+offset_bottom = -236.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion14" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = 15.0
-offset_top = 43.0
-offset_right = -609.0
-offset_bottom = -301.0
+offset_left = 119.0
+offset_top = 120.0
+offset_right = -505.0
+offset_bottom = -224.0
 scale = Vector2(0.5, 0.5)
 
 [node name="PlayerMinion15" parent="." instance=ExtResource("3_mupki")]
 top_level = true
 layout_mode = 1
-offset_left = 25.0
-offset_top = 38.0
-offset_right = -599.0
-offset_bottom = -306.0
+offset_left = 129.0
+offset_top = 115.0
+offset_right = -495.0
+offset_bottom = -229.0
 scale = Vector2(0.5, 0.5)
