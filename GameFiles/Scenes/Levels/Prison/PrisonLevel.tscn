@@ -63,21 +63,74 @@ y_sort_enabled = true
 y_sort_enabled = true
 position = Vector2(145, 241)
 
-[node name="ally_bandit" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(210, 84)
-faction = 0
-
 [node name="enemy_bandit2" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(124, 387)
 
+[node name="enemy_bandit3" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(210, 84)
+
+[node name="enemy_bandit4" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(350, 248)
+
+[node name="enemy_bandit5" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(814, 117)
+
+[node name="enemy_bandit6" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(867, 185)
+
+[node name="enemy_bandit7" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1137, 106)
+
+[node name="enemy_bandit8" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1070, 369)
+
+[node name="enemy_bandit9" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(889, 1141)
+
+[node name="enemy_bandit10" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(569, 1250)
+
+[node name="enemy_bandit11" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(651, 1141)
+
+[node name="enemy_bandit12" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(930, 1453)
+
+[node name="enemy_bandit13" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(278, 1242)
+
+[node name="enemy_bandit14" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(471, 1273)
+
 [node name="soldier" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
-position = Vector2(802, 603)
+position = Vector2(758, 464)
+
+[node name="soldier2" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(1060, 754)
+
+[node name="soldier3" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(761, 975)
+
+[node name="soldier4" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(166, 766)
+
+[node name="soldier5" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(345, 758)
+
+[node name="soldier6" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(1383, 145)
+
+[node name="soldier7" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(1391, 724)
+
+[node name="soldier8" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(1409, 1372)
 
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
 top_level = true
 y_sort_enabled = true
 position = Vector2(787, 736)
-run_speed_multiplier = 3.0
+run_speed_multiplier = 1.5
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

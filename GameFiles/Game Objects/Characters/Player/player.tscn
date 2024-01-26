@@ -117,6 +117,7 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_n8ck6")
 player_speed = 64.0
+run_speed_multiplier = 1.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_d4vni")]
 max_health_points = 50.0
