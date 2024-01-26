@@ -15,24 +15,16 @@ signal follow_target_set(follow_target_position: Vector2)
 
 enum Factions {SHADOW, LIGHT, MONSTER}
 
-const inf : int = -1
-
-var ExtraMaxHealthCost =     [0,   0,    10, 100, 100, 150, 200,  300,  400,  500,  500,   600,  750, 1000, 1500, inf]
-var ExtraMaxManaCost =       [0,   0,    10,  50,  50, 100, 150,  200,  300,  400,  500,   600,  750, 1000, 1500, inf]
-var ExtraDamagePercentCost = [150, 250, 300, 450, 600, 800, 900, 1000, 1100, 1200, 1300,  1400, 1500, 1750, 2000, inf]
-var ExtraMaxMinionsCost =     [0,   0,    0, 100, 200, 300, 400,  500,  600,  700,  800,   900, 1000, 1200, 1500, inf]
-
-var Darkness : int = 0
-var MaxHealth  : int = 0
-var MaxMana : int = 0
-var MaxDamage : int = 0
-var MaxMinions : int = 0
-
 var targets_under_mouse: Array
 var follow_target_position
 var attack_target: NonPlayerCharacter
 var player_score: int
 const TileSize = 32
+
+var persistGameData = null
+
+func _ready():
+	persistGameData = Persiststant_Game_Data.new()
 
 func is_faction_ally(faction_1: Factions, faction_2: Factions): 
 	if faction_1 == faction_2:
@@ -113,65 +105,8 @@ func reset():
 	attack_target = null
 	player_score = 0
 
-func InreaseMaxHealth():
-	MaxHealth += 1
+func GetPersistantGameData() -> Persiststant_Game_Data:
+	return persistGameData
 
-func SetMaxHealth(maxHealth):
-	MaxHealth = maxHealth
-
-func GetMaxHealth() -> int:
-	return MaxHealth
-
-func InreaseMaxMana():
-	MaxMana += 1
-	
-func SetMaxMana(maxMana):
-	MaxMana = maxMana
-
-func GetMaxMana() -> int:
-	return MaxMana
-	
-func InreaseMaxDamagePercent():
-	MaxDamage += 1
-
-func GetDamagePercent() -> int:
-	return MaxDamage
-	
-func SetDamagePercent(_MaxDamage):
-	MaxDamage = _MaxDamage
-	
-func InreaseMaxMinions():
-	MaxMinions += 1
-	
-func SetMaxMinions(maxMinions):
-	MaxMinions = maxMinions
-
-func GetMaxMinion() -> int:
-	return MaxMinions
-
-func SetDarkness(_Darkness):
-	Darkness = _Darkness	
-	
-func IncreaseDarkness(_Darkness):
-	Darkness += _Darkness
-	
-func DecreaseDarkness(_Darkness):
-	Darkness -= _Darkness
-
-func GetDarkness() -> int:
-	return Darkness
-
-func GetExtraHealthCost() -> int:
-	return ExtraMaxHealthCost[MaxHealth]
-	
-
-func GetExtraManaCost() -> int:
-	return ExtraMaxManaCost[MaxMana]
-	
-
-func GetExtraDamageCost() -> int:
-	return ExtraDamagePercentCost[MaxDamage]
-	
-
-func GetExtraMinionsCost() -> int:
-	return ExtraMaxMinionsCost[MaxMinions]
+func SetPersistantGameData(_persistantGameData : Persiststant_Game_Data) -> void:
+	persistGameData = _persistantGameData

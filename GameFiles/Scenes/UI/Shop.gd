@@ -12,31 +12,39 @@ extends CanvasLayer
 @onready var BuyExtraMinionsButton = $BuyExtraMinion
 
 signal ShopClosed
+signal OpenShop
 
 func _ready():
+	OpenShop.connect(Open_Shop)
+	
+func Open_Shop():
 	UpdateAllLabels()
 	PostBuyUpdate()
-
+	show()
+	
+func GetGameData() -> Persiststant_Game_Data:
+	return GameData.GetPersistantGameData()
+	
 func PostBuyUpdate():
-	TotalDarknessLabel.text = str(GameData.GetDarkness())
+	TotalDarknessLabel.text = str(GetGameData().GetDarkness())
 	UpdateButtons()
 
 func UpdateButtons():
-	var TotalDarkenss = GameData.GetDarkness()
+	var TotalDarkenss = GetGameData().GetDarkness()
 	
-	var HealthCost = GameData.GetExtraHealthCost()
+	var HealthCost = GetGameData().GetExtraHealthCost()
 	if HealthCost < -1 || TotalDarkenss > HealthCost:
 		BuyExtraHealthButton.disabled = true
 		
-	var ManaCost = GameData.GetExtraManaCost()
+	var ManaCost = GetGameData().GetExtraManaCost()
 	if ManaCost < -1 || TotalDarkenss > ManaCost:
 		BuyExtraManaButton.disabled = true
 		
-	var MinionsCost = GameData.GetExtraMinionsCost()
+	var MinionsCost = GetGameData().GetExtraMinionsCost()
 	if MinionsCost < -1 || TotalDarkenss > MinionsCost:
 		BuyExtraMinionsButton.disabled = true
 		
-	var DamagePercentCost = GameData.GetExtraDamageCost()
+	var DamagePercentCost = GetGameData().GetExtraDamageCost()
 	if DamagePercentCost < -1 || TotalDarkenss > DamagePercentCost:
 		BuyExtraAttackButton.disabled = true
 	
@@ -47,28 +55,28 @@ func UpdateAllLabels():
 	UpdateExtraMinionsCostLabel()
 
 func UpdateExtraHealthCostLabel():
-	var HealthCost = GameData.GetExtraHealthCost()
+	var HealthCost = GetGameData().GetExtraHealthCost()
 	if HealthCost > -1:
 		ExtraHealthCostLabel.text  = str(HealthCost)
 	else:
 		ExtraHealthCostLabel.text  = "Maxed"
 
 func UpdateExtraManaCostLabel():
-	var ManaCost = GameData.GetExtraManaCost()
+	var ManaCost = GetGameData().GetExtraManaCost()
 	if ManaCost > -1:
 		ExtraManaCostLabel.text  = str(ManaCost)
 	else:
 		ExtraManaCostLabel.text  = "Maxed"
 	
 func UpdateExtraAttackCostLabel():
-	var ExtraAttackCost = GameData.GetExtraDamageCost()
+	var ExtraAttackCost = GetGameData().GetExtraDamageCost()
 	if ExtraAttackCost > -1:
 		ExtraAttackCostLabel.text  = str(ExtraAttackCost)
 	else:
 		ExtraAttackCostLabel.text  = "Maxed"
 	
 func UpdateExtraMinionsCostLabel():
-	var ExtraMinionsCost = GameData.GetExtraMinionsCost()
+	var ExtraMinionsCost = GetGameData().GetExtraMinionsCost()
 	if ExtraMinionsCost > -1:
 		ExtraMinionsCostLabel.text  = str(ExtraMinionsCost)
 	else:
@@ -76,11 +84,11 @@ func UpdateExtraMinionsCostLabel():
 
 
 func _on_buy_extra_health_pressed():
-	var TotalDarkness = GameData.GetDarkness()
-	var NextHealthCost = GameData.GetExtraHealthCost()
+	var TotalDarkness = GetGameData().GetDarkness()
+	var NextHealthCost = GetGameData().GetExtraHealthCost()
 	if TotalDarkness >= NextHealthCost:
-		GameData.InreaseMaxHealth()
-		GameData.DecreaseDarkness(NextHealthCost)
+		GetGameData().InreaseMaxHealth()
+		GetGameData().DecreaseDarkness(NextHealthCost)
 		UpdateExtraHealthCostLabel()
 		PostBuyUpdate()
 	else:
@@ -88,11 +96,11 @@ func _on_buy_extra_health_pressed():
 
 
 func _on_buy_extra_mana_pressed():
-	var TotalDarkness = GameData.GetDarkness()
-	var NextManaCost = GameData.GetExtraManaCost()
+	var TotalDarkness = GetGameData().GetDarkness()
+	var NextManaCost = GetGameData().GetExtraManaCost()
 	if TotalDarkness >= NextManaCost:
-		GameData.InreaseMaxMana()
-		GameData.DecreaseDarkness(NextManaCost)
+		GetGameData().InreaseMaxMana()
+		GetGameData().DecreaseDarkness(NextManaCost)
 		UpdateExtraManaCostLabel()
 		PostBuyUpdate()
 	else:
@@ -101,11 +109,11 @@ func _on_buy_extra_mana_pressed():
 
 func _on_buy_extra_attack_pressed():
 	PostBuyUpdate()
-	var TotalDarkness = GameData.GetDarkness()
-	var NextDamagePercentCost = GameData.GetExtraDamageCost()
+	var TotalDarkness = GetGameData().GetDarkness()
+	var NextDamagePercentCost = GetGameData().GetExtraDamageCost()
 	if TotalDarkness >= NextDamagePercentCost:
-		GameData.InreaseMaxDamagePercent()
-		GameData.DecreaseDarkness(NextDamagePercentCost)
+		GetGameData().InreaseMaxDamagePercent()
+		GetGameData().DecreaseDarkness(NextDamagePercentCost)
 		UpdateExtraAttackCostLabel()
 		PostBuyUpdate()
 	else:
@@ -113,11 +121,11 @@ func _on_buy_extra_attack_pressed():
 
 
 func _on_buy_extra_minion_pressed():
-	var TotalDarkness = GameData.GetDarkness()
-	var NextMinionsCost = GameData.GetExtraMinionsCost()
+	var TotalDarkness = GetGameData().GetDarkness()
+	var NextMinionsCost = GetGameData().GetExtraMinionsCost()
 	if TotalDarkness >= NextMinionsCost:
-		GameData.InreaseMaxMinions()
-		GameData.DecreaseDarkness(NextMinionsCost)
+		GetGameData().InreaseMaxMinions()
+		GetGameData().DecreaseDarkness(NextMinionsCost)
 		UpdateExtraMinionsCostLabel()
 		PostBuyUpdate()
 	else:
