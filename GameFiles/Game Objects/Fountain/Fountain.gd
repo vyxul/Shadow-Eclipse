@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 @export var faction: GameData.Factions
 #@export var ExpansionSpeed = 1

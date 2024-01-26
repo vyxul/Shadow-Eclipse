@@ -44,6 +44,6 @@ func attack_direction(direction: Vector2):
 		attack_finished.emit()
 
 
-func is_body_in_attack_range(body: CharacterBody2D):
+func is_body_in_attack_range(body: Node2D):
 	var overlapping_bodies = get_overlapping_bodies()
 	return overlapping_bodies.has(body)

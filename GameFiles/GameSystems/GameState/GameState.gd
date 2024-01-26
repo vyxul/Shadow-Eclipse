@@ -46,6 +46,10 @@ func SendAllEnemiesToFountain():
 func GetGameState() -> EGameState :
 	return _Game_State
 
+
+func reset():
+	_Game_State = EGameState.Conquer
+
+
 func _on_enemy_spawn_timer_timeout():
 	SpawnEnemy.emit()
-

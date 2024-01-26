@@ -3,6 +3,7 @@ extends Node2D
 @onready var audio_stream_player = $AudioStreamPlayer
 @onready var audio_stream_player_2 = $AudioStreamPlayer2
 @onready var timer = $Timer
+@onready var death_screen = $"UI/Death Screen"
 
 # exports for editor
 @export var fog: Sprite2D
@@ -44,8 +45,8 @@ func _ready():
   # update fog once or player will be under fog until you start move
 	update_fog(Player.position)
 	
+	GameData.player_died.connect(on_player_died)
 	GameState.game_state_changed.connect(on_game_state_changed)
-	
 	GameState.game_start()
 	
 # update our fog
@@ -66,10 +67,15 @@ func _on_timer_timeout():
 	audio_stream_player_2.stop()
 
 
+func on_player_died():
+	death_screen.appear()
+
+
 func on_game_state_changed(game_state):
 	match (game_state):
 		GameState.EGameState.Conquer:
 			timer.start()
 		GameState.EGameState.Expansion:
+			timer.stop()
 			audio_stream_player_2.play()
 			audio_stream_player.stop()
