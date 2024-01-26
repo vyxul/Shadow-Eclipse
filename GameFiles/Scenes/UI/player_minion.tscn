@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsbsctrp3drv3"]
+
+[ext_resource type="Script" path="res://GameFiles/Scenes/UI/player_minion.gd" id="1_28jb1"]
+[ext_resource type="Texture2D" uid="uid://uua45kiiiyr8" path="res://GameFiles/Assets/Art/Enemies/bandit/bandit_spritesheet.png" id="2_xn4qv"]
+
+[node name="PlayerMinion" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -624.0
+offset_bottom = -344.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28jb1")
+
+[node name="OccoupiedMinionSlot" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("2_xn4qv")
+region_enabled = true
+region_rect = Rect2(343, 28, 16, 20)
+
+[node name="EmptyMinionSlot" type="Sprite2D" parent="OccoupiedMinionSlot"]
+visible = false
+modulate = Color(0, 0, 0, 0.960784)
+texture = ExtResource("2_xn4qv")
+region_enabled = true
+region_rect = Rect2(343, 28, 16, 20)
