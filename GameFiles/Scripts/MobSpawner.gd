@@ -1,14 +1,18 @@
 extends Node
 
-@export var EnemyToSpawn : PackedScene = null
-var spawn_timer = Timer.new()
-var initialNumOfChildren = 0
+@export var enemy_spawn_list: Array[PackedScene] = []
 @export var maxEnemies = 10
-var spawnedEnemies = 0
 @export var spawnRadius = 50
 @export var spawnWaitTime_seconds = 2
+
+var spawn_timer = Timer.new()
+var spawnedEnemies = 0
+var initialNumOfChildren = 0
+
+
 func _ready():
 	GameState.SpawnEnemy.connect(spawn_ememy)
+
 
 # Function called when the Timer times out
 func spawn_ememy():
@@ -16,7 +20,8 @@ func spawn_ememy():
 	spawnedEnemies = get_child_count()
 	# Instantiate the enemy object
 	if(spawnedEnemies < maxEnemies+initialNumOfChildren):
-		var enemy_instance = EnemyToSpawn.instantiate()
+		var enemy_to_spawn = enemy_spawn_list.pick_random()
+		var enemy_instance = enemy_to_spawn.instantiate()
 		var rIntX = 2*randi_range(-spawnRadius, spawnRadius)
 		var rIntY = 2*randi_range(-spawnRadius, spawnRadius)
 		enemy_instance.translate(Vector2(rIntX, rIntY))
