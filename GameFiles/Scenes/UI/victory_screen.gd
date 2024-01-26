@@ -1,14 +1,14 @@
 extends CanvasLayer
 
 @onready var score_value_label = $ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ScoreValueLabel
-@onready var retry_button = $ColorRect/MarginContainer/HBoxContainer/RetryButton
+@onready var continue_button = $ColorRect/MarginContainer/HBoxContainer/ContinueButton
 @onready var quit_button = $ColorRect/MarginContainer/HBoxContainer/QuitButton
 
-var Game = "res://GameFiles/Scenes/Levels/Prison/PrisonLevel.tscn"
+var Game = "res://GameFiles/Scenes/Menu/StartScreen.tscn"
 
 func _ready():
 	visible = false
-	retry_button.disabled = true
+	continue_button.disabled = true
 	quit_button.disabled = true
 
 
@@ -18,7 +18,7 @@ func get_score() -> int:
 
 func appear():
 	visible = true
-	retry_button.disabled = false
+	continue_button.disabled = false
 	quit_button.disabled = false
 	score_value_label.text = str(get_score())
 	get_tree().paused = true
@@ -26,16 +26,16 @@ func appear():
 
 func disappear():
 	visible = false
-	retry_button.disabled = true
+	continue_button.disabled = true
 	quit_button.disabled = true
 	get_tree().paused = false
 
 
-func _on_retry_button_pressed():
+func _on_continue_button_pressed():
 	disappear()
 	GameData.reset()
 	GameState.reset()
-	LoadManager.ChangeScene(Game)
+	LoadManager.load_scene(Game)
 
 
 func _on_quit_button_pressed():
