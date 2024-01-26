@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6iln3ojpjfcx"]
 
-[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_range_attack.gd" id="1_h6hib"]
+[ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player_ranged_attack.gd" id="1_h6hib"]
 [ext_resource type="Texture2D" uid="uid://dopmhlwnubn3n" path="res://GameFiles/Assets/Art/Enemies/art_sprite_sheet.png" id="2_et0rs"]
 [ext_resource type="PackedScene" uid="uid://dapjt02jspsb" path="res://GameFiles/Game Objects/Components/hitbox_component.tscn" id="3_grt4h"]
 
