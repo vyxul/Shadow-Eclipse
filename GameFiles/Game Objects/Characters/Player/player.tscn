@@ -164,7 +164,7 @@ hurtbox_component = NodePath("../HurtboxComponent")
 player = NodePath("..")
 laser_range = 192.0
 focus_time_needed = 0.5
-mana_cost = 2.0
+conversion_damage = 5
 
 [node name="FollowerMarkers" type="Node2D" parent="."]
 visible = false

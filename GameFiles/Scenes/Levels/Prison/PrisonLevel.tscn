@@ -67,6 +67,9 @@ position = Vector2(145, 241)
 [node name="enemy_bandit2" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(124, 387)
 
+[node name="enemy_bandit15" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(825, 738)
+
 [node name="enemy_bandit3" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(210, 84)
 
