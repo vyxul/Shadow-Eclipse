@@ -58,6 +58,10 @@ func exit():
 
 
 func update(delta):
+	if this_search_radius.get_tracked_enemies_count() == 0:
+		on_not_tracking_enemy()
+		return
+	
 	focus_target = this_search_radius.get_closest_tracked_enemy()
 	
 	if !is_attacking:

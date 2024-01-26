@@ -140,6 +140,8 @@ func on_hurt():
 	if current_state:
 		current_state.exit()
 		previous_state = current_state
+		if is_state_follower(current_state):
+			last_follower_state = current_state
 	
 	var new_state = states.get("state_hurt")
 	current_state = new_state

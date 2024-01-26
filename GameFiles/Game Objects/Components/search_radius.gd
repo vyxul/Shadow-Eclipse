@@ -122,6 +122,10 @@ func search_surroundings():
 			enemies_in_discovery_range.append(body)
 
 
+func get_tracked_enemies_count() -> int:
+	return tracked_enemies_in_range.size()
+
+
 func clear_lists():
 	enemies_in_discovery_range.clear()
 	tracked_enemies_in_range.clear()

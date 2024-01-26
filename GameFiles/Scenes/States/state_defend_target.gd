@@ -3,7 +3,7 @@ class_name state_defend_target
 
 
 var this_entity: NonPlayerCharacter
-
+var this_search_radius: SearchRadius
 var defend_target_distance
 
 var defend_target: Vector2
@@ -11,13 +11,15 @@ var defend_target: Vector2
 
 func setup():
 	this_entity = get_parent().get_this_entity()
+	this_search_radius = get_parent().get_search_radius()
 	
 	defend_target_distance = get_parent().defend_target_distance
 	
 	GameData.follow_player.connect(on_follow_player)
 	GameData.follow_target_set.connect(on_follow_target_set)
 	GameData.attack_target_command.connect(on_attack_target_command)
-	get_parent().get_search_radius().tracking_enemy.connect(on_tracking_enemy)
+	this_search_radius.tracking_enemy.connect(on_tracking_enemy)
+	this_search_radius.reset()
 
 
 func enter():

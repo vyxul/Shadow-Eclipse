@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Components/search_radius.gd" id="1_ikolb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d43r6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7axgn"]
+resource_local_to_scene = true
 radius = 60.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_34nwe"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_57ae2"]
 radius = 50.0
 
 [node name="SearchRadius" type="Node2D"]
@@ -16,7 +17,7 @@ collision_layer = 0
 collision_mask = 26
 
 [node name="Tracked_Enemies_CollisionShape2D" type="CollisionShape2D" parent="Tracked_Enemies_Area2D"]
-shape = SubResource("CircleShape2D_d43r6")
+shape = SubResource("CircleShape2D_7axgn")
 debug_color = Color(1, 1, 1, 0.113725)
 
 [node name="Discovery_Area2D" type="Area2D" parent="."]
@@ -24,7 +25,7 @@ collision_layer = 0
 collision_mask = 26
 
 [node name="Discovery_CollisionShape2D" type="CollisionShape2D" parent="Discovery_Area2D"]
-shape = SubResource("CircleShape2D_34nwe")
+shape = SubResource("CircleShape2D_57ae2")
 debug_color = Color(0.898039, 0, 0, 0.113725)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
