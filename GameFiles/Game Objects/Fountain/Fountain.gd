@@ -16,7 +16,8 @@ class_name Fountain
 @onready var _Timer = $Timer
 @onready var Converted_30 = $"FountainOfLight Image/FountainOfLight Upper/Converted_30"
 @onready var Converted_60 = $"FountainOfLight Image/FountainOfLight Upper/Converted_60"
-@onready var Health_60 = $"FountainOfLight Image/FountainOfLight Upper/Health_60"
+@onready var Health_70 = $"FountainOfLight Image/FountainOfLight Upper/Health70"
+@onready var Health_30 = $"FountainOfLight Image/FountainOfLight Upper/Health30"
 
 var tileHalfSize = GameData.GetGameTileSize() / 2
 var topLeftWorldLocation : Vector2i = Vector2i.ZERO
@@ -37,6 +38,8 @@ func _ready():
 	var coordX = StartingID % MAX_EXPANSION_X		
 	var coordY = floori(StartingID / MAX_EXPANSION_X)
 	topLeftWorldLocation = -Vector2(coordX * tileHalfSize, coordY * tileHalfSize)
+	
+	healthComponent.health_lost.connect()
 	
 	OnFactionChanged(faction)
 	hurtboxComponent.set_conversion_component(conversion_component)

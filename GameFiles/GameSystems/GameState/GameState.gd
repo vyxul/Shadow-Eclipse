@@ -94,6 +94,8 @@ func CalculateTimerScore():
 	var score
 	match (_Game_State):
 		EGameState.Expansion:
+			score += ((Time.get_ticks_msec() - StartTime) / 10) * (GameData.GetPlayerScore())
+		EGameState.Expansion:
 			score = ConquerStateTimerMaxScore - (ConquerStateTime / 10)
 			score *= 0.5
 		EGameState.Finished:

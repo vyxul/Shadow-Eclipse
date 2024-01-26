@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://41gmpj5u34w8"]
+[gd_scene load_steps=11 format=3 uid="uid://41gmpj5u34w8"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Fountain/Fountain.gd" id="1_rheew"]
 [ext_resource type="Texture2D" uid="uid://fg3xakyhlamx" path="res://GameFiles/Assets/Art/World Objects/everything.png" id="2_c75j0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dgoai1xi1p80" path="res://GameFiles/Assets/Art/World Objects/BlackLightLayer.png" id="3_r7an1"]
 [ext_resource type="PackedScene" uid="uid://crnse58x3gauc" path="res://GameFiles/Game Objects/Components/conversion_component.tscn" id="4_fxn5n"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="5_vuy3c"]
+[ext_resource type="Texture2D" uid="uid://cicvqntonr2l7" path="res://GameFiles/Assets/Art/World Objects/fountain2.png" id="6_xjgax"]
 [ext_resource type="PackedScene" uid="uid://bs7ixulkrq5ho" path="res://GameFiles/Game Objects/Fountain/darkness_tile.tscn" id="7_rqkjj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rfk82"]
@@ -21,7 +22,10 @@ z_index = 5
 collision_mask = 0
 script = ExtResource("1_rheew")
 faction = 1
+DamagePercentageTakenPerTileDamage = null
 darknessTile = ExtResource("7_rqkjj")
+MAX_EXPANSION_X = null
+MAX_EXPANSION_Y = null
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_sgnlf")]
 position = Vector2(-7.45058e-09, 0)
@@ -48,7 +52,6 @@ region_enabled = true
 region_rect = Rect2(395, 2, 10, 19)
 
 [node name="FountainOfDarkness Image" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper"]
-visible = false
 modulate = Color(0, 0, 0, 0.67451)
 self_modulate = Color(0, 0, 0, 0.745098)
 position = Vector2(0, 5)
@@ -80,9 +83,22 @@ texture = ExtResource("2_c75j0")
 region_enabled = true
 region_rect = Rect2(385, 12, 30, 19)
 
-[node name="Health_60" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper"]
+[node name="Health70" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper"]
 visible = false
-position = Vector2(0, 5)
+modulate = Color(0.227451, 0.227451, 0.227451, 1)
+position = Vector2(-3, 15)
+texture = ExtResource("6_xjgax")
+region_enabled = true
+region_rect = Rect2(75, 32, 36, 20)
+
+[node name="Health30" type="Sprite2D" parent="FountainOfLight Image/FountainOfLight Upper"]
+visible = false
+modulate = Color(0.227451, 0.227451, 0.227451, 1)
+position = Vector2(-2.25, 14.78)
+scale = Vector2(0.98, 0.97619)
+texture = ExtResource("6_xjgax")
+region_enabled = true
+region_rect = Rect2(133, 32, 50, 21)
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0

@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://brd1whbsn3r4d"]
+[gd_scene load_steps=7 format=3 uid="uid://brd1whbsn3r4d"]
 
 [ext_resource type="Texture2D" uid="uid://4m64wvklpbhs" path="res://GameFiles/Assets/Art/UI/StartScreen.png" id="2_g2aee"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/Menu/StartScreen.gd" id="3_cnw42"]
 [ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="4_g35n1"]
-[ext_resource type="Texture2D" uid="uid://cbwbqaw4ykrgi" path="res://GameFiles/Assets/Art/UI/ui_buttons_and_stuff_v2.png" id="5_rqxjn"]
 [ext_resource type="AudioStream" uid="uid://d1vkysvcb2pln" path="res://GameFiles/Assets/Sound/Music/start_screen_music.mp3" id="6_1764v"]
-[ext_resource type="PackedScene" uid="uid://dsr6l8saodn5e" path="res://GameFiles/Scenes/Menu/SettingsMenu.tscn" id="6_mhwee"]
+[ext_resource type="PackedScene" path="res://GameFiles/Scenes/Menu/SettingsMenu.tscn" id="6_mhwee"]
 [ext_resource type="PackedScene" uid="uid://cpkkckaqqs674" path="res://GameFiles/Scenes/UI/Shop.tscn" id="7_0ein3"]
 
 [node name="StartScreen" type="Node2D"]
@@ -30,17 +29,10 @@ anchor_bottom = 0.863
 offset_left = 10.0
 offset_top = 315.0
 offset_right = 525.0
-offset_bottom = 353.0
+offset_bottom = 346.0
 grow_vertical = 0
 
-[node name="StartButton" type="Button" parent="Interactables"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "                    "
-flat = true
-alignment = 0
-
-[node name="StartTexture" type="Sprite2D" parent="Interactables/StartButton"]
+[node name="StartTexture" type="Sprite2D" parent="Interactables"]
 show_behind_parent = true
 scale = Vector2(2, 2)
 texture = ExtResource("4_g35n1")
@@ -48,41 +40,45 @@ centered = false
 region_enabled = true
 region_rect = Rect2(10, 8, 45, 15)
 
-[node name="Spacer" type="Control" parent="Interactables"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ShopButton" type="Button" parent="Interactables"]
-layout_mode = 2
-text = "                            "
+[node name="StartButton" type="Button" parent="Interactables/StartTexture"]
+offset_left = 1.0
+offset_top = 1.5
+offset_right = 44.0
+offset_bottom = 13.5
+action_mode = 0
 flat = true
-alignment = 0
 
-[node name="ShopTexture" type="Sprite2D" parent="Interactables/ShopButton"]
+[node name="ShopTexture" type="Sprite2D" parent="Interactables"]
 show_behind_parent = true
+position = Vector2(241, -2)
 scale = Vector2(2, 2)
-texture = ExtResource("5_rqxjn")
+texture = ExtResource("4_g35n1")
 centered = false
 region_enabled = true
-region_rect = Rect2(1, 200, 63, 15)
+region_rect = Rect2(13, 233, 39, 15)
 
-[node name="Spacer2" type="Control" parent="Interactables"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="QuitButton" type="Button" parent="Interactables"]
-layout_mode = 2
-text = "              "
+[node name="ShopButton" type="Button" parent="Interactables/ShopTexture"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 37.0
+offset_bottom = 13.0
 flat = true
-alignment = 0
 
-[node name="QuitTexture" type="Sprite2D" parent="Interactables/QuitButton"]
+[node name="QuitTexture" type="Sprite2D" parent="Interactables"]
 show_behind_parent = true
+position = Vector2(448, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("4_g35n1")
 centered = false
 region_enabled = true
 region_rect = Rect2(16, 136, 33, 15)
+
+[node name="QuitButton" type="Button" parent="Interactables/QuitTexture"]
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 31.0
+offset_bottom = 13.0
+flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_1764v")
@@ -92,6 +88,6 @@ bus = &"Music"
 
 [node name="Shop" parent="." instance=ExtResource("7_0ein3")]
 
-[connection signal="pressed" from="Interactables/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Interactables/ShopButton" to="." method="_on_shop_button_pressed"]
-[connection signal="pressed" from="Interactables/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Interactables/StartTexture/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Interactables/ShopTexture/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Interactables/QuitTexture/QuitButton" to="." method="_on_quit_button_pressed"]

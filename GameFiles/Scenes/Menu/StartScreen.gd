@@ -16,24 +16,17 @@ func _ready():
 	ShowStartMenuButtons()
 	SaveAndLoad.LoadData.emit()
 	
-#func _on_options_button_pressed():
-	#SettingsScreen.visible = true
-	#Interactables.visible = false
+func _on_start_button_pressed():
+	SaveAndLoad.LoadData.emit()
+	LoadManager.load_scene(Game)
 
 
 func HideButtons():
 	StartScreen.z_index = 10
 
-func _on_start_button_pressed():
-	SaveAndLoad.LoadData.emit()
-	LoadManager.load_scene(Game)
 	
 func ShowStartMenuButtons():
 	StartScreen.z_index = 0
-
-
-func _on_options_button_pressed():
-	pass # Replace with function body.
 
 
 func _on_quit_button_pressed():
@@ -43,3 +36,5 @@ func _on_quit_button_pressed():
 func _on_shop_button_pressed():
 	HideButtons()
 	Shop.OpenShop.emit()
+
+
