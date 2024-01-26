@@ -197,7 +197,9 @@ func on_player_mp_ui_ready():
 
 
 func command_follow_target():
-	print_debug("follow target")
+	#print_debug("follow target")
+	if follower_count == 0:
+		return
 	var mouse_position = get_global_mouse_position()
 	var nav_agent = $NavigationAgent2D
 	nav_agent.target_position = mouse_position
@@ -214,7 +216,7 @@ func command_follow_target():
 
 
 func command_follow_player():
-	print_debug("follow player")
+	#print_debug("follow player")
 	if follower_count == 0:
 		return
 		
@@ -226,7 +228,7 @@ func command_follow_player():
 
 
 func command_attack_target():
-	print_debug("attack target")
+	#print_debug("attack target")
 	if follower_count == 0:
 		return
 		

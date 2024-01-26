@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://oticknl55wsx"]
+[gd_scene load_steps=15 format=3 uid="uid://oticknl55wsx"]
 
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="1_r4tet"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://btwm4ktyr5y1r" path="res://GameFiles/Game Objects/Characters/NPC/soldier/soldier.tscn" id="6_a5e83"]
 [ext_resource type="TileSet" uid="uid://cdnlcy1rvyrqi" path="res://GameFiles/Resources/Tilesets/prison_tileset.tres" id="7_0dduh"]
 [ext_resource type="PackedScene" uid="uid://ul8nkucwgivb" path="res://GameFiles/Game Objects/Components/mob_spawner.tscn" id="9_41811"]
+[ext_resource type="PackedScene" uid="uid://dymorc4jdhp3t" path="res://GameFiles/Scenes/UI/death_screen.tscn" id="9_dm52a"]
 [ext_resource type="AudioStream" uid="uid://b4wtokr32rfdw" path="res://GameFiles/Assets/Sound/Music/prison_music_euro.mp3" id="10_tga01"]
 [ext_resource type="AudioStream" uid="uid://bvl35ktr0y32s" path="res://GameFiles/Assets/Sound/Music/drive.mp3" id="11_hbwtu"]
 
@@ -140,6 +141,8 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
+
+[node name="Death Screen" parent="UI" instance=ExtResource("9_dm52a")]
 
 [node name="Fountain" parent="." instance=ExtResource("5_lghrh")]
 y_sort_enabled = true

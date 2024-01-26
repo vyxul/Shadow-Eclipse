@@ -88,3 +88,10 @@ func add_score(score: int):
 
 func GetGameTileSize() -> int:
 	return TileSize
+
+
+func reset():
+	targets_under_mouse.clear()
+	follow_target_position = null
+	attack_target = null
+	player_score = 0
