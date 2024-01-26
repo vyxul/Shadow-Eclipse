@@ -61,7 +61,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_dcmuy"]
 resource_name = "attack"
-length = 0.7
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -89,7 +89,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lurbk"]
 resource_name = "death"
-length = 0.7
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -105,7 +105,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_unks0"]
 resource_name = "idle"
-length = 0.7
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -114,10 +114,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 2, 3, 4, 5, 6, 7]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_erqdk"]
@@ -137,7 +137,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_3hy1n"]
 resource_name = "walk"
-length = 0.7
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -166,10 +166,10 @@ _data = {
 radius = 4.0
 height = 14.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k8qed"]
-radius = 25.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xq2f"]
+radius = 26.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2tat"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wptlq"]
 radius = 8.0
 height = 26.0
 
@@ -191,16 +191,17 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_4fmbg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qnwby")]
-max_health_points = 3.0
+max_health_points = 15.0
 
 [node name="ConversionComponent" parent="." instance=ExtResource("3_12554")]
 max_conversion_hp = 10
 
 [node name="NpcAttackComponent" parent="." instance=ExtResource("4_ik222")]
 attack_scene = ExtResource("5_t204a")
+attack_damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NpcAttackComponent"]
-shape = SubResource("CircleShape2D_k8qed")
+shape = SubResource("CircleShape2D_2xq2f")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_nn6pb")]
 collision_layer = 2
@@ -209,12 +210,12 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -5)
-shape = SubResource("CapsuleShape2D_c2tat")
+shape = SubResource("CapsuleShape2D_wptlq")
 debug_color = Color(0.839216, 0.384314, 0, 0.207843)
 
 [node name="SearchRadius" parent="." instance=ExtResource("5_46yan")]
-visible = false
-tracked_enemies_range = 110.0
+tracked_enemies_range = 70.0
+discovery_range = 60.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "this_entity", "hurtbox_component", "health_component", "conversion_component", "npc_attack_component", "search_radius", "state_label", "animation_player") instance=ExtResource("5_ibxij")]
 initial_state = NodePath("state_spawn")
@@ -226,6 +227,10 @@ npc_attack_component = NodePath("../NpcAttackComponent")
 search_radius = NodePath("../SearchRadius")
 state_label = NodePath("../StateLabel")
 animation_player = NodePath("../AnimationPlayer")
+combat_move_speed = 80.0
+follow_move_speed = 80.0
+follow_target_move_speed = 80.0
+attack_target_move_speed = 80.0
 
 [node name="state_spawn" type="Node" parent="StateMachine"]
 script = ExtResource("10_ob4bv")
@@ -285,9 +290,6 @@ region_rect = Rect2(23, 29, 16, 19)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -3)
-
-[node name="state_attack_player" type="Node" parent="."]
-script = ExtResource("19_3j7b8")
 
 [connection signal="mouse_entered" from="HurtboxComponent" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HurtboxComponent" to="." method="_on_mouse_exited"]

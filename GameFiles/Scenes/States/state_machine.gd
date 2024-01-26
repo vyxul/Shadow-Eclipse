@@ -92,6 +92,7 @@ func _ready():
 	hurtbox_component.hurt.connect(on_hurt)
 	health_component.health_depleted.connect(on_health_depleted)
 	conversion_component.new_follower_added.connect(on_new_follower_added)
+	GameState.game_state_changed.connect(on_game_state_changed)
 
 
 func _process(delta):
@@ -139,6 +140,8 @@ func on_hurt():
 	if current_state:
 		current_state.exit()
 		previous_state = current_state
+		if is_state_follower(current_state):
+			last_follower_state = current_state
 	
 	var new_state = states.get("state_hurt")
 	current_state = new_state
@@ -163,3 +166,14 @@ func on_new_follower_added(entity: NonPlayerCharacter):
 	new_state.enter()
 	current_state = new_state
 	is_follower = true
+
+
+func on_game_state_changed(gameState):
+	if gameState == GameState.EGameState.Expansion:
+		if current_state:
+			current_state.exit()
+			previous_state = current_state
+		
+		var new_state = states.get("state_swarm_phase")
+		current_state = new_state
+		new_state.enter()

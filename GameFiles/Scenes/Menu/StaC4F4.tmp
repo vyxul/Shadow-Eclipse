@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://brd1whbsn3r4d"]
+
+[ext_resource type="Texture2D" uid="uid://4m64wvklpbhs" path="res://GameFiles/Assets/Art/UI/StartScreen.png" id="2_g2aee"]
+[ext_resource type="Script" path="res://GameFiles/Scenes/Menu/StartScreen.gd" id="3_cnw42"]
+[ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="4_g35n1"]
+[ext_resource type="Texture2D" uid="uid://cbwbqaw4ykrgi" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff_v2.png" id="5_rqxjn"]
+[ext_resource type="PackedScene" uid="uid://dsr6l8saodn5e" path="res://GameFiles/Scenes/Menu/SettingsMenu.tscn" id="6_mhwee"]
+
+[node name="StartScreen" type="Node2D"]
+
+[node name="StartScreen" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("2_g2aee")
+script = ExtResource("3_cnw42")
+
+[node name="SettingsMenu" parent="." instance=ExtResource("6_mhwee")]
+visible = false
+position = Vector2(1200.88, 405.359)
+
+[node name="Interactables" type="HBoxContainer" parent="."]
+layout_direction = 2
+anchors_preset = -1
+anchor_top = 0.863
+anchor_bottom = 0.863
+offset_left = 10.0
+offset_top = 315.0
+offset_right = 525.0
+offset_bottom = 353.0
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="Interactables"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "                    "
+flat = true
+alignment = 0
+
+[node name="StartTexture" type="Sprite2D" parent="Interactables/StartButton"]
+show_behind_parent = true
+scale = Vector2(2, 2)
+texture = ExtResource("4_g35n1")
+centered = false
+region_enabled = true
+region_rect = Rect2(10, 8, 45, 15)
+
+[node name="Spacer" type="Control" parent="Interactables"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ContinueButton" type="Button" parent="Interactables"]
+layout_mode = 2
+disabled = true
+text = "                            "
+flat = true
+alignment = 0
+
+[node name="ContinueTexture" type="Sprite2D" parent="Interactables/ContinueButton"]
+show_behind_parent = true
+scale = Vector2(2, 2)
+texture = ExtResource("5_rqxjn")
+centered = false
+region_enabled = true
+region_rect = Rect2(1, 200, 63, 15)
+
+[node name="Spacer2" type="Control" parent="Interactables"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuitButton" type="Button" parent="Interactables"]
+layout_mode = 2
+text = "              "
+flat = true
+alignment = 0
+
+[node name="QuitTexture" type="Sprite2D" parent="Interactables/QuitButton"]
+show_behind_parent = true
+scale = Vector2(2, 2)
+texture = ExtResource("4_g35n1")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 136, 33, 15)
+
+[connection signal="pressed" from="Interactables/StartButton" to="StartScreen" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Interactables/ContinueButton" to="StartScreen" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Interactables/QuitButton" to="StartScreen" method="_on_quit_button_pressed"]

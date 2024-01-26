@@ -46,10 +46,14 @@ func _physics_process(delta):
 		
 		# target conversion damage
 		var collider = get_collider()
-		if collider is HurtboxComponent:
+		if collider is HurtboxComponent || collider is NonPlayerCharacter:
 			#print_debug("collider name = " + str(collider.get_parent().name))
 			# will need to add code later to check for faction relationship
-			var current_target = collider.get_parent()
+			var current_target
+			if collider is HurtboxComponent:
+				current_target = collider.get_parent()
+			else:
+				current_target = collider
 			
 			if current_target != focus_target:
 				focus_target = current_target
@@ -63,8 +67,10 @@ func _physics_process(delta):
 				#print_debug("Focused on the same target for the focus time needed")
 				# Add code here to refer to the targets conversion component
 				# and reduce their gauge after making that conversion component
-				var target_conversion_component = collider.GetConversionComponent() as ConversionComponent
+				var target_conversion_component = collider.get_conversion_component() as ConversionComponent
 				target_conversion_component.conversion_damage(conversion_damage)
+	
+		
 	
 	else:
 		focus_target = null

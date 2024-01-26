@@ -6,10 +6,10 @@ signal hurt
 @export var health_component : HealthComponent
 var conversionComponent = null
 
-func GetConversionComponent() -> ConversionComponent:
+func get_conversion_component() -> ConversionComponent:
 	return conversionComponent
 
-func SetConversionComponent(_ConversionComponent):
+func set_conversion_component(_ConversionComponent):
 	conversionComponent = _ConversionComponent
 
 func damage(dmg: int):

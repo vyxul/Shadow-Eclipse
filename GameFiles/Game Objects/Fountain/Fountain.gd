@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 @export var faction: GameData.Factions
 #@export var ExpansionSpeed = 1
@@ -38,7 +38,7 @@ func _ready():
 	topLeftWorldLocation = -Vector2(coordX * tileHalfSize, coordY * tileHalfSize)
 	
 	OnFactionChanged(faction)
-	hurtboxComponent.SetConversionComponent(conversion_component)
+	hurtboxComponent.set_conversion_component(conversion_component)
 	
 
 func OnFactionChanged(Faction : GameData.Factions):

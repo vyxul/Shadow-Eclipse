@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player_range_attack = preload("res://GameFiles/Game Objects/Characters/Player/player_ranged_attack.tscn")
 @onready var timer = $Timer
+@onready var audio_stream_player = $AudioStreamPlayer
 
 @export var mana_component: ManaComponent
 @export_range(100, 2000) var projectile_speed: float = 100
@@ -38,6 +39,8 @@ func attack():
 	player_range_attack_instance.set_faction(GameData.Factions.SHADOW)
 	
 	player_range_attack_instance.attack()
+	
+	audio_stream_player.play()
 	
 	var player = get_parent()
 	var animation_player = player.animation_player

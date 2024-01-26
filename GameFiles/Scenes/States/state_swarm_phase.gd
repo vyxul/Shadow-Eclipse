@@ -22,7 +22,12 @@ func setup():
 	this_navigation_agent = this_entity.get_navigation_agent() as NavigationAgent2D
 	this_navigation_timer = this_entity.get_navigation_timer() as Timer
 	
-	var rand_number = randi_range(0, 1)
+	var game_state = GameState.GetGameState()
+	var rand_max: int = 0
+	if game_state == GameState.EGameState.Expansion:
+		rand_max = 1
+	
+	var rand_number = randi_range(0, rand_max)
 	if rand_number == 0:
 		focus_target = get_tree().get_first_node_in_group("player")
 	elif rand_number == 1:
@@ -54,7 +59,12 @@ func update(delta):
 	if !is_attacking:
 		attack_cd_timer -= delta
 	
-	#if this_npc_attack_component.is_body_in_attack_range(focus_target) && (attack_cd_timer <= 0):
+	if this_npc_attack_component.is_body_in_attack_range(focus_target) && (attack_cd_timer <= 0):
+		is_attacking = true
+		this_npc_attack_component.attack(focus_target)
+		attack_cd_timer = attack_cooldown
+		return
+		
 	if is_colliding_with_terrain() && attack_cd_timer <= 0:
 		is_attacking = true
 		this_npc_attack_component.attack_direction(this_entity.velocity.normalized())

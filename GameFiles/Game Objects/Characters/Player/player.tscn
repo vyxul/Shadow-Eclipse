@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cf2x6amj6vpyd"]
+[gd_scene load_steps=18 format=3 uid="uid://cf2x6amj6vpyd"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/Player/player.gd" id="1_n8ck6"]
 [ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Components/mana_component.tscn" id="3_cju8r"]
 [ext_resource type="PackedScene" uid="uid://c41nwnahfi0b8" path="res://GameFiles/Game Objects/Characters/Player/player_melee_controller.tscn" id="3_k76rs"]
-[ext_resource type="PackedScene" path="res://GameFiles/Game Objects/Characters/Player/player_ranged_controller.tscn" id="4_nx2hv"]
+[ext_resource type="AudioStream" uid="uid://bn8gepo4k2vrl" path="res://GameFiles/Assets/Sound/SFX/swordhit.mp3" id="3_sis71"]
+[ext_resource type="PackedScene" uid="uid://dt63tc60emsw" path="res://GameFiles/Game Objects/Characters/Player/player_ranged_controller.tscn" id="4_nx2hv"]
 [ext_resource type="PackedScene" uid="uid://b1un8xwx3gpmx" path="res://GameFiles/Game Objects/Characters/Player/player_recruit_controller.tscn" id="4_ve0m4"]
 [ext_resource type="PackedScene" uid="uid://b25iseq2d0dnd" path="res://GameFiles/Game Objects/Components/health_component.tscn" id="5_d4vni"]
 [ext_resource type="PackedScene" uid="uid://ydmxubnmay2o" path="res://GameFiles/Game Objects/Components/hurtbox_component.tscn" id="6_bsnab"]
@@ -115,13 +116,19 @@ collision_mask = 3
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_n8ck6")
-player_speed = 100.0
+player_speed = 64.0
+run_speed_multiplier = 1.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_d4vni")]
-max_health_points = 20.0
+max_health_points = 50.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HealthComponent"]
+stream = ExtResource("3_sis71")
+volume_db = -10.0
 
 [node name="ManaComponent" parent="." instance=ExtResource("3_cju8r")]
 max_mana_points = 50.0
+mana_regen_amount = 2.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_bsnab")]
 collision_layer = 2
@@ -142,16 +149,22 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_b0bgo")
 
 [node name="PlayerMeleeController" parent="." instance=ExtResource("3_k76rs")]
+melee_attack_damage = 3
 
 [node name="PlayerRangedController" parent="." node_paths=PackedStringArray("mana_component") instance=ExtResource("4_nx2hv")]
 mana_component = NodePath("../ManaComponent")
+projectile_speed = 256.0
+projectile_time = 3.0
+range_attack_damage = 2
+mana_cost = 3.0
 
 [node name="PlayerRecruitController" parent="." node_paths=PackedStringArray("mana_component", "hurtbox_component", "player") instance=ExtResource("4_ve0m4")]
 mana_component = NodePath("../ManaComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
 player = NodePath("..")
-laser_range = 128.0
+laser_range = 192.0
 focus_time_needed = 0.5
+conversion_damage = 5
 
 [node name="FollowerMarkers" type="Node2D" parent="."]
 visible = false

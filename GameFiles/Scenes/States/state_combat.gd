@@ -58,6 +58,10 @@ func exit():
 
 
 func update(delta):
+	if this_search_radius.get_tracked_enemies_count() == 0:
+		on_not_tracking_enemy()
+		return
+	
 	focus_target = this_search_radius.get_closest_tracked_enemy()
 	
 	if !is_attacking:
@@ -75,7 +79,7 @@ func physics_update(delta):
 	
 	var move_direction = this_entity.to_local(this_navigation_agent.get_next_path_position()).normalized()
 	this_entity.velocity = move_direction * combat_move_speed
-	#this_entity.get_sprite().flip_h = this_entity.velocity.x < 0
+	this_entity.get_sprite().flip_h = this_entity.velocity.x < 0
 
 
 func on_attack_finished():

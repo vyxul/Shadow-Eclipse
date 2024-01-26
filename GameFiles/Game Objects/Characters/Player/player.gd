@@ -16,6 +16,8 @@ signal PlayerMoved(NewPosition : Vector2)
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var mana_component: ManaComponent = $ManaComponent
 @onready var animation_player = $AnimationPlayer
+@onready var audio_stream_player = $HealthComponent/AudioStreamPlayer
+
 
 @onready var attack_flag = preload("res://GameFiles/Game Objects/UI Object/FollowerFlags/attack_flag.tscn")
 @onready var follow_target_flag = preload("res://GameFiles/Game Objects/UI Object/FollowerFlags/follow_target_flag.tscn")
@@ -70,7 +72,7 @@ func move():
 	
 	var player_running = Input.is_action_pressed("shift")
 	var move_speed: float
-	if player_running:
+	if player_running && !is_attacking() && !player_recruit_controller.is_casting:
 		move_speed = player_speed * run_speed_multiplier
 	else:
 		move_speed = player_speed
@@ -78,8 +80,7 @@ func move():
 	var target_velocity = move_direction * move_speed
 	velocity = target_velocity
 	
-	
-	if !player_melee_controller.is_attacking && !player_ranged_controller.is_attacking:
+	if !is_attacking():
 		if velocity == Vector2.ZERO:
 			animation_player.play("idle")
 		else:
@@ -166,6 +167,7 @@ func emit_player_mp():
 
 
 func _on_health_component_health_lost(health_lost: float):
+	audio_stream_player.play()
 	emit_player_hp()
 
 
@@ -195,7 +197,9 @@ func on_player_mp_ui_ready():
 
 
 func command_follow_target():
-	print_debug("follow target")
+	#print_debug("follow target")
+	if follower_count == 0:
+		return
 	var mouse_position = get_global_mouse_position()
 	var nav_agent = $NavigationAgent2D
 	nav_agent.target_position = mouse_position
@@ -212,7 +216,7 @@ func command_follow_target():
 
 
 func command_follow_player():
-	print_debug("follow player")
+	#print_debug("follow player")
 	if follower_count == 0:
 		return
 		
@@ -224,7 +228,7 @@ func command_follow_player():
 
 
 func command_attack_target():
-	print_debug("attack target")
+	#print_debug("attack target")
 	if follower_count == 0:
 		return
 		
