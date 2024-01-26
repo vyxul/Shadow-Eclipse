@@ -13,7 +13,7 @@ class_name NonPlayerCharacter
 
 
 func _ready():
-	hurtboxComponent.SetConversionComponent(conversion_component)
+	hurtboxComponent.set_conversion_component(conversion_component)
 
 func _process(delta):
 	move_and_slide()
