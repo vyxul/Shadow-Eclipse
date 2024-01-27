@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsvwi6p7idd3a"]
+[gd_scene load_steps=5 format=3 uid="uid://dsvwi6p7idd3a"]
 
 [ext_resource type="PackedScene" uid="uid://bqmo75r4upda4" path="res://GameFiles/Scenes/UI/player_icon.tscn" id="2_jlqfy"]
 [ext_resource type="PackedScene" uid="uid://jl4mai311xvn" path="res://GameFiles/Scenes/UI/player_heart_bar.tscn" id="2_rrjye"]
 [ext_resource type="PackedScene" uid="uid://bu76qas7bp4jx" path="res://GameFiles/Scenes/UI/player_mana_bar.tscn" id="3_sa83v"]
+[ext_resource type="PackedScene" uid="uid://bmil3wvbtu1cx" path="res://GameFiles/Scenes/UI/player_minion_bar.tscn" id="4_wdra5"]
 
 [node name="PlayerResourceBars" type="CanvasLayer"]
 
@@ -30,6 +31,113 @@ offset_bottom = 51.0
 scale = Vector2(1.5, 1.5)
 mouse_filter = 2
 
+[node name="PlayerMinionsBar" parent="." instance=ExtResource("4_wdra5")]
+
+[node name="PlayerMinion1" parent="PlayerMinionsBar" index="0"]
+offset_left = 64.0
+offset_top = 70.0
+offset_right = -560.0
+offset_bottom = -274.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion2" parent="PlayerMinionsBar" index="1"]
+offset_left = 80.0
+offset_top = 84.0
+offset_right = -544.0
+offset_bottom = -260.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion3" parent="PlayerMinionsBar" index="2"]
+offset_left = 100.0
+offset_top = 74.0
+offset_right = -524.0
+offset_bottom = -270.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion4" parent="PlayerMinionsBar" index="3"]
+offset_left = 111.0
+offset_top = 114.0
+offset_right = -513.0
+offset_bottom = -230.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion5" parent="PlayerMinionsBar" index="4"]
+offset_left = 123.0
+offset_top = 84.0
+offset_right = -501.0
+offset_bottom = -260.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion6" parent="PlayerMinionsBar" index="5"]
+offset_left = 147.0
+offset_top = 89.0
+offset_right = -477.0
+offset_bottom = -255.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion7" parent="PlayerMinionsBar" index="6"]
+offset_left = 155.0
+offset_top = 75.0
+offset_right = -469.0
+offset_bottom = -269.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion8" parent="PlayerMinionsBar" index="7"]
+offset_left = 30.0
+offset_top = 94.0
+offset_right = -594.0
+offset_bottom = -250.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion9" parent="PlayerMinionsBar" index="8"]
+offset_left = 54.0
+offset_top = 96.0
+offset_right = -570.0
+offset_bottom = -248.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion10" parent="PlayerMinionsBar" index="9"]
+offset_left = 76.0
+offset_top = 110.0
+offset_right = -548.0
+offset_bottom = -234.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion11" parent="PlayerMinionsBar" index="10"]
+offset_left = 94.0
+offset_top = 96.0
+offset_right = -530.0
+offset_bottom = -248.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion12" parent="PlayerMinionsBar" index="11"]
+offset_left = 130.0
+offset_top = 106.0
+offset_right = -494.0
+offset_bottom = -238.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion13" parent="PlayerMinionsBar" index="12"]
+offset_left = 11.0
+offset_top = 70.0
+offset_right = -613.0
+offset_bottom = -274.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion14" parent="PlayerMinionsBar" index="13"]
+offset_left = 3.8147e-06
+offset_top = 89.0
+offset_right = -624.0
+offset_bottom = -255.0
+scale = Vector2(0.8, 0.8)
+
+[node name="PlayerMinion15" parent="PlayerMinionsBar" index="14"]
+offset_left = 8.0
+offset_top = 112.0
+offset_right = -616.0
+offset_bottom = -232.0
+scale = Vector2(0.8, 0.8)
+
 [node name="hp_Label" type="Label" parent="."]
 visible = false
 offset_left = 76.0
@@ -47,3 +155,5 @@ offset_right = 93.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 12
 text = "50"
+
+[editable path="PlayerMinionsBar"]

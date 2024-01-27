@@ -274,6 +274,7 @@ func on_npc_died(npc: NonPlayerCharacter):
 		if followers[key] == npc:
 			followers[key] == null
 			follower_count -= 1
+			GameData.emit_follower_died(npc)
 	
 	if follower_count == 0:
 		var flags_layer = get_tree().get_first_node_in_group("flags")

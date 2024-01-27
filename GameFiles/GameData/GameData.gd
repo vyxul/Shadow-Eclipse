@@ -4,6 +4,7 @@ signal follow_player
 signal attack_target_command
 signal npc_died(npc: NonPlayerCharacter)
 signal npc_converted(npc: NonPlayerCharacter)
+signal follower_died(npc: NonPlayerCharacter)
 signal player_health_changed(player_current_health, player_max_health)
 signal player_mana_changed(player_current_mana, player_max_mana)
 signal player_died
@@ -53,6 +54,8 @@ func emit_npc_died(npc: NonPlayerCharacter):
 func emit_npc_converted(npc: NonPlayerCharacter):
 	npc_converted.emit(npc)
 
+func emit_follower_died(npc: NonPlayerCharacter):
+	follower_died.emit(npc)
 
 func add_target_under_mouse(target: NonPlayerCharacter):
 	if targets_under_mouse.has(target):
