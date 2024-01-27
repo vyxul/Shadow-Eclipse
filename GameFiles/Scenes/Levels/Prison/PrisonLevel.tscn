@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=22 format=3 uid="uid://oticknl55wsx"]
 
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
@@ -12,6 +13,7 @@
 [ext_resource type="TileSet" uid="uid://cdnlcy1rvyrqi" path="res://GameFiles/Resources/Tilesets/prison_tileset.tres" id="7_0dduh"]
 [ext_resource type="PackedScene" uid="uid://cfv35f3264ige" path="res://GameFiles/Scenes/UI/victory_screen.tscn" id="8_b8o3c"]
 [ext_resource type="PackedScene" uid="uid://ul8nkucwgivb" path="res://GameFiles/Game Objects/Components/mob_spawner.tscn" id="9_41811"]
+
 [ext_resource type="PackedScene" uid="uid://fc024vld8fme" path="res://GameFiles/Scenes/UI/defeat_screen.tscn" id="9_dm52a"]
 [ext_resource type="PackedScene" uid="uid://bysot2avkk1a8" path="res://GameFiles/Scenes/UI/state_timer_ui.tscn" id="10_djq4y"]
 [ext_resource type="AudioStream" uid="uid://b4wtokr32rfdw" path="res://GameFiles/Assets/Sound/Music/prison_music_euro.mp3" id="10_tga01"]
@@ -126,6 +128,9 @@ position = Vector2(1073, 413)
 [node name="bandit9" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(1330, 687)
 
+[node name="bandit9" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1330, 687)
+
 [node name="bandit10" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(1458, 673)
 
@@ -179,14 +184,17 @@ top_level = true
 y_sort_enabled = true
 position = Vector2(65, 69)
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
+[node name="bandit10" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1458, 673)
 
-[node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
+[node name="bandit11" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1407, 760)
+
+[node name="bandit12" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(892, 1129)
+
+[node name="bandit13" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(986, 1259)
 
 [node name="Defeat Screen" parent="UI" instance=ExtResource("9_dm52a")]
 visible = false
@@ -194,9 +202,17 @@ visible = false
 [node name="Victory Screen" parent="UI" instance=ExtResource("8_b8o3c")]
 visible = false
 
-[node name="StateTimerUI" parent="UI" instance=ExtResource("10_djq4y")]
+[node name="bandit14" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(921, 1457)
 
-[node name="FollowerCommandUI" parent="UI" instance=ExtResource("11_hk7a0")]
+[node name="bandit15" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1135, 1113)
+
+[node name="bandit16" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(287, 1235)
+
+[node name="bandit17" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(462, 1286)
 
 [node name="MessageUI" parent="UI" instance=ExtResource("14_njlwh")]
 visible = false
@@ -216,24 +232,26 @@ material = SubResource("CanvasItemMaterial_htn7o")
 position = Vector2(0, -16)
 centered = false
 
-[node name="MobSpawner" parent="." instance=ExtResource("9_41811")]
-z_index = 1
-position = Vector2(1389, 701)
-scale = Vector2(1, 1)
+[node name="soldier" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(173, 666)
 
-[node name="MobSpawner2" parent="." instance=ExtResource("9_41811")]
-z_index = 1
-position = Vector2(260, 748)
-scale = Vector2(1, 1)
+[node name="soldier2" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(325, 772)
 
-[node name="MobSpawner3" parent="." instance=ExtResource("9_41811")]
-z_index = 1
-position = Vector2(1378, 1361)
-scale = Vector2(1, 1)
+[node name="soldier3" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(601, 1270)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
+[node name="soldier4" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(1413, 1383)
+
+[node name="soldier5" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(741, 537)
+
+[node name="soldier6" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(794, 534)
+
+[node name="soldier7" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(762, 982)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_tga01")
@@ -244,5 +262,5 @@ bus = &"Music"
 stream = ExtResource("11_hbwtu")
 volume_db = -20.0
 
-[connection signal="PlayerMoved" from="Player" to="." method="_on_player_player_moved"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3

@@ -8,6 +8,7 @@ signal follower_died(npc: NonPlayerCharacter)
 signal player_health_changed(player_current_health, player_max_health)
 signal player_mana_changed(player_current_mana, player_max_mana)
 signal player_died
+signal fountain_died
 signal player_mana_empty
 
 signal player_hp_ui_ready

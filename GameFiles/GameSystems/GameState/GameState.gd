@@ -8,11 +8,12 @@ signal game_state_changed(state: EGameState)
 @onready var EnemySpawnTimer = $EnemySpawnTimer
 @onready var StateChangeTimer = $StateTimer
 @export var _Game_State : EGameState = EGameState.Finished
-@export var ConquerSpawnTimer : float = 30
-@export var ExpansionSpawnTimer : float = 4
+@export var ConquerSpawnTimer : float = 300
+@export var ExpansionSpawnTimer : float = 40
 @export var ConquerTimeMaxScore : float = 4
-@export var ConquerStateTimerRange : Vector2 = Vector2(420,720)
-@export var ExpansionStateTimerRange : Vector2 = Vector2(180,300)
+
+var ConquerStateTimerRange : Vector2 = Vector2(420,720)
+var ExpansionStateTimerRange : Vector2 = Vector2(180,300)
 
 @export var ConquerStateTimerMaxScore : int = 7200
 
@@ -94,12 +95,13 @@ func CalculateTimerScore():
 	var score
 	match (_Game_State):
 		EGameState.Expansion:
-			score += ((Time.get_ticks_msec() - StartTime) / 10) * (GameData.GetPlayerScore())
+			score = ((Time.get_ticks_msec() - StartTime) / 10) * (GameData.GetPlayerScore())
 		EGameState.Expansion:
-			score = ConquerStateTimerMaxScore - (ConquerStateTime / 10)
+			score = ConquerStateTimerMaxScore - (ConquerStateTime / 100)
 			score *= 0.5
 		EGameState.Finished:
-			score = ConquerStateTimerMaxScore - (ConquerStateTime / 10)
+			
+			score = ConquerStateTimerMaxScore - (ConquerStateTime / 100)
 	GameData.add_score(score)
 
 

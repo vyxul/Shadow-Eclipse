@@ -53,12 +53,11 @@ func _ready():
 	player_melee_controller.set_damage_multiplier(player_dmg_multiplier)
 	player_ranged_controller.set_damage_multiplier(player_dmg_multiplier)
 	follower_limit = player_follower_slots
-	
-	
+		
 	GameData.npc_died.connect(on_npc_died)
 	GameData.player_hp_ui_ready.connect(on_player_hp_ui_ready)
-	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)
-
+	GameData.player_mp_ui_ready.connect(on_player_mp_ui_ready)	
+	
 
 func _physics_process(delta):
 	if player_dead:

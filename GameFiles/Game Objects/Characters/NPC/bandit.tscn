@@ -173,6 +173,22 @@ radius = 26.0
 radius = 8.0
 height = 26.0
 
+[sub_resource type="Gradient" id="Gradient_7ran0"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8ht6"]
+gradient = SubResource("Gradient_7ran0")
+width = 16
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_tunxs"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ev60b"]
+gradient = SubResource("Gradient_tunxs")
+width = 16
+height = 4
+
 [sub_resource type="Gradient" id="Gradient_gliqy"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 

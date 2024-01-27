@@ -19,7 +19,6 @@ func _ready():
 	GameData.player_health_changed.connect(update_hp_display)
 	GameData.player_hp_ui_ready.emit()
 
-
 func _process(delta):
 	updated_this_frame = false
 
