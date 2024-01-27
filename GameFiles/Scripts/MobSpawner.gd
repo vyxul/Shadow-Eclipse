@@ -4,6 +4,7 @@ extends Node
 @export var maxEnemies = 10
 @export var spawnRadius = 50
 @export var spawnWaitTime_seconds = 2
+@export var index: int = 0
 
 var spawn_timer = Timer.new()
 var spawnedEnemies = 0
@@ -15,7 +16,10 @@ func _ready():
 
 
 # Function called when the Timer times out
-func spawn_ememy():
+func spawn_ememy(spawn_times: int):
+	if spawn_times % 3 != index:
+		return
+	
 	
 	spawnedEnemies = get_child_count()
 	# Instantiate the enemy object

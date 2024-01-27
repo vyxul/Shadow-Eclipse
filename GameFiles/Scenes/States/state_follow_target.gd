@@ -60,7 +60,7 @@ func on_navigation_timer_timeout():
 	if !is_following_target:
 		return
 		
-	make_path()
+	call_deferred("make_path")
 
 
 func on_follow_player():

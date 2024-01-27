@@ -29,6 +29,7 @@ func _ready():
 	ray_cast_2d.position = Vector2.ZERO
 	
 	GameData.npc_converted.connect(on_npc_converted)
+	GameData.npc_died.connect(on_npc_died)
 
 
 func _physics_process(delta):
@@ -204,6 +205,11 @@ func _on_discovery_area_2d_body_exited(body):
 func _on_tracking_area_2d_body_exited(body):
 	remove_enemy_from_tracking(body)
 #endregion
+
+
+func on_npc_died(npc: NonPlayerCharacter):
+	enemies_in_discovery_range.erase(npc)
+	tracked_enemies_in_range.erase(npc)
 
 
 func on_npc_converted(npc: NonPlayerCharacter):

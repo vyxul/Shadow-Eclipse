@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btwm4ktyr5y1r" path="res://GameFiles/Game Objects/Characters/NPC/soldier/soldier.tscn" id="3_xotf8"]
 
 [node name="MobSpawner" type="Node2D"]
-scale = Vector2(2, 2)
+z_index = 6
 script = ExtResource("1_vovge")
 enemy_spawn_list = Array[PackedScene]([ExtResource("2_tnkx1"), ExtResource("3_xotf8")])
 maxEnemies = 20

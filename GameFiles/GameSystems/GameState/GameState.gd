@@ -2,7 +2,7 @@ extends Node
 
 enum EGameState {Conquer, Expansion, Finished}
 
-signal SpawnEnemy
+signal SpawnEnemy(spawn_times: int)
 signal game_state_changed(state: EGameState)
 
 @onready var EnemySpawnTimer = $EnemySpawnTimer
@@ -14,6 +14,7 @@ signal game_state_changed(state: EGameState)
 
 var ConquerStateTimerRange : Vector2 = Vector2(420,720)
 var ExpansionStateTimerRange : Vector2 = Vector2(180,300)
+var spawn_times: int = 0
 
 @export var ConquerStateTimerMaxScore : int = 7200
 
@@ -78,7 +79,8 @@ func reset():
 
 
 func _on_enemy_spawn_timer_timeout():
-	SpawnEnemy.emit()
+	SpawnEnemy.emit(spawn_times)
+	spawn_times += 1
 
 
 func _on_state_timer_timeout():
@@ -102,6 +104,8 @@ func CalculateTimerScore():
 		EGameState.Finished:
 			
 			score = ConquerStateTimerMaxScore - (ConquerStateTime / 100)
+	
+	score = clamp(score, 0, 999999)
 	GameData.add_score(score)
 
 

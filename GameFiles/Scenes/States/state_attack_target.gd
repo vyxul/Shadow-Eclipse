@@ -83,7 +83,7 @@ func on_navigation_timer_timeout():
 	if !in_attack_target:
 		return
 	
-	make_path()
+	call_deferred("make_path")
 
 
 func on_attack_finished():

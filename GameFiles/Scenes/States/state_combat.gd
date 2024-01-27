@@ -97,7 +97,7 @@ func on_navigation_timer_timeout():
 	if !in_combat:
 		return
 	
-	make_path()
+	call_deferred("make_path")
 
 
 func on_not_tracking_enemy():

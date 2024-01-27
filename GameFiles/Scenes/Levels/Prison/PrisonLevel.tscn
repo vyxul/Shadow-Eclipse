@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://oticknl55wsx"]
+[gd_scene load_steps=22 format=3 uid="uid://oticknl55wsx"]
 
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="1_r4tet"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://btwm4ktyr5y1r" path="res://GameFiles/Game Objects/Characters/NPC/soldier/soldier.tscn" id="6_a5e83"]
 [ext_resource type="TileSet" uid="uid://cdnlcy1rvyrqi" path="res://GameFiles/Resources/Tilesets/prison_tileset.tres" id="7_0dduh"]
 [ext_resource type="PackedScene" uid="uid://cfv35f3264ige" path="res://GameFiles/Scenes/UI/victory_screen.tscn" id="8_b8o3c"]
+[ext_resource type="PackedScene" uid="uid://ul8nkucwgivb" path="res://GameFiles/Game Objects/Components/mob_spawner.tscn" id="9_41811"]
 [ext_resource type="PackedScene" uid="uid://fc024vld8fme" path="res://GameFiles/Scenes/UI/defeat_screen.tscn" id="9_dm52a"]
 [ext_resource type="PackedScene" uid="uid://bysot2avkk1a8" path="res://GameFiles/Scenes/UI/state_timer_ui.tscn" id="10_djq4y"]
 [ext_resource type="AudioStream" uid="uid://b4wtokr32rfdw" path="res://GameFiles/Assets/Sound/Music/prison_music_euro.mp3" id="10_tga01"]
@@ -100,6 +101,9 @@ y_sort_enabled = true
 
 [node name="bandit" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(201, 460)
+
+[node name="bandit27" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(230, 63)
 
 [node name="bandit2" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(201, 326)
@@ -221,6 +225,17 @@ position = Vector2(794, 534)
 [node name="soldier15" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
 position = Vector2(762, 982)
 
+[node name="MobSpawner" parent="Entities/NPC" instance=ExtResource("9_41811")]
+position = Vector2(1398, 694)
+index = 1
+
+[node name="MobSpawner2" parent="Entities/NPC" instance=ExtResource("9_41811")]
+position = Vector2(250, 742)
+index = 2
+
+[node name="MobSpawner3" parent="Entities/NPC" instance=ExtResource("9_41811")]
+position = Vector2(1402, 1350)
+
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
 top_level = true
 y_sort_enabled = true
@@ -230,7 +245,6 @@ position = Vector2(65, 69)
 y_sort_enabled = true
 position = Vector2(770, 752)
 scale = Vector2(2, 2)
-DamagePercentageTakenPerTileDamage = 0.1
 MAX_EXPANSION_X = 15
 MAX_EXPANSION_Y = 15
 
