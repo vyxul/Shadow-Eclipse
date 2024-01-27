@@ -1,25 +1,22 @@
-
-[gd_scene load_steps=22 format=3 uid="uid://oticknl55wsx"]
+[gd_scene load_steps=21 format=3 uid="uid://oticknl55wsx"]
 
 [ext_resource type="PackedScene" uid="uid://cfngkauom0ub5" path="res://GameFiles/Game Objects/Characters/Player/player_camera_2d.tscn" id="1_8rapg"]
 [ext_resource type="PackedScene" uid="uid://cf2x6amj6vpyd" path="res://GameFiles/Game Objects/Characters/Player/player.tscn" id="1_r4tet"]
 [ext_resource type="Script" path="res://GameFiles/Scenes/Levels/Prison/PrisonLevel.gd" id="1_s4q4f"]
 [ext_resource type="Texture2D" uid="uid://dqnldd5is4tei" path="res://GameFiles/Assets/Art/World Objects/Light.png" id="2_e6brk"]
 [ext_resource type="PackedScene" uid="uid://dimxkh5vbaxfx" path="res://GameFiles/Game Objects/Characters/NPC/bandit.tscn" id="3_f07v3"]
-[ext_resource type="PackedScene" path="res://GameFiles/Scenes/Levels/message_box_area_2d.tscn" id="5_ej2y2"]
+[ext_resource type="PackedScene" uid="uid://du3x50xnitg3j" path="res://GameFiles/Scenes/Levels/message_box_area_2d.tscn" id="5_ej2y2"]
 [ext_resource type="PackedScene" uid="uid://41gmpj5u34w8" path="res://GameFiles/Game Objects/Fountain/Fountain.tscn" id="5_lghrh"]
 [ext_resource type="PackedScene" uid="uid://dsvwi6p7idd3a" path="res://GameFiles/Scenes/UI/player_resource_bars.tscn" id="5_prfgb"]
 [ext_resource type="PackedScene" uid="uid://btwm4ktyr5y1r" path="res://GameFiles/Game Objects/Characters/NPC/soldier/soldier.tscn" id="6_a5e83"]
 [ext_resource type="TileSet" uid="uid://cdnlcy1rvyrqi" path="res://GameFiles/Resources/Tilesets/prison_tileset.tres" id="7_0dduh"]
 [ext_resource type="PackedScene" uid="uid://cfv35f3264ige" path="res://GameFiles/Scenes/UI/victory_screen.tscn" id="8_b8o3c"]
-[ext_resource type="PackedScene" uid="uid://ul8nkucwgivb" path="res://GameFiles/Game Objects/Components/mob_spawner.tscn" id="9_41811"]
-
 [ext_resource type="PackedScene" uid="uid://fc024vld8fme" path="res://GameFiles/Scenes/UI/defeat_screen.tscn" id="9_dm52a"]
 [ext_resource type="PackedScene" uid="uid://bysot2avkk1a8" path="res://GameFiles/Scenes/UI/state_timer_ui.tscn" id="10_djq4y"]
 [ext_resource type="AudioStream" uid="uid://b4wtokr32rfdw" path="res://GameFiles/Assets/Sound/Music/prison_music_euro.mp3" id="10_tga01"]
 [ext_resource type="AudioStream" uid="uid://bvl35ktr0y32s" path="res://GameFiles/Assets/Sound/Music/drive.mp3" id="11_hbwtu"]
-[ext_resource type="PackedScene" path="res://GameFiles/Scenes/UI/follower_command_ui.tscn" id="11_hk7a0"]
-[ext_resource type="PackedScene" path="res://GameFiles/Scenes/UI/message_ui.tscn" id="14_njlwh"]
+[ext_resource type="PackedScene" uid="uid://c8mwsf2f6ora0" path="res://GameFiles/Scenes/UI/follower_command_ui.tscn" id="11_hk7a0"]
+[ext_resource type="PackedScene" uid="uid://cerxx3pjdftcx" path="res://GameFiles/Scenes/UI/message_ui.tscn" id="14_njlwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgnaw"]
 size = Vector2(126, 32)
@@ -128,31 +125,31 @@ position = Vector2(1073, 413)
 [node name="bandit9" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(1330, 687)
 
-[node name="bandit9" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit10" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(1330, 687)
 
-[node name="bandit10" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit11" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(1458, 673)
 
-[node name="bandit11" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit12" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(1407, 760)
 
-[node name="bandit12" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit13" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(892, 1129)
 
-[node name="bandit13" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit14" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(986, 1259)
 
-[node name="bandit14" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit15" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(921, 1457)
 
-[node name="bandit15" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit16" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(1135, 1113)
 
-[node name="bandit16" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit17" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(287, 1235)
 
-[node name="bandit17" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+[node name="bandit18" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
 position = Vector2(462, 1286)
 
 [node name="soldier" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
@@ -179,43 +176,55 @@ position = Vector2(762, 982)
 [node name="soldier8" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
 position = Vector2(996, 760)
 
+[node name="bandit19" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1458, 673)
+
+[node name="bandit20" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1407, 760)
+
+[node name="bandit21" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(892, 1129)
+
+[node name="bandit22" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(986, 1259)
+
+[node name="bandit23" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(921, 1457)
+
+[node name="bandit24" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(1135, 1113)
+
+[node name="bandit25" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(287, 1235)
+
+[node name="bandit26" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
+position = Vector2(462, 1286)
+
+[node name="soldier9" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(173, 666)
+
+[node name="soldier10" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(325, 772)
+
+[node name="soldier11" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(601, 1270)
+
+[node name="soldier12" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(1413, 1383)
+
+[node name="soldier13" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(741, 537)
+
+[node name="soldier14" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(794, 534)
+
+[node name="soldier15" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
+position = Vector2(762, 982)
+
 [node name="Player" parent="." instance=ExtResource("1_r4tet")]
 top_level = true
 y_sort_enabled = true
 position = Vector2(65, 69)
-
-[node name="bandit10" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(1458, 673)
-
-[node name="bandit11" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(1407, 760)
-
-[node name="bandit12" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(892, 1129)
-
-[node name="bandit13" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(986, 1259)
-
-[node name="Defeat Screen" parent="UI" instance=ExtResource("9_dm52a")]
-visible = false
-
-[node name="Victory Screen" parent="UI" instance=ExtResource("8_b8o3c")]
-visible = false
-
-[node name="bandit14" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(921, 1457)
-
-[node name="bandit15" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(1135, 1113)
-
-[node name="bandit16" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(287, 1235)
-
-[node name="bandit17" parent="Entities/NPC" instance=ExtResource("3_f07v3")]
-position = Vector2(462, 1286)
-
-[node name="MessageUI" parent="UI" instance=ExtResource("14_njlwh")]
-visible = false
 
 [node name="Fountain" parent="." instance=ExtResource("5_lghrh")]
 y_sort_enabled = true
@@ -232,27 +241,6 @@ material = SubResource("CanvasItemMaterial_htn7o")
 position = Vector2(0, -16)
 centered = false
 
-[node name="soldier" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
-position = Vector2(173, 666)
-
-[node name="soldier2" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
-position = Vector2(325, 772)
-
-[node name="soldier3" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
-position = Vector2(601, 1270)
-
-[node name="soldier4" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
-position = Vector2(1413, 1383)
-
-[node name="soldier5" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
-position = Vector2(741, 537)
-
-[node name="soldier6" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
-position = Vector2(794, 534)
-
-[node name="soldier7" parent="Entities/NPC" instance=ExtResource("6_a5e83")]
-position = Vector2(762, 982)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_tga01")
 volume_db = -30.0
@@ -264,3 +252,23 @@ volume_db = -20.0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 0
+
+[node name="PlayerResourceBars" parent="UI" instance=ExtResource("5_prfgb")]
+
+[node name="FollowerCommandUI" parent="UI" instance=ExtResource("11_hk7a0")]
+
+[node name="Defeat Screen" parent="UI" instance=ExtResource("9_dm52a")]
+visible = false
+
+[node name="Victory Screen" parent="UI" instance=ExtResource("8_b8o3c")]
+visible = false
+
+[node name="MessageUI" parent="UI" instance=ExtResource("14_njlwh")]
+visible = false
+
+[node name="StateTimerUI" parent="UI" instance=ExtResource("10_djq4y")]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="PlayerMoved" from="Player" to="." method="_on_player_player_moved"]

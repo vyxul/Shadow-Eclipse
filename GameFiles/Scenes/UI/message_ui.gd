@@ -21,12 +21,14 @@ func appear():
 	color_rect.visible = true
 	close_button.disabled = false
 	sprite_2d.visible = true
+	get_tree().paused = true
 
 
 func disappear():
 	color_rect.visible = false
 	close_button.disabled = true
 	sprite_2d.visible = false
+	get_tree().paused = false
 	
 
 

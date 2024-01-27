@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://GameFiles/Scenes/Menu/StartScreen.gd" id="3_cnw42"]
 [ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="4_g35n1"]
 [ext_resource type="AudioStream" uid="uid://d1vkysvcb2pln" path="res://GameFiles/Assets/Sound/Music/start_screen_music.mp3" id="6_1764v"]
-[ext_resource type="PackedScene" path="res://GameFiles/Scenes/Menu/SettingsMenu.tscn" id="6_mhwee"]
+[ext_resource type="PackedScene" uid="uid://dsr6l8saodn5e" path="res://GameFiles/Scenes/Menu/SettingsMenu.tscn" id="6_mhwee"]
 [ext_resource type="PackedScene" uid="uid://cpkkckaqqs674" path="res://GameFiles/Scenes/UI/Shop.tscn" id="7_0ein3"]
 
 [node name="StartScreen" type="Node2D"]

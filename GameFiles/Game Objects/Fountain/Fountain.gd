@@ -24,6 +24,7 @@ var tileHalfSize = GameData.GetGameTileSize() / 4
 var topLeftWorldLocation : Vector2i = Vector2i.ZERO
 var TileCoordinates  = []
 var LocationsToSpawnDarkness  = [] 
+var fountain_depeleted_signal_emited: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -187,4 +188,8 @@ func get_faction() -> int:
 
 
 func _on_health_component_health_depleted():
+	if fountain_depeleted_signal_emited:
+		return
+		
+	fountain_depeleted_signal_emited = true
 	GameData.fountain_died.emit()

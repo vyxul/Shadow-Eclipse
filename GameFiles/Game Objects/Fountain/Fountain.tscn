@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://41gmpj5u34w8"]
+[gd_scene load_steps=11 format=3 uid="uid://41gmpj5u34w8"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Fountain/Fountain.gd" id="1_rheew"]
 [ext_resource type="Texture2D" uid="uid://fg3xakyhlamx" path="res://GameFiles/Assets/Art/World Objects/everything.png" id="2_c75j0"]
@@ -16,22 +16,6 @@ height = 34.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d0pl5"]
 radius = 8.0
 height = 32.0
-
-[sub_resource type="Gradient" id="Gradient_gliqy"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_d835n"]
-gradient = SubResource("Gradient_gliqy")
-width = 16
-height = 4
-
-[sub_resource type="Gradient" id="Gradient_y3bkf"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l3ydt"]
-gradient = SubResource("Gradient_y3bkf")
-width = 16
-height = 4
 
 [node name="Fountain" type="StaticBody2D" groups=["fountain"]]
 z_index = 5
@@ -123,29 +107,13 @@ current_conversion_hp = 24
 CanParentBecomeFollower = false
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_vuy3c")]
-max_health_points = 100.0
-current_health_points = 100.0
+max_health_points = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_d0pl5")
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-visible = false
-z_index = 7
-offset_left = -9.0
-offset_top = -20.0
-offset_right = 7.0
-offset_bottom = -16.0
-max_value = 1.0
-step = 0.01
-value = 1.0
-texture_under = SubResource("GradientTexture2D_d835n")
-texture_progress = SubResource("GradientTexture2D_l3ydt")
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="conversion_hp_depleted" from="ConversionComponent" to="." method="_on_conversion_component_conversion_hp_depleted"]
 [connection signal="conversion_hp_lost" from="ConversionComponent" to="." method="_on_conversion_component_conversion_hp_lost"]
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
-[connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]
