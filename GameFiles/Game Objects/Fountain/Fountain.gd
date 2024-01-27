@@ -38,9 +38,7 @@ func _ready():
 	var coordX = StartingID % MAX_EXPANSION_X		
 	var coordY = floori(StartingID / MAX_EXPANSION_X)
 	topLeftWorldLocation = -Vector2(coordX * tileHalfSize, coordY * tileHalfSize)
-	
-	healthComponent.health_lost.connect()
-	
+		
 	OnFactionChanged(faction)
 	hurtboxComponent.set_conversion_component(conversion_component)
 	
