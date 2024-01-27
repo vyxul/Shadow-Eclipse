@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dimxkh5vbaxfx"]
+[gd_scene load_steps=34 format=3 uid="uid://dimxkh5vbaxfx"]
 
 [ext_resource type="Script" path="res://GameFiles/Game Objects/Characters/NPC/npc.gd" id="1_eque4"]
 [ext_resource type="Texture2D" uid="uid://uua45kiiiyr8" path="res://GameFiles/Assets/Art/Enemies/bandit/bandit_spritesheet.png" id="2_esfb5"]
@@ -173,7 +173,6 @@ radius = 26.0
 radius = 8.0
 height = 26.0
 
-<<<<<<< HEAD
 [sub_resource type="Gradient" id="Gradient_7ran0"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
@@ -190,10 +189,24 @@ gradient = SubResource("Gradient_tunxs")
 width = 16
 height = 4
 
-=======
->>>>>>> parent of 6f0780c (Merge branch 'main' into Timer-and-Spawns)
+[sub_resource type="Gradient" id="Gradient_gliqy"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8ht6"]
+gradient = SubResource("Gradient_gliqy")
+width = 16
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_y3bkf"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ev60b"]
+gradient = SubResource("Gradient_y3bkf")
+width = 16
+height = 4
+
 [node name="bandit" type="CharacterBody2D"]
-z_index = 5
+z_index = 6
 collision_layer = 2
 collision_mask = 27
 motion_mode = 1
@@ -210,10 +223,12 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_4fmbg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qnwby")]
-max_health_points = 4.0
+max_health_points = 10.0
+current_health_points = 10.0
 
 [node name="ConversionComponent" parent="." instance=ExtResource("3_12554")]
-max_conversion_hp = 10
+max_conversion_hp = 5
+current_conversion_hp = 5
 
 [node name="NpcAttackComponent" parent="." instance=ExtResource("4_ik222")]
 attack_scene = ExtResource("5_t204a")
@@ -283,12 +298,12 @@ script = ExtResource("19_3j7b8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
-debug_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="StateLabel" type="Label" parent="."]
+visible = false
 offset_left = -28.0
 offset_top = -35.0
 offset_right = 30.0
@@ -310,5 +325,18 @@ region_rect = Rect2(23, 29, 16, 19)
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -3)
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -16.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+texture_under = SubResource("GradientTexture2D_n8ht6")
+texture_progress = SubResource("GradientTexture2D_ev60b")
+
+[connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]
 [connection signal="mouse_entered" from="HurtboxComponent" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HurtboxComponent" to="." method="_on_mouse_exited"]
