@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://cerxx3pjdftcx"]
+
+[ext_resource type="Script" path="res://GameFiles/Scenes/UI/message_ui.gd" id="1_ojpc8"]
+[ext_resource type="Texture2D" uid="uid://bd4bg80ubblap" path="res://GameFiles/Assets/Art/UI/Buttons/ui_buttons_and_stuff.png" id="2_dur3l"]
+
+[node name="MessageUI" type="CanvasLayer" groups=["messageui"]]
+process_mode = 3
+script = ExtResource("1_ojpc8")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.596078, 0.682353, 0.698039, 1)
+position = Vector2(323.3, 181.5)
+scale = Vector2(7.675, 7.675)
+texture = ExtResource("2_dur3l")
+region_enabled = true
+region_rect = Rect2(161, 1, 46, 43)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 160.0
+offset_top = 58.0
+offset_right = 480.0
+offset_bottom = 248.0
+color = Color(0.443137, 0.443137, 0.443137, 0.8)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/ScrollContainer"]
+custom_minimum_size = Vector2(288, 148)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 10
+text = "WASD - Move
+Left Click - Melee Attack
+Right Click - Magic Attack
+R - Dark Laser (hit enemies to make them into followers
+Z/X/C - Follower commands
+
+Get to the fountain in the middle of the map, convert it, defend it and survive!"
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = -21.0
+offset_right = 311.0
+offset_bottom = 14.0
+disabled = true
+text = "X"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ColorRect/CloseButton" to="." method="_on_close_button_pressed"]

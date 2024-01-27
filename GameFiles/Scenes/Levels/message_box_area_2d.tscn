@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://du3x50xnitg3j"]
+
+[ext_resource type="Script" path="res://GameFiles/Scenes/Levels/message_box_area_2d.gd" id="1_4o06o"]
+
+[node name="MessageBoxArea2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_4o06o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
