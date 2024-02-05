@@ -1,11 +1,11 @@
 # About
 This game was created for PirateSoftware - Game Jam 14
-Creators:
-	Steven (vyxul)
-	Nik_TheGreek.
-	josef49
-	zneeke
-	king_d20
+## Creators
+- Steven (vyxul)
+- Nik_TheGreek.
+- josef49
+- zneeke
+- king_d20
 
 This game is a top down 2D action game that will be level based. 
 The player will be able to attack and kill enemies or recruit them into their party.
@@ -17,9 +17,15 @@ they will be given points based on their performance to upgrade their character 
 ## Combat
 
 ## Player HUD
+![player hud png](https://github.com/vyxul/Shadow-Eclipse/blob/main/Extras/Pictures/PlayerHUD.PNG)
 ## Followers
+![follower command png](https://github.com/vyxul/Shadow-Eclipse/blob/main/Extras/Pictures/FollowerCommand.PNG)
 ## Convert Enemies to Followers
+![recruitment laser png](https://github.com/vyxul/Shadow-Eclipse/blob/main/Extras/Pictures/RecruitmentLaser.PNG)
 ## Shop/Upgrade System
+![upgrade shop png](https://github.com/vyxul/Shadow-Eclipse/blob/main/Extras/Pictures/UpgradeShop.PNG)
+## Combat
+![combat webm](https://github.com/vyxul/Shadow-Eclipse/blob/main/Extras/Videos/combat.webm)
 
 # To Do List
 - ~~Game environment for 2d top down. RFC background and character nodes + motion controls~~
