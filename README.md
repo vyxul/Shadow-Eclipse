@@ -25,7 +25,7 @@ they will be given points based on their performance to upgrade their character 
 ## Shop/Upgrade System
 ![upgrade shop png](https://github.com/vyxul/Shadow-Eclipse/blob/main/Extras/Pictures/UpgradeShop.PNG)
 ## Combat
-![combat webm](https://github.com/vyxul/Shadow-Eclipse/blob/main/Extras/Videos/combat.webm)
+![combat webm](https://github.com/vyxul/Shadow-Eclipse/blob/main/Extras/Videos/combat.gif)
 
 # To Do List
 - ~~Game environment for 2d top down. RFC background and character nodes + motion controls~~
