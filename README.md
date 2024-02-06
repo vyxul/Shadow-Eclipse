@@ -77,5 +77,12 @@ git clone https://github.com/vyxul/PirateSoft-GameJam-Project.git
 ```
 
 # Running the game executable
+## GitHub Release
+Download the latest version of the project under Releases
+
+Unzip the file and run the file named: ShadowEclipse.exe
+
+## Itch.io
 Download the executable from itch.io (https://itch.io/jam/pirate/rate/2493166)
+
 Unzip the file and run the file named: ShadowEclipse.exe
